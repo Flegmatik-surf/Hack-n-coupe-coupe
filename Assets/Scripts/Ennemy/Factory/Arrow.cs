@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeManager : MonoBehaviour { 
-
-    public float maxHP = 50f;
-    public float currentHP = 50f;
-
+public class Arrow : MonoBehaviour
+{
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +13,6 @@ public class LifeManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (currentHP < 0)
-        {
-            print("mdr t nul");
-        }
+        
     }
 }
