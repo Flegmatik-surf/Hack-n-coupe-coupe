@@ -5,7 +5,12 @@ using UnityEngine;
 public class Bowman : Ennemy
 {
     [SerializeField] GameObject arrow;
-    [SerializeField] ArrowFactory factory;
+    private ArrowFactory factory;
+
+    private void Awake()
+    {
+        factory = arrow.GetComponent<ArrowFactory>();
+    }
     public override void Attack()
     {
         if (Insphere())
