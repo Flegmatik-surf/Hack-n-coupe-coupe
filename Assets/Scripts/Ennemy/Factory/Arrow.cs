@@ -26,6 +26,7 @@ public class Arrow : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         print("oui");
+        print(collision.gameObject.tag);
         if (collision.gameObject.tag == "Player")
         {
             print("popopo");

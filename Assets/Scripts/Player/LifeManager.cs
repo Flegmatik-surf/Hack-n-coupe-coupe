@@ -26,4 +26,12 @@ public class LifeManager : MonoBehaviour {
     {
         currentHP -= damage;
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ennemy")
+        {
+            print("aie");
+        }
+    }
 }

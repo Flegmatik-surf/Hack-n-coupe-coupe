@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1330856146117535309}
   m_Layer: 0
   m_Name: Bowman
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330856146117535307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1330856146618814564}
@@ -68,7 +68,6 @@ MonoBehaviour:
   sphereAttack: 5
   cooldown: 1
   arrow: {fileID: 4048541171551776622, guid: b6a9e7774345c0b4fb38e6e389e5bf23, type: 3}
-  factory: {fileID: 4048541171551776631, guid: b6a9e7774345c0b4fb38e6e389e5bf23, type: 3}
 --- !u!1 &1330856146618814559
 GameObject:
   m_ObjectHideFlags: 0
