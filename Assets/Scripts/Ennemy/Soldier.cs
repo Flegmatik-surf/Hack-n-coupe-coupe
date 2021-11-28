@@ -12,7 +12,7 @@ public class Soldier : Ennemy
 
             if (Time.time > timeStamp + cooldown)
             {
-                playerLife.currentHP -= 5;
+                playerLife.TakeDamage(5);
                 timeStamp = Time.time;
             }
 

@@ -58,16 +58,6 @@ public class Ennemy : MonoBehaviour
 
     }
 
-
-
-
-
-
-
-
-
-
-
     protected bool Inrange()
     {
         return (Vector3.Distance(transform.position, playerTransform.position) < rangeIn && Vector3.Distance(transform.position, playerTransform.position) > sphereAttack);

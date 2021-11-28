@@ -21,4 +21,9 @@ public class LifeManager : MonoBehaviour {
             print("mdr t nul");
         }
     }
+
+    public void TakeDamage(float damage)
+    {
+        currentHP -= damage;
+    }
 }
