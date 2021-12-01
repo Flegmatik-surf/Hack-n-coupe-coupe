@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661d4d3f85a43d840999a2abe4d3ab53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
-  currentHP: 0
+  maxHP: 5
+  currentHP: 5
   speed: 3
   rangeIn: 10
   sphereAttack: 5

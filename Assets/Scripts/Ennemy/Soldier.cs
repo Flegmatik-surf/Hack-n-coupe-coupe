@@ -9,13 +9,11 @@ public class Soldier : Ennemy
         if (Insphere())
         {
             //animation d'attaque
-
             if (Time.time > timeStamp + cooldown)
             {
                 playerLife.TakeDamage(5);
                 timeStamp = Time.time;
             }
-
         }
 
     }
