@@ -51,7 +51,15 @@ public class Ennemy : MonoBehaviour
         }
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        speed += newSpeed;
+    }
 
+    public float GetSpeed()
+    {
+        return speed;
+    }
 
     public virtual void Attack()
     {
