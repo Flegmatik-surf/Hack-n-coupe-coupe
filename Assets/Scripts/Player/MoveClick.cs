@@ -38,14 +38,23 @@ public class MoveClick : MonoBehaviour
 
     private void Move()
     {
-        
         if (Input.GetKey("q"))
         {
-            Movement = new Vector3(-1, 0, 0);
+            transform.Translate(0,0,1 * speed * Time.deltaTime);
         }
-        
+        if (Input.GetKey("d"))
+        {
+            transform.Translate(0, 0, -1 * speed * Time.deltaTime);
+        }
+        if (Input.GetKey("z"))
+        {
+            transform.Translate(1 * speed * Time.deltaTime, 0,0 );
+        }
+        if (Input.GetKey("s"))
+        {
+            transform.Translate(-1 * speed * Time.deltaTime, 0,0);
+        }
 
-        this.transform.position += Movement * speed * Time.deltaTime;
 
     }
 }
