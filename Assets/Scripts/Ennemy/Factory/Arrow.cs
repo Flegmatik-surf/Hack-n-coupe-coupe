@@ -6,34 +6,35 @@ public class Arrow : MonoBehaviour
 {
     private GameObject player;
     private LifeManager playerLife;
-    private Rigidbody rbArrow;
+    Vector3 target;
 
-    private float speed=3;
+    private float speed=0.1f;
     
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerLife = player.GetComponent<LifeManager>();
-        rbArrow = GetComponent<Rigidbody>();
+
         //transform.forward = player.transform.position-transform.position;
-        rbArrow.velocity = speed * (player.transform.position - transform.position).normalized;
+        //rbArrow.velocity = speed * (player.transform.position - transform.position).normalized;
+        target = player.transform.position - transform.position;
 
     }
 
     private void LateUpdate()
     {
         transform.localEulerAngles = new Vector3(0,0, 0);
+        transform.Translate(speed * target.normalized);
     }
     private void OnCollisionEnter(Collision collision)
     {
-        print("oui");
-        print(collision.gameObject.tag);
+        
+        
         if (collision.gameObject.tag == "Player")
         {
-            print("popopo");
             playerLife.TakeDamage(10);
         }
-        //Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 
 
