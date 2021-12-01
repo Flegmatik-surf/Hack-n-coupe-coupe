@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     private Rigidbody rbArrow;
 
     private float speed=3;
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
