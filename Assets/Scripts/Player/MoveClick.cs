@@ -6,17 +6,22 @@ public class MoveClick : MonoBehaviour
 {
     private Vector3 position;
     [SerializeField] private float speed;
+    Rigidbody rb;
+    Vector3 Movement = new Vector3(0, 0, 0);
+
+    private void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            GetPosition();
-        }
+        LookAt();
+        
         Move();
     }
 
-    void GetPosition()
+    void LookAt()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -26,16 +31,21 @@ public class MoveClick : MonoBehaviour
             position = hit.point;
 
         }
+
+        Quaternion Rotation = Quaternion.LookRotation(position - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 0.3f);
     }
 
     private void Move()
     {
-        if (Vector3.Distance(transform.position, position) > 0f)
+        
+        if (Input.GetKey("q"))
         {
-            Quaternion Rotation = Quaternion.LookRotation(position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 0.3f);
-            transform.position = Vector3.MoveTowards(transform.position, position, speed * Time.deltaTime);
-
+            Movement = new Vector3(-1, 0, 0);
         }
+        
+
+        this.transform.position += Movement * speed * Time.deltaTime;
+
     }
 }
