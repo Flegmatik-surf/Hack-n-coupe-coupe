@@ -20,9 +20,17 @@ public class SwordStrikeController : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-    //It only deals with itself
+    //when encountering an object, it will call the TakeDamage of the body in question, dependent of its tag :
     private void OnCollisionEnter(Collision body)
     {
+        if(gameObject.tag=="PlayerAttack" && body.gameObject.tag=="Ennemy")
+        {
+            body.gameObject.GetComponent<Ennemy>().TakeDamage(5);
+        }
+        if(gameObject.tag=="EnnemyAttack" && body.gameObject.tag=="Player")
+        {
+            body.gameObject.GetComponent<LifeManager>().TakeDamage(5);
+        }
         Destroy(gameObject);
     }
 
