@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Soldier : Ennemy
 {
+
     public override void Attack()
     {
         if (Insphere())

@@ -7,11 +7,13 @@ public class Bowman : Ennemy
     [SerializeField] GameObject arrow;
     private ArrowFactory factory;
     private Vector3 offset;
+
     private void Awake()
     {
         factory = arrow.GetComponent<ArrowFactory>();
         offset = new Vector3(transform.localScale.x, 0.1f, transform.localScale.z);
     }
+
     public override void Attack()
     {
         if (Insphere())
