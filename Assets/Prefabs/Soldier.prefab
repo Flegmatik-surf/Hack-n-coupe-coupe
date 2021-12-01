@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 8473673474921518533}
   - component: {fileID: 8473673474921518528}
   - component: {fileID: 8473673474921518535}
-  - component: {fileID: 8473673474921518534}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8473673474921518534
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8473673474921518532}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8473673475128552362
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +92,7 @@ GameObject:
   - component: {fileID: 8473673475128552373}
   - component: {fileID: 8473673475128552372}
   - component: {fileID: 8473673475128552363}
+  - component: {fileID: 1205222818969589578}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Ennemy
@@ -145,6 +132,7 @@ MonoBehaviour:
   speed: 3
   rangeIn: 10
   sphereAttack: 3
+  cooldown: 1
 --- !u!54 &8473673475128552363
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -161,3 +149,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1205222818969589578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473673475128552362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

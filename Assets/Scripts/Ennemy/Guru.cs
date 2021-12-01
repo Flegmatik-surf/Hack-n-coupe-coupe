@@ -7,7 +7,7 @@ public class Guru : Ennemy
     private float rangeBuff;
     bool m_Started;
     public LayerMask m_LayerMask;
-    private float buffSpeed = 200;
+    private float buffSpeed = 1.5;
     public override void Attack()
     {
 
@@ -32,10 +32,13 @@ public class Guru : Ennemy
         int i = 0;
         while (i < hitColliders.Length)
         {
-            print("!!!!!!!!!Hit : " + hitColliders[i].name + i);
+            
             if (hitColliders[i].tag == "Ennemy")
             {
-                hitColliders[i].GetComponent<Ennemy>().SetSpeed(GetSpeed()+buffSpeed);
+                hitColliders[i].GetComponent<Ennemy>().SetSpeed(GetSpeed()*buffSpeed);
+                print("!!!!!!!!!Hit : " + hitColliders[i].name + i); 
+                print(hitColliders[i].GetComponent<Ennemy>().GetSpeed());
+
             }
             
             i++;
