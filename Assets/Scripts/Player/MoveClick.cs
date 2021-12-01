@@ -11,7 +11,7 @@ public class MoveClick : MonoBehaviour
 
     private void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        rb = gameObject.GetComponentInChildren<Rigidbody>();
     }
 
     void Update()
@@ -40,19 +40,17 @@ public class MoveClick : MonoBehaviour
     {
         if (Input.GetKey("q"))
         {
-            transform.Translate(0,0,1 * speed * Time.deltaTime);
+            rb.velocity = new Vector3(-1 * speed * Time.deltaTime, 0,0);
         }
         if (Input.GetKey("d"))
         {
-            transform.Translate(0, 0, -1 * speed * Time.deltaTime);
-        }
-        if (Input.GetKey("z"))
+            rb.velocity = new Vector3(1 * speed * Time.deltaTime, 0, 0);
+        }if (Input.GetKey("z"))
         {
-            transform.Translate(1 * speed * Time.deltaTime, 0,0 );
-        }
-        if (Input.GetKey("s"))
+            rb.velocity = new Vector3(0, 0, 1 * speed * Time.deltaTime);
+        }if (Input.GetKey("s"))
         {
-            transform.Translate(-1 * speed * Time.deltaTime, 0,0);
+            rb.velocity = new Vector3(0, 0, -1 * speed * Time.deltaTime);
         }
 
 

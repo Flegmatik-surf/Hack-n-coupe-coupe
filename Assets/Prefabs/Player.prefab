@@ -106,8 +106,7 @@ GameObject:
   - component: {fileID: 419170814277921801}
   - component: {fileID: 419170814295900039}
   - component: {fileID: 419170813519861642}
-  - component: {fileID: 4978696605123919939}
-  - component: {fileID: 7770891711920879784}
+  - component: {fileID: 5464631790429332016}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -123,7 +122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419170814295900038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 419170813586463916}
@@ -157,20 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 50
   currentHP: 50
---- !u!65 &4978696605123919939
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419170814295900038}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7770891711920879784
+--- !u!54 &5464631790429332016
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,5 +170,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
