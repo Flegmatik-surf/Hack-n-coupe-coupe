@@ -27,6 +27,7 @@ public class WarriorController : PlayerActionsController
     private IEnumerator ActionOneCoroutine(float cooldown)
     {
         GameObject new_attack = Instantiate(swordStrike);
+        new_attack.tag="PlayerAttack";
         new_attack.transform.position=attackPosition.transform.position;
         yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;

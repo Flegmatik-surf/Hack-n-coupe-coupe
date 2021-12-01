@@ -11,8 +11,8 @@ public class Ennemy : MonoBehaviour
     [SerializeField] protected float maxHP;
     [SerializeField] protected float currentHP;
     [SerializeField] protected float speed;
-    [SerializeField] protected float rangeIn; //D'où il voit le player
-    [SerializeField] protected float sphereAttack; //D'où il peut l'attaquer
+    [SerializeField] protected float rangeIn; //D'oï¿½ il voit le player
+    [SerializeField] protected float sphereAttack; //D'oï¿½ il peut l'attaquer
     [SerializeField] protected float cooldown = 1f;
 
 
@@ -61,10 +61,7 @@ public class Ennemy : MonoBehaviour
         return speed;
     }
 
-    public virtual void Attack()
-    {
-
-    }
+    public virtual void Attack(){}
 
     protected bool Inrange()
     {
@@ -74,5 +71,14 @@ public class Ennemy : MonoBehaviour
     protected bool Insphere()
     {
         return (Vector3.Distance(transform.position, playerTransform.position) <= sphereAttack);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHP -= damage;
+        if(currentHP<=0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
