@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerActionsController : MonoBehaviour
 {
     public bool actionOnePossible; //the boolean that will tell wether or not the action one is "possible" i.e. not on cooldown (handled by the inherited scripts)
+    public bool actionTwoPossible;
+    public bool actionThreePossible;
 
     private void Start()
     {
@@ -21,13 +23,15 @@ public class PlayerActionsController : MonoBehaviour
             ActionOne();
             actionOnePossible=false;
         }
-        if(Input.GetKey(KeyCode.Mouse1))
+        if(Input.GetKey(KeyCode.Mouse1) && actionTwoPossible==true)
         {
             ActionTwo();
+            actionTwoPossible=false;
         }
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space) && actionThreePossible==true)
         {
             ActionThree();
+            actionThreePossible=false;
         }
     }
 
