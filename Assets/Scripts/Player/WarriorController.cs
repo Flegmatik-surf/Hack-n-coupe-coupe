@@ -12,6 +12,8 @@ public class WarriorController : PlayerActionsController
     [SerializeField] private float cooldownActionThree;
     private IEnumerator coroutine;
 
+    public GameObject attackPosition;
+
 // The Action One
 //--------------------------------------------------------------------------------------------
     //Calls the coroutine that handles the action One
@@ -25,7 +27,7 @@ public class WarriorController : PlayerActionsController
     private IEnumerator ActionOneCoroutine(float cooldown)
     {
         GameObject new_attack = Instantiate(swordStrike);
-        swordStrike.transform.position=transform.position+new Vector3(2,0,0);
+        new_attack.transform.position=attackPosition.transform.position;
         yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;
     }

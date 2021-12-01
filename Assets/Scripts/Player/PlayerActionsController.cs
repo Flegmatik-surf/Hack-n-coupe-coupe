@@ -6,13 +6,15 @@ using UnityEngine;
 //It is inherited/interacts with the WarriorController, the ArcherController and the SamouraiController
 public class PlayerActionsController : MonoBehaviour
 {
-    public bool actionOnePossible; //the boolean that will tell wether or not the action one is "possible" i.e. not on cooldown (handled by the inherited scripts)
-    public bool actionTwoPossible;
-    public bool actionThreePossible;
+    public bool actionOnePossible=true; //the boolean that will tell wether or not the action one is "possible" i.e. not on cooldown (handled by the inherited scripts)
+    public bool actionTwoPossible=true;
+    public bool actionThreePossible=true;
 
     private void Start()
     {
         actionOnePossible=true;
+        actionTwoPossible=true;
+        actionThreePossible=true;
     }
 
     // Update is called once per frame
