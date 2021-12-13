@@ -11,6 +11,10 @@ public class SamouraiController : PlayerActionsController
     [SerializeField] private float cooldownActionThree;
     private IEnumerator coroutine;
 
+    [SerializeField] private GameObject shuriken;
+    public GameObject attackPosition;
+    [SerializeField] private float firingSpeed;
+
 // The Action One
 //--------------------------------------------------------------------------------------------
     //Calls the coroutine that handles the action One
@@ -20,10 +24,14 @@ public class SamouraiController : PlayerActionsController
         StartCoroutine(coroutine);
     }
 
-    //This method is used to instantiate the ...
+    //This method is used to instantiate the shuriken attack
     private IEnumerator ActionOneCoroutine(float cooldown)
     {
-        yield return null;
+        GameObject new_attack = Instantiate(shuriken);
+        new_attack.tag="PlayerAttack";
+        new_attack.transform.position=attackPosition.transform.position;
+        new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
+        yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;
     }
 //--------------------------------------------------------------------------------------------

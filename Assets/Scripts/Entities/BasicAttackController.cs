@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//This script is used by the Basic Sword Strike attack 
-/*
-- Attack 1 of the warrior
-- Attack 1 of the ennemy soldier
-*/
-public class SwordStrikeController : MonoBehaviour
+//This script is used by the Basic Sword Strike attack of the warrior and the shuriken attack of the samourai
+public class BasicAttackController : MonoBehaviour
 {
-    private float cooldown=1f;
+    [SerializeField] private float cooldown;
     private IEnumerator coroutine;
 
     //This method deals with the attack, to ensure that it doesn't just "remain there"
@@ -34,10 +30,10 @@ public class SwordStrikeController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //The LifeTimer coroutine, destroying the object if it remains too long
     private IEnumerator LifeTimerCoroutine()
     {
-        
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(cooldown);
         Destroy(gameObject);
     }
 }
