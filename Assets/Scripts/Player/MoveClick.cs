@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveClick : MonoBehaviour
 {
     private Vector3 position;
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
     Rigidbody rb;
     Vector3 Movement = new Vector3(0, 0, 0);
 

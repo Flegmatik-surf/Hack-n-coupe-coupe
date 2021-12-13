@@ -11,7 +11,7 @@ public class WarriorController : PlayerActionsController
     [SerializeField] private float cooldownActionTwo;
     [SerializeField] private float cooldownActionThree;
     private IEnumerator coroutine;
-
+    [SerializeField] private GameObject tornadoAttack;
     public GameObject attackPosition;
 
 // The Action One
@@ -45,8 +45,8 @@ public class WarriorController : PlayerActionsController
 
     //This method is used to instantiate the ....
     private IEnumerator ActionTwoCoroutine(float cooldown)
-    {
-        yield return null;
+    {   
+        yield return new WaitForSeconds(cooldown);
         actionTwoPossible=true;
     }
 //--------------------------------------------------------------------------------------------
@@ -60,10 +60,16 @@ public class WarriorController : PlayerActionsController
         StartCoroutine(coroutine);
     }
 
-    //This method is used to instantiate the ....
+    //This method is used to instantiate the tornado-like attack
     private IEnumerator ActionThreeCoroutine(float cooldown)
     {
-        yield return null;
+        tornadoAttack.SetActive(true);
+        gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed*1.5f;
+        StartCoroutine(tornadoAttack.GetComponent<TornadoStrikeController>().LaunchAttack());
+        yield return new WaitForSeconds(3f);
+        tornadoAttack.SetActive(false);
+        gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed/1.5f;
+        yield return new WaitForSeconds(cooldown);
         actionThreePossible=true;
     }
 //--------------------------------------------------------------------------------------------

@@ -223,6 +223,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1043314882846886317, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1312811819539607491, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -271,6 +275,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 5120827562704221310, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5120827562704221310, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
+      propertyPath: m_TagString
+      value: PlayerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517426154596624590, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517426154596624590, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
+      propertyPath: m_TagString
+      value: PlayerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517426154596624590, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
 --- !u!1001 &622056867
@@ -280,6 +304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1205222818969589578, guid: 3444e1cafd3dd204c8229db81b5c25f0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8473673475128552362, guid: 3444e1cafd3dd204c8229db81b5c25f0, type: 3}
       propertyPath: m_Name
       value: Soldier

@@ -36,6 +36,7 @@ public class SwordStrikeController : MonoBehaviour
 
     private IEnumerator LifeTimerCoroutine()
     {
+        
         yield return new WaitForSeconds(0.3f);
         Destroy(gameObject);
     }
