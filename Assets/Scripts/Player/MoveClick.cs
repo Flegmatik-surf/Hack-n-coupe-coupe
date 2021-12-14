@@ -35,7 +35,6 @@ public class MoveClick : MonoBehaviour
             position = hit.point;
 
         }
-        
 
         Quaternion Rotation = Quaternion.LookRotation(position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 0.3f);
@@ -45,7 +44,7 @@ public class MoveClick : MonoBehaviour
 
     private void Move()
     {
-        print("IIIIIIIIIIIIII"+is_immobilized);
+        
         if (Input.GetKey("q"))
         {
             rb.velocity = new Vector3(-1 * speed * Time.deltaTime, 0,0);
