@@ -31,9 +31,12 @@ public class MoveClick : MonoBehaviour
             position = hit.point;
 
         }
+        
 
         Quaternion Rotation = Quaternion.LookRotation(position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 0.3f);
+        
+        
     }
 
     private void Move()

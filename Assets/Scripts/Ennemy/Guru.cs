@@ -7,10 +7,12 @@ public class Guru : Ennemy
     private float rangeBuff;
     bool m_Started;
     public LayerMask m_LayerMask;
-    private float buffSpeed = 1.5f; //Valeur de vitesse 
-    private float buffSpeedTime = 5f; //temps du buff de vitesse
-    
-    
+    //buffSpeed
+    private float buffSpeed = 1.5f; 
+    private float buffSpeedTime = 5f;
+   
+
+
     public override void Attack()
     {
 
