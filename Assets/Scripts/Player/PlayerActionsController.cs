@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //This script controls the player actions
-//It is inherited/interacts with the WarriorController, the ArcherController and the SamouraiController
+//It is inherited/interacts with the WarriorController and the ArcherController
+//Due to the charged attack, the SamouraiController inherits from SamouraiActionsController
 public class PlayerActionsController : MonoBehaviour
 {
     public bool actionOnePossible=true; //the boolean that will tell wether or not the action one is "possible" i.e. not on cooldown (handled by the inherited scripts)
