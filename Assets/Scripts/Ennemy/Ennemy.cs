@@ -15,6 +15,13 @@ public class Ennemy : MonoBehaviour
     [SerializeField] protected float sphereAttack; //D'o� il peut l'attaquer
     [SerializeField] protected float cooldown = 1f;
 
+    //buff
+    protected float buffSpeedTimer=0f;
+    protected bool canBeBuffSpeed = true;
+    protected float baseSpeed;
+
+
+
 
     protected float timeStamp = 0f;
 
@@ -32,14 +39,33 @@ public class Ennemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         playerLife = player.GetComponent<LifeManager>();
+        baseSpeed = speed;
     }
 
     private void Update()
     {
         Chase();
         Attack();
+        //buff speed
+        buffSpeedTimer -= Time.deltaTime;
+        if (buffSpeedTimer <= 0)
+        {
+            speed = baseSpeed;
+        }
+        
 
+    }
 
+    public void GetBuffSpeed(float buffSpeed, float buffSpeedTime)
+    {
+        if (canBeBuffSpeed)
+        {
+            canBeBuffSpeed = false;
+            speed += buffSpeed;
+            buffSpeedTimer += buffSpeedTime;
+        }
+        
+        
     }
 
     protected void Chase()
@@ -51,7 +77,7 @@ public class Ennemy : MonoBehaviour
         }
     }
 
-    public void SetSpeed(float newSpeed)
+    public void SetSpeedBuff(float newSpeed,float time)
     {
         speed += newSpeed;
     }
@@ -81,4 +107,5 @@ public class Ennemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

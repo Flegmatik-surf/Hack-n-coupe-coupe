@@ -7,7 +7,10 @@ public class Guru : Ennemy
     private float rangeBuff;
     bool m_Started;
     public LayerMask m_LayerMask;
-    private float buffSpeed = 1.5f;
+    private float buffSpeed = 1.5f; //Valeur de vitesse 
+    private float buffSpeedTime = 5f; //temps du buff de vitesse
+    
+    
     public override void Attack()
     {
 
@@ -24,6 +27,7 @@ public class Guru : Ennemy
     void FixedUpdate()
     {
         MyCollisions();
+
     }
 
     void MyCollisions()
@@ -35,9 +39,11 @@ public class Guru : Ennemy
             
             if (hitColliders[i].tag == "Ennemy")
             {
-                hitColliders[i].GetComponent<Ennemy>().SetSpeed(GetSpeed()*buffSpeed);
-                print("!!!!!!!!!Hit : " + hitColliders[i].name + i); 
-                print(hitColliders[i].GetComponent<Ennemy>().GetSpeed());
+                Ennemy ennemy = hitColliders[i].GetComponent<Ennemy>();
+                ennemy.GetBuffSpeed(buffSpeed, buffSpeedTime);
+                print("!!!!!!!!!Hit : " + hitColliders[i].name + i);
+                
+                
 
             }
             
