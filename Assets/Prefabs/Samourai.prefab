@@ -243,21 +243,6 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5464631790429332016, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
   m_PrefabInstance: {fileID: 399972861213262630}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4988841429182832740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26402095007055008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab1761877fa34704591886ef63af3571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionOnePossible: 1
-  actionTwoPossible: 1
-  actionThreePossible: 1
 --- !u!114 &83845028008336357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +265,22 @@ MonoBehaviour:
   attackPosition: {fileID: 5318643828660922182}
   firingSpeed: 2000
   samouraiRigidbody: {fileID: 5646028061417742614}
-  dashSpeed: 200
+  dashSpeed: 50
   moveClickScript: {fileID: 26402095007055009}
   dashAttack: {fileID: 24645774123462236}
   chargedStrike: {fileID: 8678541441467374663, guid: 720797d14a9c27f4998721855407dfeb, type: 3}
+--- !u!114 &4988841429182832740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26402095007055008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1761877fa34704591886ef63af3571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionOnePossible: 1
+  actionTwoPossible: 1
+  actionThreePossible: 1
