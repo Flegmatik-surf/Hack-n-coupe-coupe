@@ -117,6 +117,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 419170814277921801, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
   m_PrefabInstance: {fileID: 399972861213262630}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &26402095007055009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 419170814295900039, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
+  m_PrefabInstance: {fileID: 399972861213262630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26402095007055008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee3ed7a1adfb634fb7aea8c25e921ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &5646028061417742614 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5464631790429332016, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
+  m_PrefabInstance: {fileID: 399972861213262630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1536548305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +154,9 @@ MonoBehaviour:
   shuriken: {fileID: 2985383602661979423, guid: 77bdc2e0f99466644937877d90bb32e3, type: 3}
   attackPosition: {fileID: 5318643828660922182}
   firingSpeed: 1000
+  samouraiRigidbody: {fileID: 5646028061417742614}
+  dashSpeed: 100
+  moveClickScript: {fileID: 26402095007055009}
 --- !u!114 &1536548306
 MonoBehaviour:
   m_ObjectHideFlags: 0

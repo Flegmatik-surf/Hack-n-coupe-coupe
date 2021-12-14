@@ -8,17 +8,21 @@ public class MoveClick : MonoBehaviour
     [SerializeField] public float speed;
     Rigidbody rb;
     Vector3 Movement = new Vector3(0, 0, 0);
+    public bool is_immobilized;
 
     private void Start()
     {
         rb = gameObject.GetComponentInChildren<Rigidbody>();
+        is_immobilized=false;
     }
 
     void Update()
     {
         LookAt();
-        
-        Move();
+        if(is_immobilized==false)
+        {
+            Move();
+        }
     }
 
     void LookAt()
@@ -41,6 +45,7 @@ public class MoveClick : MonoBehaviour
 
     private void Move()
     {
+        print("IIIIIIIIIIIIII"+is_immobilized);
         if (Input.GetKey("q"))
         {
             rb.velocity = new Vector3(-1 * speed * Time.deltaTime, 0,0);
@@ -55,7 +60,10 @@ public class MoveClick : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 0, -1 * speed * Time.deltaTime);
         }
+    }
 
-
+    public void ChangeState()
+    {
+        is_immobilized=!is_immobilized;
     }
 }
