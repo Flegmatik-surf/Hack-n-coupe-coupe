@@ -22,12 +22,13 @@ public class BasicAttackController : MonoBehaviour
         if(gameObject.tag=="PlayerAttack" && body.gameObject.tag=="Ennemy")
         {
             body.gameObject.GetComponent<Ennemy>().TakeDamage(5);
+            Destroy(gameObject);
         }
         if(gameObject.tag=="EnnemyAttack" && body.gameObject.tag=="Player")
         {
             body.gameObject.GetComponent<LifeManager>().TakeDamage(5);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 
     //The LifeTimer coroutine, destroying the object if it remains too long

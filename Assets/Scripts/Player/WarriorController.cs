@@ -65,7 +65,7 @@ public class WarriorController : PlayerActionsController
     {
         tornadoAttack.SetActive(true);
         gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed*1.5f;
-        StartCoroutine(tornadoAttack.GetComponent<TornadoStrikeController>().LaunchAttack());
+        StartCoroutine(tornadoAttack.GetComponent<TornadoStrikeController>().LaunchAttack(1));
         yield return new WaitForSeconds(3f);
         tornadoAttack.SetActive(false);
         gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed/1.5f;

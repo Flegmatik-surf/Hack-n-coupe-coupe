@@ -17,6 +17,7 @@ public class SamouraiController : PlayerActionsController
     [SerializeField] private Rigidbody samouraiRigidbody;
     [SerializeField] private float dashSpeed;
     [SerializeField] private MoveClick moveClickScript;
+    [SerializeField] private GameObject dashAttack;
 
 // The Action One
 //--------------------------------------------------------------------------------------------
@@ -52,8 +53,10 @@ public class SamouraiController : PlayerActionsController
     private IEnumerator ActionTwoCoroutine(float cooldown)
     {
         moveClickScript.ChangeState();
+        dashAttack.SetActive(true);
         samouraiRigidbody.velocity=transform.forward*dashSpeed;
         yield return new WaitForSeconds(0.3f);
+        dashAttack.SetActive(false);
         moveClickScript.ChangeState();
         yield return new WaitForSeconds(cooldown);
         actionTwoPossible=true;
