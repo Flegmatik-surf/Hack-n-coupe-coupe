@@ -14,6 +14,9 @@ public class SamouraiController : PlayerActionsController
     [SerializeField] private GameObject shuriken;
     public GameObject attackPosition;
     [SerializeField] private float firingSpeed;
+    [SerializeField] private Rigidbody samouraiRigidbody;
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private MoveClick moveClickScript;
 
 // The Action One
 //--------------------------------------------------------------------------------------------
@@ -45,10 +48,14 @@ public class SamouraiController : PlayerActionsController
         StartCoroutine(coroutine);
     }
 
-    //This method is used to instantiate the ....
+    //This method is used to instantiate the Dash
     private IEnumerator ActionTwoCoroutine(float cooldown)
     {
-        yield return null;
+        moveClickScript.ChangeState();
+        samouraiRigidbody.velocity=transform.forward*dashSpeed;
+        yield return new WaitForSeconds(0.3f);
+        moveClickScript.ChangeState();
+        yield return new WaitForSeconds(cooldown);
         actionTwoPossible=true;
     }
 //--------------------------------------------------------------------------------------------
