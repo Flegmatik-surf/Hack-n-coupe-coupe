@@ -1,20 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DieZone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,7 +12,9 @@ public class DieZone : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            print("gros samarsh jaime les tilemap");
+            NavMeshAgent agent = collision.gameObject.GetComponent<NavMeshAgent>();
+            agent.enabled = false;
+            //player die
         }
     }
 }
