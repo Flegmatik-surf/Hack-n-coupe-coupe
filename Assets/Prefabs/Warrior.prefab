@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca37429846533474a9cf4dc1c67f4f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionOnePossible: 0
-  actionTwoPossible: 0
-  actionThreePossible: 0
+  actionOnePossible: 1
+  actionTwoPossible: 1
+  actionThreePossible: 1
   swordStrike: {fileID: 8528466367844170883, guid: 5421f87be39c0404c807d39eef9854ce, type: 3}
   cooldownActionOne: 1
   cooldownActionTwo: 0
@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e055d8df2a72047b2ce51f68b1b92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionOnePossible: 0
-  actionTwoPossible: 0
-  actionThreePossible: 0
+  actionOnePossible: 1
+  actionTwoPossible: 1
+  actionThreePossible: 1
 --- !u!1001 &6178635456976942171
 PrefabInstance:
   m_ObjectHideFlags: 0
