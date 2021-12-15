@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 //This script is used by the Archer class
 //It is inherited from the PlayerActionsController script that controls the player's actions
@@ -71,13 +73,13 @@ public class ArcherController : PlayerActionsController
     private IEnumerator ActionThreeCoroutine(float cooldown)
     {
         //We activate the different boosts :
-        gameObject.GetComponent<DeplacementPlayer>().speed=gameObject.GetComponent<DeplacementPlayer>().speed*2f;
+        gameObject.GetComponent<NavMeshAgent>().speed=gameObject.GetComponent<NavMeshAgent>().speed*2f;
         float cooldownSave=cooldownActionOne;
         cooldownActionOne=0.5f;
         yield return new WaitForSeconds(3f);
         //we deactivate the different boosts :
         cooldownActionOne=cooldownSave;
-        gameObject.GetComponent<DeplacementPlayer>().speed=gameObject.GetComponent<DeplacementPlayer>().speed/2f;
+        gameObject.GetComponent<NavMeshAgent>().speed=gameObject.GetComponent<NavMeshAgent>().speed/2f;
         actionThreePossible=true;
     }
 //--------------------------------------------------------------------------------------------
