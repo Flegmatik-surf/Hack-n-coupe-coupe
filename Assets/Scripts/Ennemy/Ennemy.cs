@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Ennemy : MonoBehaviour
 {
     protected GameObject player;
     protected Transform playerTransform;
     protected LifeManager playerLife;
+    private NavMeshAgent navMeshAgent;
 
     [SerializeField] protected float maxHP;
     [SerializeField] protected float currentHP;
@@ -19,6 +21,8 @@ public class Ennemy : MonoBehaviour
     protected float buffSpeedTimer=0f;
     protected bool canBeBuffSpeed = true;
     protected float baseSpeed;
+
+    
 
 
 
@@ -40,6 +44,8 @@ public class Ennemy : MonoBehaviour
         playerTransform = player.transform;
         playerLife = player.GetComponent<LifeManager>();
         baseSpeed = speed;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        
     }
 
     private void Update()
@@ -53,8 +59,12 @@ public class Ennemy : MonoBehaviour
             speed = baseSpeed;
         }
         
+        
 
     }
+
+    
+
 
     public void GetBuffSpeed(float buffSpeed, float buffSpeedTime)
     {
@@ -73,7 +83,8 @@ public class Ennemy : MonoBehaviour
         if (Inrange())
         {
             transform.LookAt(playerTransform);
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            navMeshAgent.SetDestination(player.transform.position);
         }
     }
 
