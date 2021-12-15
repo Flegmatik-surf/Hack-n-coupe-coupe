@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Ennemy : MonoBehaviour
 {
     protected GameObject player;
     protected Transform playerTransform;
-    protected LifeManager playerLife;
     private NavMeshAgent navMeshAgent;
 
     [SerializeField] protected float maxHP;
@@ -22,6 +22,9 @@ public class Ennemy : MonoBehaviour
     protected bool canBeBuffSpeed = true;
     protected float baseSpeed;
 
+    //variables relatives à la healthbar :
+    [SerializeField] private GameObject healthBarUI;
+    [SerializeField] private Slider slider;
 
     //variable checkant si l'ennemi est immobilisé
     public bool is_immobilized;
@@ -44,10 +47,7 @@ public class Ennemy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
-        playerLife = player.GetComponent<LifeManager>();
         baseSpeed = speed;
-        
-        
     }
 
     private void Update()
@@ -112,9 +112,13 @@ public class Ennemy : MonoBehaviour
         return (Vector3.Distance(transform.position, playerTransform.position) <= sphereAttack);
     }
 
+    //This function deals with the ennemy being damaged
+    //it handles both the calculus and the lifebar itself
     public void TakeDamage(float damage)
     {
+        healthBarUI.SetActive(true);
         currentHP -= damage;
+        slider.value=currentHP/maxHP; //to adjust the lifebar, we just change it's value between 1 (max=current HP) and 0 (ennemy ded)
         if(currentHP<=0)
         {
             Destroy(gameObject);
