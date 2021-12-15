@@ -43,9 +43,6 @@ public class Guru : Ennemy
             {
                 Ennemy ennemy = hitColliders[i].GetComponent<Ennemy>();
                 ennemy.GetBuffSpeed(buffSpeed, buffSpeedTime);
-                
-                
-
             }
             
             i++;
