@@ -22,8 +22,10 @@ public class Ennemy : MonoBehaviour
     protected bool canBeBuffSpeed = true;
     protected float baseSpeed;
 
+
     //variable checkant si l'ennemi est immobilisé
     public bool is_immobilized;
+
 
     protected float timeStamp = 0f;
 
