@@ -14,6 +14,7 @@ public class ArcherController : PlayerActionsController
     public GameObject attackPosition;
     [SerializeField] GameObject arrow;
     [SerializeField] private float firingSpeed;
+    [SerializeField] private GameObject trap;
 
 // The Action One
 //--------------------------------------------------------------------------------------------
@@ -50,7 +51,9 @@ public class ArcherController : PlayerActionsController
     //This method is used to instantiate the trap
     private IEnumerator ActionTwoCoroutine(float cooldown)
     {
-        yield return null;
+        GameObject new_attack=Instantiate(trap);
+        new_attack.transform.position=transform.position;
+        yield return new WaitForSeconds(cooldown);
         actionTwoPossible=true;
     }
 //--------------------------------------------------------------------------------------------
@@ -67,7 +70,6 @@ public class ArcherController : PlayerActionsController
     //This method is used to instantiate the boost
     private IEnumerator ActionThreeCoroutine(float cooldown)
     {
-        print("BOOST");
         //We activate the different boosts :
         gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed*2f;
         float cooldownSave=cooldownActionOne;

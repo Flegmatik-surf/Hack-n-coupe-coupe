@@ -22,10 +22,15 @@ public class Ennemy : MonoBehaviour
     protected bool canBeBuffSpeed = true;
     protected float baseSpeed;
 
+<<<<<<< HEAD
     
 
 
 
+=======
+    //variable checkant si l'ennemi est immobilisé
+    public bool is_immobilized;
+>>>>>>> 8fb70b4a23548340b698f1afcab8c3fa7e7e75c7
 
     protected float timeStamp = 0f;
 
@@ -40,6 +45,7 @@ public class Ennemy : MonoBehaviour
 
     private void Start()
     {
+        is_immobilized=false;
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         playerLife = player.GetComponent<LifeManager>();
@@ -80,7 +86,7 @@ public class Ennemy : MonoBehaviour
 
     protected void Chase()
     {
-        if (Inrange())
+        if (Inrange() && is_immobilized==false)
         {
             transform.LookAt(playerTransform);
             //transform.Translate(Vector3.forward * speed * Time.deltaTime);
