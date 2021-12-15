@@ -49,6 +49,7 @@ public class Ennemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         baseSpeed = speed;
+        playerLife=player.GetComponent<LifeManager>();
     }
 
     private void Update()
