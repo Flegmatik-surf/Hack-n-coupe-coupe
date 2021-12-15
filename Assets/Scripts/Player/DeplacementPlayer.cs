@@ -46,6 +46,7 @@ public class DeplacementPlayer : MonoBehaviour
         
     }
 
+    /*
     private void Move2()
     {
         
@@ -64,6 +65,7 @@ public class DeplacementPlayer : MonoBehaviour
             rb.velocity = new Vector3(0, 0, -1 * speed * Time.deltaTime);
         }
     }
+    */
 
     private void Move()
     {
