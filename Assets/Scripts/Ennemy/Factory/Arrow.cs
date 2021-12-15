@@ -26,6 +26,7 @@ public class Arrow : MonoBehaviour
         transform.localEulerAngles = new Vector3(0,0, 0);
         transform.Translate(speed * target.normalized);
     }
+    
     private void OnCollisionEnter(Collision collision)
     {
         

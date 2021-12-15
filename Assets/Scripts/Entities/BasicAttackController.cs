@@ -5,7 +5,7 @@ using UnityEngine;
 //This script is used by the Basic Sword Strike attack of the warrior and the shuriken attack of the samourai
 public class BasicAttackController : MonoBehaviour
 {
-    [SerializeField] private float cooldown;
+    [SerializeField] private float cooldown; //the cooldown is basically the attack's life
     private IEnumerator coroutine;
     public float damage=5;
 
