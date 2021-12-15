@@ -46,7 +46,6 @@ public class DeplacementPlayer : MonoBehaviour
         
     }
 
-    /*
     private void Move2()
     {
         
@@ -65,32 +64,12 @@ public class DeplacementPlayer : MonoBehaviour
             rb.velocity = new Vector3(0, 0, -1 * speed * Time.deltaTime);
         }
     }
-    */
 
     private void Move()
     {
-        float horInput = 0;
-        float verInput = 0;
-        if (Input.GetKey("q"))
-        {
-            horInput = -1;
-        }
-        if (Input.GetKey("d"))
-        {
-            horInput = 1;
-        }
-        if (Input.GetKey("z"))
-        {
-            verInput = 1;
-        }
-        if (Input.GetKey("s"))
-        {
-            verInput = -1;
-        }
-
-            Vector3 movement = new Vector3(horInput, 0f, verInput);
-            Vector3 moveDestination = transform.position + movement;
-            agent.destination = moveDestination;
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
+        Vector3 moveDestination = transform.position + movement;
+        agent.destination = moveDestination;
      }
     
 

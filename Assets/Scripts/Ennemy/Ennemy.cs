@@ -8,7 +8,8 @@ public class Ennemy : MonoBehaviour
 {
     protected GameObject player;
     protected Transform playerTransform;
-    private NavMeshAgent navMeshAgent;
+    protected LifeManager playerLife;
+    protected NavMeshAgent navMeshAgent;
 
     [SerializeField] protected float maxHP;
     [SerializeField] protected float currentHP;

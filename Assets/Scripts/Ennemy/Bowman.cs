@@ -19,7 +19,7 @@ public class Bowman : Ennemy
         if (Insphere())
         {
             //animation d'attaque
-
+            navMeshAgent.enabled = false;
             if (Time.time > timeStamp + cooldown)
             {
                 var inst = factory.GetNewInstance();
@@ -28,6 +28,7 @@ public class Bowman : Ennemy
                 //inst.transform.localEulerAngles = 90 * vector;
                 timeStamp = Time.time;
             }
+            navMeshAgent.enabled = true;
 
         }
 
