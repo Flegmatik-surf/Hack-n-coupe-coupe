@@ -67,28 +67,26 @@ public class DeplacementPlayer : MonoBehaviour
 
     private void Move()
     {
-        float horInput = 0;
-        float verInput = 0;
+        Vector3 movement = new Vector3(0f,0f,0f);
         if (Input.GetKey("q"))
         {
-            horInput = -1;
+            movement.x = -1;
         }
         if (Input.GetKey("d"))
         {
-            horInput = 1;
-        }
-        if (Input.GetKey("z"))
-        {
-            verInput = 1;
+            movement.x = 1;
         }
         if (Input.GetKey("s"))
         {
-            verInput = -1;
+            movement.z = -1;
+        }
+        if (Input.GetKey("z"))
+        {
+            movement.z = 1;
         }
 
-            Vector3 movement = new Vector3(horInput, 0f, verInput);
-            Vector3 moveDestination = transform.position + movement;
-            agent.destination = moveDestination;
+        Vector3 moveDestination = transform.position + movement;
+        agent.destination = moveDestination;
      }
     
 
