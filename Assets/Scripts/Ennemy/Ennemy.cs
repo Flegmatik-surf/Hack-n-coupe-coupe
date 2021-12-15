@@ -82,7 +82,7 @@ public class Ennemy : MonoBehaviour
 
     protected void Chase()
     {
-        if (Inrange() /*&& is_immobilized==false*/)
+        if (Inrange() && is_immobilized==false)
         {
             transform.LookAt(playerTransform);
             //transform.Translate(Vector3.forward * speed * Time.deltaTime);

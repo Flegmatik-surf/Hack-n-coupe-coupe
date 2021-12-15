@@ -40,7 +40,7 @@ public class DeplacementPlayer : MonoBehaviour
 
         }
 
-        Quaternion Rotation = Quaternion.LookRotation(position - transform.position);
+        Quaternion Rotation = Quaternion.LookRotation(new Vector3(position.x, transform.position.y, position.z) - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 0.3f);
         
         
@@ -87,7 +87,6 @@ public class DeplacementPlayer : MonoBehaviour
         }
 
             Vector3 movement = new Vector3(horInput, 0f, verInput);
-            print(movement);
             Vector3 moveDestination = transform.position + movement;
             agent.destination = moveDestination;
      }
