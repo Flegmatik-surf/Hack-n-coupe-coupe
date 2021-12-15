@@ -71,13 +71,13 @@ public class ArcherController : PlayerActionsController
     private IEnumerator ActionThreeCoroutine(float cooldown)
     {
         //We activate the different boosts :
-        gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed*2f;
+        gameObject.GetComponent<DeplacementPlayer>().speed=gameObject.GetComponent<DeplacementPlayer>().speed*2f;
         float cooldownSave=cooldownActionOne;
         cooldownActionOne=0.5f;
         yield return new WaitForSeconds(3f);
         //we deactivate the different boosts :
         cooldownActionOne=cooldownSave;
-        gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed/2f;
+        gameObject.GetComponent<DeplacementPlayer>().speed=gameObject.GetComponent<DeplacementPlayer>().speed/2f;
         actionThreePossible=true;
     }
 //--------------------------------------------------------------------------------------------

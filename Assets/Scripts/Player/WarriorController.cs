@@ -64,11 +64,11 @@ public class WarriorController : PlayerActionsController
     private IEnumerator ActionThreeCoroutine(float cooldown)
     {
         tornadoAttack.SetActive(true);
-        gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed*1.5f;
+        gameObject.GetComponent<DeplacementPlayer>().speed=gameObject.GetComponent<DeplacementPlayer>().speed*1.5f;
         StartCoroutine(tornadoAttack.GetComponent<TornadoStrikeController>().LaunchAttack(1));
         yield return new WaitForSeconds(3f);
         tornadoAttack.SetActive(false);
-        gameObject.GetComponent<MoveClick>().speed=gameObject.GetComponent<MoveClick>().speed/1.5f;
+        gameObject.GetComponent<DeplacementPlayer>().speed=gameObject.GetComponent<DeplacementPlayer>().speed/1.5f;
         yield return new WaitForSeconds(cooldown);
         actionThreePossible=true;
     }

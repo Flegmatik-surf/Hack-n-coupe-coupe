@@ -16,7 +16,7 @@ public class SamouraiController : SamouraiActionsController
     [SerializeField] private float firingSpeed;
     [SerializeField] private Rigidbody samouraiRigidbody;
     [SerializeField] private float dashSpeed;
-    [SerializeField] private MoveClick moveClickScript;
+    [SerializeField] private DeplacementPlayer moveClickScript;
     [SerializeField] private GameObject dashAttack;
     [SerializeField] private GameObject chargedStrike;
     private float damageDealt;

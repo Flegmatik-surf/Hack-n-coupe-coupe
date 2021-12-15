@@ -41,11 +41,12 @@ public class Ennemy : MonoBehaviour
     private void Start()
     {
         is_immobilized=false;
+        navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         playerLife = player.GetComponent<LifeManager>();
         baseSpeed = speed;
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        
         
     }
 
@@ -81,11 +82,11 @@ public class Ennemy : MonoBehaviour
 
     protected void Chase()
     {
-        if (Inrange() && is_immobilized==false)
+        if (Inrange() /*&& is_immobilized==false*/)
         {
             transform.LookAt(playerTransform);
             //transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            navMeshAgent.SetDestination(player.transform.position);
+            navMeshAgent.SetDestination(playerTransform.position);
         }
     }
 

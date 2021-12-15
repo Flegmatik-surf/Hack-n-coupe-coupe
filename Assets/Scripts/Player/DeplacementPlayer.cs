@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class MoveClick : MonoBehaviour
+public class DeplacementPlayer : MonoBehaviour
 {
     private Vector3 position;
     [SerializeField] public float speed;
     Rigidbody rb;
     Vector3 Movement = new Vector3(0, 0, 0);
     public bool is_immobilized;
+    NavMeshAgent agent;
 
     private void Start()
     {
         rb = gameObject.GetComponentInChildren<Rigidbody>();
         is_immobilized=false;
+        agent = GetComponent<NavMeshAgent>();
+        agent.enabled = true;
     }
 
     void Update()
@@ -42,7 +46,7 @@ public class MoveClick : MonoBehaviour
         
     }
 
-    private void Move()
+    private void Move2()
     {
         
         if (Input.GetKey("q"))
@@ -60,6 +64,34 @@ public class MoveClick : MonoBehaviour
             rb.velocity = new Vector3(0, 0, -1 * speed * Time.deltaTime);
         }
     }
+
+    private void Move()
+    {
+        float horInput = 0;
+        float verInput = 0;
+        if (Input.GetKey("q"))
+        {
+            horInput = -1;
+        }
+        if (Input.GetKey("d"))
+        {
+            horInput = 1;
+        }
+        if (Input.GetKey("z"))
+        {
+            verInput = 1;
+        }
+        if (Input.GetKey("s"))
+        {
+            verInput = -1;
+        }
+
+            Vector3 movement = new Vector3(horInput, 0f, verInput);
+            print(movement);
+            Vector3 moveDestination = transform.position + movement;
+            agent.destination = moveDestination;
+     }
+    
 
     public void ChangeState()
     {
