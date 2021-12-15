@@ -153,3 +153,4 @@ MonoBehaviour:
   attackPosition: {fileID: 7123311233809990155}
   arrow: {fileID: 4029632823462489803, guid: 902c91e69e86000408915880af537f1a, type: 3}
   firingSpeed: 2000
+  trap: {fileID: 1986100714150415114, guid: e26b2fe04c56b0845b076f2362b37a01, type: 3}
