@@ -10,7 +10,7 @@ public class LifeManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        spawn = GameObject.FindGameObjectWithTag("Spawn");
+        spawn = GameObject.FindGameObjectWithTag("Respawn");
     }
 
     // Update is called once per frame
