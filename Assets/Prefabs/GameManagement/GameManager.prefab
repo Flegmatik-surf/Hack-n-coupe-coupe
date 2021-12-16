@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3372445037729300862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3372445037729300856}
+  - component: {fileID: 3372445037729300863}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3372445037729300856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372445037729300862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.503246, y: 2.3159437, z: -7.3052535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3372445037729300863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372445037729300862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02a4d03d7c50034e8c2fa660a76a99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedPlayer: 
+  Warrior: {fileID: 1312811819596381260, guid: ef734228ae857e94da0db96b9ed76c7c, type: 3}
+  Samourai: {fileID: 26402095007055008, guid: cfaa26dd850307e449d7767b33d81851, type: 3}
+  Archer: {fileID: 8894916689934501627, guid: f25eb8dc893e1cc4680339e8e51c67c1, type: 3}
+  Bowman: {fileID: 1330856146117535307, guid: bc88d1a28649d764fa4c3623c2212366, type: 3}
+  Soldier: {fileID: 8473673475128552362, guid: 3444e1cafd3dd204c8229db81b5c25f0, type: 3}
+  Guru: {fileID: 2895027754746221383, guid: 131fc5e1da728554eadad0d16b7694e6, type: 3}
+  waveIndicator: 0
