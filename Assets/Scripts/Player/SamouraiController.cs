@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //This script is used by the Samourai class
 //It is inherited from the PlayerActionsController script that controls the player's actions
 public class SamouraiController : SamouraiActionsController
@@ -39,6 +40,7 @@ public class SamouraiController : SamouraiActionsController
         new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
         yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;
+        actionOneSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 
@@ -62,6 +64,7 @@ public class SamouraiController : SamouraiActionsController
         moveClickScript.ChangeState();
         yield return new WaitForSeconds(cooldown);
         actionTwoPossible=true;
+        actionTwoSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 
@@ -88,6 +91,7 @@ public class SamouraiController : SamouraiActionsController
         new_attack.transform.rotation=transform.rotation;
         yield return new WaitForSeconds(cooldown);
         actionThreePossible=true;
+        actionThreeSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 }

@@ -34,6 +34,7 @@ public class WarriorController : PlayerActionsController
         new_attack.transform.position=attackPosition.transform.position;
         yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;
+        actionOneSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 
@@ -51,6 +52,7 @@ public class WarriorController : PlayerActionsController
     {   
         yield return new WaitForSeconds(cooldown);
         actionTwoPossible=true;
+        actionTwoSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 
@@ -74,6 +76,7 @@ public class WarriorController : PlayerActionsController
         gameObject.GetComponent<NavMeshAgent>().speed=gameObject.GetComponent<NavMeshAgent>().speed/1.5f;
         yield return new WaitForSeconds(cooldown);
         actionThreePossible=true;
+        actionThreeSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 }

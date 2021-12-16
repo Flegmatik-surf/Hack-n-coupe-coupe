@@ -27,7 +27,6 @@ public class LifeManager : MonoBehaviour {
     {
         if (currentHP < 0)
         {
-           
             spawn.GetComponent<Spawn>().RespawnPlayer(spawn.transform.position);
         }
     }
