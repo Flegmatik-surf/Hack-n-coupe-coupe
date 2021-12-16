@@ -7,6 +7,7 @@ TagManager:
   - Ennemy
   - EnnemyAttack
   - PlayerAttack
+  - Collide
   layers:
   - Default
   - TransparentFX

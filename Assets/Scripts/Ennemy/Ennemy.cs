@@ -63,8 +63,6 @@ public class Ennemy : MonoBehaviour
             buffSpeedTimer = 0f;
             canBeBuffSpeed = true;
         }
-        
-        
 
     }
 
@@ -87,12 +85,14 @@ public class Ennemy : MonoBehaviour
     {
         if (Inrange() && is_immobilized==false)
         {
+            Animation();
             transform.LookAt(playerTransform);
             //transform.Translate(Vector3.forward * speed * Time.deltaTime);
             navMeshAgent.SetDestination(playerTransform.position);
         }
     }
 
+    public virtual void Animation(){}
 
     public virtual void Attack(){}
 
