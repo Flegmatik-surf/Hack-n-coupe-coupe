@@ -49,8 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 5
   currentHP: 5
-  speed: 3
-  rangeIn: 10
+  rangeIn: 100
   sphereAttack: 5
   cooldown: 1
   healthBarUI: {fileID: 2900402823827021245}
@@ -80,7 +79,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 15
   m_Acceleration: 60
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -89,7 +88,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &1330856146618814559

@@ -47,10 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cdfadd02def634f928b3d1c6a3bb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
-  currentHP: 0
-  speed: 0
-  rangeIn: 0
+  maxHP: 5
+  currentHP: 5
+  rangeIn: 100
   sphereAttack: 0
   cooldown: 1
   healthBarUI: {fileID: 967950782761813598}

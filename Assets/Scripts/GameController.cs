@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //This script is used to control the waves of a certain game :
 //It works following :
@@ -21,6 +22,10 @@ public class GameController : MonoBehaviour
 
     //this will contain the active player
     private GameObject player;
+
+    //this will contain the player's UI :
+    private GameObject playerUI;
+    private Text waveIndicationUI;
 
     //The three variables containing the three types of player :
     [SerializeField] private GameObject Warrior;
@@ -86,6 +91,8 @@ public class GameController : MonoBehaviour
         U1=1;
         U0=0;
         CalculateWave(U1,U0);
+        playerUI = GameObject.FindGameObjectWithTag("MainCamera");
+        waveIndicationUI=playerUI.transform.Find("PlayerUI").Find("WaveIndicator").GetComponent<Text>();
     }
 
     //The LateUpdate checks periodically if all the enemies have been killed :
@@ -120,6 +127,7 @@ public class GameController : MonoBehaviour
     private IEnumerator CreateWave(int enemyNumber)
     {
         print("Wave :"+waveIndicator);
+        waveIndicationUI.text="Wave :" + waveIndicator;
         for(int i = 0;i<enemyNumber+1;i++)
         {
             int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);
@@ -136,7 +144,7 @@ public class GameController : MonoBehaviour
     {
         player=GameObject.FindGameObjectWithTag("Player");
         player.transform.position=spawn.transform.position;
-        player.gameObject.GetComponent<LifeManager>().currentHP = player.GetComponent<LifeManager>().maxHP; //we heal the player
+        player.gameObject.GetComponent<LifeManager>().Heal(); //we heal the player
     }
 
     //the function called when the game ends :

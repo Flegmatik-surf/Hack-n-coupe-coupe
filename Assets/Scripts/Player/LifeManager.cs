@@ -44,4 +44,12 @@ public class LifeManager : MonoBehaviour {
             TakeDamage(3);
         }
     }
+
+    //this function is called to ensure that the player is healed when reset-ed
+    public void Heal()
+    {
+        currentHP=maxHP;
+        HPslider.value=currentHP/maxHP;
+
+    }
 }
