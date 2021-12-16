@@ -77,7 +77,6 @@ public class Ennemy : MonoBehaviour
         {
             canBeBuffSpeed = false;
             navMeshAgent.speed += buffSpeed;
-            print(navMeshAgent.speed);
             buffSpeedTimer += buffSpeedTime;
         }
         

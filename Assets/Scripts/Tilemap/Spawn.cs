@@ -6,8 +6,6 @@ public class Spawn : MonoBehaviour
 {
 
     [SerializeField] GameObject Player;
-    private GameObject floor;
-    private float yFloor;
     private Fader fader;
     [SerializeField] float time;
 
@@ -15,16 +13,12 @@ public class Spawn : MonoBehaviour
     private void Start()
     {
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
-        //if (!Player) return; 
-        //spawn = transform.position;
 
-        floor = GameObject.FindGameObjectWithTag("Floor");
-        yFloor = floor.transform.position.y;
     }
 
 
 
-    private IEnumerator RespawnPlayer(Vector3 spawn)
+    public IEnumerator RespawnPlayer(Vector3 spawn)
     {
         print("respawwwn");
         print(spawn);

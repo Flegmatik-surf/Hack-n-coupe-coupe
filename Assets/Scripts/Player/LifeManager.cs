@@ -6,11 +6,11 @@ public class LifeManager : MonoBehaviour {
 
     public float maxHP = 50f;
     public float currentHP = 50f;
-
+    GameObject spawn;
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawn = GameObject.FindGameObjectWithTag("Spawn");
     }
 
     // Update is called once per frame
@@ -18,7 +18,8 @@ public class LifeManager : MonoBehaviour {
     {
         if (currentHP < 0)
         {
-           //dosmth
+           
+            spawn.GetComponent<Spawn>().RespawnPlayer(spawn.transform.position);
         }
     }
 
@@ -31,7 +32,7 @@ public class LifeManager : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Ennemy")
         {
-            print("aie");
+            //dosmth
         }
     }
 }
