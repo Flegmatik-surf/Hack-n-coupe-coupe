@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Guru : Ennemy
 {
@@ -44,6 +45,7 @@ public class Guru : Ennemy
                 Ennemy ennemy = hitColliders[i].GetComponent<Ennemy>();
                 ennemy.GetBuffSpeed(buffSpeed, buffSpeedTime);
             }
+            
             
             i++;
         }

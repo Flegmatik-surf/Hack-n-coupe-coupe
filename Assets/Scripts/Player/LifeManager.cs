@@ -18,7 +18,7 @@ public class LifeManager : MonoBehaviour {
     {
         if (currentHP < 0)
         {
-            print("mdr t nul");
+           //dosmth
         }
     }
 

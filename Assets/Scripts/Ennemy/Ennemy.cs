@@ -13,7 +13,6 @@ public class Ennemy : MonoBehaviour
 
     [SerializeField] protected float maxHP;
     [SerializeField] protected float currentHP;
-    [SerializeField] protected float speed;
     [SerializeField] protected float rangeIn; //D'o� il voit le player
     [SerializeField] protected float sphereAttack; //D'o� il peut l'attaquer
     [SerializeField] protected float cooldown = 1f;
@@ -48,7 +47,7 @@ public class Ennemy : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
-        baseSpeed = speed;
+        baseSpeed = navMeshAgent.speed;
         playerLife=player.GetComponent<LifeManager>();
     }
 
@@ -60,7 +59,9 @@ public class Ennemy : MonoBehaviour
         buffSpeedTimer -= Time.deltaTime;
         if (buffSpeedTimer <= 0)
         {
-            speed = baseSpeed;
+            navMeshAgent.speed = baseSpeed;
+            buffSpeedTimer = 0f;
+            canBeBuffSpeed = true;
         }
         
         
@@ -75,7 +76,8 @@ public class Ennemy : MonoBehaviour
         if (canBeBuffSpeed)
         {
             canBeBuffSpeed = false;
-            speed += buffSpeed;
+            navMeshAgent.speed += buffSpeed;
+            print(navMeshAgent.speed);
             buffSpeedTimer += buffSpeedTime;
         }
         
@@ -92,15 +94,6 @@ public class Ennemy : MonoBehaviour
         }
     }
 
-    public void SetSpeedBuff(float newSpeed,float time)
-    {
-        speed += newSpeed;
-    }
-
-    public float GetSpeed()
-    {
-        return speed;
-    }
 
     public virtual void Attack(){}
 
