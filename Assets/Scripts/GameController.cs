@@ -126,8 +126,8 @@ public class GameController : MonoBehaviour
     //the function that will create the wave :
     private IEnumerator CreateWave(int enemyNumber)
     {
-        print("Wave :"+waveIndicator);
-        waveIndicationUI.text="Wave :" + waveIndicator;
+        print("Wave : "+waveIndicator);
+        waveIndicationUI.text="Wave : " + waveIndicator;
         for(int i = 0;i<enemyNumber+1;i++)
         {
             int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);

@@ -35,13 +35,17 @@ public class LifeManager : MonoBehaviour {
     {
         currentHP -= damage;
         HPslider.value=currentHP/maxHP; //to adjust the lifebar, we just change it's value between 1 (max=current HP) and 0 (ennemy ded)
+        if(currentHP<=0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ennemy")
         {
-            TakeDamage(3);
+            TakeDamage(1);
         }
     }
 
