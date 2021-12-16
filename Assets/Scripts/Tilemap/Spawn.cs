@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
 
-    [SerializeField] GameObject Player;
+    private GameObject Player;
     private Fader fader;
     [SerializeField] float time;
 
