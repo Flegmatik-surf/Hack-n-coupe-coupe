@@ -60,12 +60,15 @@ public class GameController : MonoBehaviour
     {
         //we find the spawn :
         spawn=GameObject.FindGameObjectWithTag("Respawn");
+        print("awake du gamecontroller");
         //we initialise the enemy list :
         enemies.Add(Bowman);
         enemies.Add(Soldier);
         enemies.Add(Guru);
         //we initialise the enemy spawner list :
         enemySpawners=GameObject.FindGameObjectsWithTag("EnnemySpawner");
+        selectedPlayer = PlayerPrefs.GetString("selectedPlayer");
+        Debug.Log("Selected Player : " + selectedPlayer);
     }
 
     //Launches the first wave and initialize the player :

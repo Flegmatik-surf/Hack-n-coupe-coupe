@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject titleScreenContainer;
     [SerializeField] private GameObject settingsScreenContainer;
     [SerializeField] private GameObject selectCharacterScreenContainer;
+    [SerializeField] private int startScene;
 
     public void GoToSettingsScreen()
     {
@@ -27,6 +28,12 @@ public class MainMenuManager : MonoBehaviour
         titleScreenContainer.SetActive(false);
         settingsScreenContainer.SetActive(false);
         selectCharacterScreenContainer.SetActive(true);
+    }
+
+    public void PlayWithCharacter(string character)
+    {
+        PlayerPrefs.SetString("selectedPlayer", character);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(startScene);
     }
 
     public void QuitGame()
