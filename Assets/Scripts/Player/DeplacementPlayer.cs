@@ -11,6 +11,7 @@ public class DeplacementPlayer : MonoBehaviour
     Vector3 Movement = new Vector3(0, 0, 0);
     public bool is_immobilized;
     NavMeshAgent agent;
+    Vector3 movement;
 
     private void Start()
     {
@@ -39,9 +40,11 @@ public class DeplacementPlayer : MonoBehaviour
             position = hit.point;
 
         }
-
+        
         Quaternion Rotation = Quaternion.LookRotation(new Vector3(position.x, transform.position.y, position.z) - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 0.3f);
+        
+        
         
         
     }
@@ -67,7 +70,7 @@ public class DeplacementPlayer : MonoBehaviour
 
     private void Move()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
+        movement = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
         Vector3 moveDestination = transform.position + movement;
         agent.destination = moveDestination;
      }

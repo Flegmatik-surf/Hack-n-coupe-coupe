@@ -12,9 +12,10 @@ public class DieZone : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
+           
             NavMeshAgent agent = collision.gameObject.GetComponent<NavMeshAgent>();
             //agent.enabled = false;
-            //player die
+            //agent.GetComponent<LifeManager>().currentHP=0;
         }
     }
 }
