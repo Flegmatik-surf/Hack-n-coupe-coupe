@@ -10,6 +10,7 @@ TagManager:
   - Collide
   - EnnemySpawner
   - GameManager
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 //The script used to guide the samourai's actions
 public class SamouraiActionsController : MonoBehaviour
