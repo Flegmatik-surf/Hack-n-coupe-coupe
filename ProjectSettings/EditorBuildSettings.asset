@@ -5,15 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Prom/Prom.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 403f9e25e5dda4006916608d4964ccae
   - enabled: 1
-    path: Assets/Scenes/HenriScene/HenriSceneNav.unity
-    guid: b3f29ee59dc557a46b3742d7b59f2f31
+    path: Assets/Scenes/Arene1/Arene1.unity
+    guid: 151de4840a9fdef49bd73e4d4b5887a1
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity
     guid: a3423d834af819c47b73dc6230b1cbf9

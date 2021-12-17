@@ -9,9 +9,9 @@ using UnityEngine.UI;
 appliqué dans la scène de jeu (puisque celle-ci ne change pas, cf game design doc)
 en variable d'entrée, le nom du joueur sélectionné envoyé par le choix des personnages
 
-Start() : lance la première vague et pose le joueur au centre
+Start() : instantie le joueur, met les valeurs U0 et U1 aux bons initialisations et lance CalculateWave()
 LateUpdate() : va check si tous les ennemis sont morts périodiquement, appelle CalculateWave() et ResetPlayer() si c'est le cas 
-CalculateWave(int Un1, int Un2) -> return enemyNumber : calcule le nbre d'ennemis de la vague prochaine
+CalculateWave(int Un1, int Un2) : calcule le nbre d'ennemis de la vague prochaine et lance CreateWave()
 CreateWave(int enemyNumber) : lance la vague en plaçant les ennemis au pif sur leurs points de spawns
 
 */
@@ -60,14 +60,13 @@ public class GameController : MonoBehaviour
     {
         //we find the spawn :
         spawn=GameObject.FindGameObjectWithTag("Respawn");
-        print("awake du gamecontroller");
         //we initialise the enemy list :
         enemies.Add(Bowman);
         enemies.Add(Soldier);
         enemies.Add(Guru);
         //we initialise the enemy spawner list :
         enemySpawners=GameObject.FindGameObjectsWithTag("EnnemySpawner");
-        selectedPlayer = PlayerPrefs.GetString("selectedPlayer");
+        selectedPlayer = PlayerPrefs.GetString("selectedPlayer"); //we take the player from the preferences
         Debug.Log("Selected Player : " + selectedPlayer);
     }
 
@@ -90,6 +89,7 @@ public class GameController : MonoBehaviour
         player.transform.position=spawn.transform.position;
         
         //we start the first wave :
+        enemyNumber=0;
         waveIndicator=1;
         U1=1;
         U0=0;
@@ -129,8 +129,9 @@ public class GameController : MonoBehaviour
     //the function that will create the wave :
     private IEnumerator CreateWave(int enemyNumber)
     {
-        print("Wave : "+waveIndicator);
+        print("Wave : " + waveIndicator);
         waveIndicationUI.text="Wave : " + waveIndicator;
+        waveIndicator+=1;
         for(int i = 0;i<enemyNumber+1;i++)
         {
             int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);
@@ -139,7 +140,7 @@ public class GameController : MonoBehaviour
             new_ennemy.transform.position=enemySpawners[randomSpawnerIndicator].gameObject.transform.position;
             yield return new WaitForSeconds(1f);
         }
-        waveIndicator+=1;
+        yield return new WaitForSeconds(1f);
     }
 
     //Finally the function that puts the player back to its spawn :
