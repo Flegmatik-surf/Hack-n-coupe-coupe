@@ -30,6 +30,10 @@ public class BasicAttackController : MonoBehaviour
             body.gameObject.GetComponent<LifeManager>().TakeDamage(damage);
             Destroy(gameObject);
         }
+        if(body.gameObject.tag=="Wall")
+        {
+            Destroy(gameObject);
+        }
     }
 
     //The LifeTimer coroutine, destroying the object if it remains too long
