@@ -227,3 +227,22 @@ MonoBehaviour:
   arrow: {fileID: 4029632823462489803, guid: 902c91e69e86000408915880af537f1a, type: 3}
   firingSpeed: 2000
   trap: {fileID: 1986100714150415114, guid: e26b2fe04c56b0845b076f2362b37a01, type: 3}
+--- !u!95 &1394708111225095075
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894916689934501627}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8745dcecb0eafec409964dd1f0b7bb67, type: 3}
+  m_Controller: {fileID: 9100000, guid: c1bc96af916b10f45bbef7be704ba236, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

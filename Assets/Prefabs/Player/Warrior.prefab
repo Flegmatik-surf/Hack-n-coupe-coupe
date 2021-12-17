@@ -153,6 +153,25 @@ MonoBehaviour:
   actionOnePossible: 1
   actionTwoPossible: 1
   actionThreePossible: 1
+--- !u!95 &8295225840783691893
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312811819596381260}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c04a63d584e38cb49a59057edbeb4e2c, type: 3}
+  m_Controller: {fileID: 9100000, guid: aa3f25d1a3b5f524f8bbea2cfef24abe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6178635456976942171
 PrefabInstance:
   m_ObjectHideFlags: 0
