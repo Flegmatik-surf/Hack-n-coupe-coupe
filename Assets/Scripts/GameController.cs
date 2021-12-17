@@ -96,6 +96,7 @@ public class GameController : MonoBehaviour
         CalculateWave(U1,U0);
         playerUI = GameObject.FindGameObjectWithTag("MainCamera");
         waveIndicationUI=playerUI.transform.Find("PlayerUI").Find("WaveIndicator").GetComponent<Text>();
+        print("enemies"+enemies.Count);
     }
 
     //The LateUpdate checks periodically if all the enemies have been killed :
@@ -140,7 +141,6 @@ public class GameController : MonoBehaviour
             new_ennemy.transform.position=enemySpawners[randomSpawnerIndicator].gameObject.transform.position;
             yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(1f);
     }
 
     //Finally the function that puts the player back to its spawn :
@@ -155,7 +155,8 @@ public class GameController : MonoBehaviour
     private void EndGame()
     {
         print("Game over !");
-        Application.Quit(); //for now, we quit the game
+        //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+        Application.Quit();
     }
 
 }
