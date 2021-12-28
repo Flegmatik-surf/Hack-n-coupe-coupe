@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 7772593557619906503}
   - component: {fileID: 7554128971546703116}
   - component: {fileID: 9087372241546064632}
+  - component: {fileID: 6017235993042853599}
   m_Layer: 0
   m_Name: Lava_Poison_4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4821502797538941658
 Transform:
@@ -93,5 +94,17 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000017, y: 0.800001, z: 1.000001}
-  m_Center: {x: 0.0000002682209, y: -0.39999884, z: -0.0000009834766}
+  m_Size: {x: 1.0000017, y: 2.7064226, z: 1.000001}
+  m_Center: {x: 0.00000023841858, y: 0.55321217, z: -0.0000009536743}
+--- !u!114 &6017235993042853599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3017150035148453353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9035bfc8bbe082f4b8897fc2af5e0b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

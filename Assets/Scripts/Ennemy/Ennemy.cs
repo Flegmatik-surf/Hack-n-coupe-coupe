@@ -86,7 +86,11 @@ public class Ennemy : MonoBehaviour
         if (Inrange() && is_immobilized==false)
         {
             Animation();
-            transform.LookAt(playerTransform);
+            Vector3 targetPosition = new Vector3(playerTransform.position.x,
+                                        this.transform.position.y,
+                                        playerTransform.position.z);
+            transform.LookAt(targetPosition);
+
             //transform.Translate(Vector3.forward * speed * Time.deltaTime);
             navMeshAgent.SetDestination(playerTransform.position);
         }
