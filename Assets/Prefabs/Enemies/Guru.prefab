@@ -53,6 +53,7 @@ MonoBehaviour:
   rangeIn: 100
   sphereAttack: 100
   cooldown: 1
+  tombstone: {fileID: 4119445960899744468, guid: ab83d3d6cc389a548bc296561f0a96fd, type: 3}
   healthBarUI: {fileID: 967950782761813598}
   slider: {fileID: 6422816015327989623}
   is_immobilized: 0

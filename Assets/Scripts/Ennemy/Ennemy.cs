@@ -17,6 +17,9 @@ public class Ennemy : MonoBehaviour
     [SerializeField] protected float sphereAttack; //D'o� il peut l'attaquer
     [SerializeField] protected float cooldown = 1f;
 
+    //the tombstone used for revive :
+    [SerializeField] protected GameObject tombstone;
+
     //buff
     protected float buffSpeedTimer=0f;
     protected bool canBeBuffSpeed = true;
@@ -110,6 +113,8 @@ public class Ennemy : MonoBehaviour
         return (Vector3.Distance(transform.position, playerTransform.position) <= sphereAttack);
     }
 
+    public virtual void BossTestHealth(){} //a special function used EXCLUSIVELY by the boss
+
     //This function deals with the ennemy being damaged
     //it handles both the calculus and the lifebar itself
     public void TakeDamage(float damage)
@@ -117,8 +122,11 @@ public class Ennemy : MonoBehaviour
         healthBarUI.SetActive(true);
         currentHP -= damage;
         slider.value=currentHP/maxHP; //to adjust the lifebar, we just change it's value between 1 (max=current HP) and 0 (ennemy ded)
-        if(currentHP<=0)
+        BossTestHealth(); //a special function used EXCLUSIVELY by the boss
+        if(currentHP<=0) //when the enemy dies
         {
+            GameObject new_tombstone = Instantiate(tombstone);
+            new_tombstone.transform.position=transform.position;
             Destroy(gameObject);
         }
     }

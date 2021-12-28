@@ -50,4 +50,5 @@ MonoBehaviour:
   Bowman: {fileID: 1330856146117535307, guid: bc88d1a28649d764fa4c3623c2212366, type: 3}
   Soldier: {fileID: 8473673475128552362, guid: 3444e1cafd3dd204c8229db81b5c25f0, type: 3}
   Guru: {fileID: 2895027754746221383, guid: 131fc5e1da728554eadad0d16b7694e6, type: 3}
+  Boss: {fileID: 8760338952334426739, guid: 681270c403bce2943a98bda3fcf999f2, type: 3}
   waveIndicator: 0

@@ -11,6 +11,7 @@ TagManager:
   - EnnemySpawner
   - GameManager
   - Wall
+  - Tombstone
   layers:
   - Default
   - TransparentFX
