@@ -89,6 +89,13 @@ public class BossController : Ennemy
     //It is called either by the shadow spikes or by actions within BossController
     public void Heal(int HealthNumber)
     {
-
+        if(currentHP+HealthNumber>maxHP)
+        {
+            currentHP=maxHP;
+        }
+        else
+        {
+            currentHP=currentHP+HealthNumber;
+        }
     }
 }
