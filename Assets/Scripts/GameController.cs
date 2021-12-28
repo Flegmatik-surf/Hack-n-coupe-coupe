@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject Bowman;
     [SerializeField] private GameObject Soldier;
     [SerializeField] private GameObject Guru;
+    [SerializeField] private GameObject Boss;
     private List<GameObject> enemies = new List<GameObject>();
     private GameObject[] aliveEnemies;
     
@@ -44,6 +45,9 @@ public class GameController : MonoBehaviour
 
     //the variable that will contains all the enemy spawners :
     private GameObject[] enemySpawners;
+
+    //the variable that will contain at a given time all the tombstones dropped by the enemies :
+    private GameObject[] tombstones;
 
     //the variable containing the wave number :
     public int waveIndicator;
@@ -132,7 +136,13 @@ public class GameController : MonoBehaviour
     {
         print("Wave : " + waveIndicator);
         waveIndicationUI.text="Wave : " + waveIndicator;
-        waveIndicator+=1;
+        if(waveIndicator==10) //if it's the boss' wave :
+        {
+            int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);
+            GameObject new_ennemy = Instantiate(Boss);
+            new_ennemy.transform.position=enemySpawners[randomSpawnerIndicator].gameObject.transform.position;
+        }
+        //regardless of the boss or not, we still spawn ennemies :
         for(int i = 0;i<enemyNumber+1;i++)
         {
             int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);
@@ -141,11 +151,17 @@ public class GameController : MonoBehaviour
             new_ennemy.transform.position=enemySpawners[randomSpawnerIndicator].gameObject.transform.position;
             yield return new WaitForSeconds(1f);
         }
+        waveIndicator+=1;
     }
 
     //Finally the function that puts the player back to its spawn :
     private void ResetPlayer()
     {
+        tombstones=GameObject.FindGameObjectsWithTag("Tombstone");
+        for(int i=0;i<tombstones.Length;i++)
+        {
+            Destroy(tombstones[i]);
+        }
         player=GameObject.FindGameObjectWithTag("Player");
         player.transform.position=spawn.transform.position;
         player.gameObject.GetComponent<LifeManager>().Heal(); //we heal the player
