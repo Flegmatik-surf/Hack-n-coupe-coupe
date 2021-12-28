@@ -8,9 +8,19 @@ public class Guru : Ennemy
     private float rangeBuff;
     bool m_Started;
     public LayerMask m_LayerMask;
+
     //buffSpeed
-    private float buffSpeed = 1.5f; 
-    private float buffSpeedTime = 5f;
+    //MeshFilter spellCircle;
+    MeshRenderer spellCircle;
+    private float buffSpeed = 3f; //de combiens augmente la vitesse
+    private float buffSpeedTime = 5f; //combiens de temps dure le buff
+    private float SpeedSpellTimer = 10f; //combiens de temps le spell est actif
+    private float SpeedSpellPause = 5f; // combiens de temps entre chaque spell
+    private float timer = 0f;
+    [SerializeField] private bool SpeedSpell = false;
+
+
+
    
 
 
@@ -19,23 +29,50 @@ public class Guru : Ennemy
 
     }
 
-    
 
     void Awake()
     {
-        
+
         m_Started = true;
+        timer = 0f; 
+        //spellCircle = GetComponent(typeof(MeshFilter)) as MeshFilter;
+        spellCircle = GameObject.Find("Plane").GetComponentInChildren<MeshRenderer>();
+        spellCircle.enabled = false;
     }
+
 
     void FixedUpdate()
     {
-        MyCollisions();
+        print(SpeedSpell);
+        spellCircle.enabled = SpeedSpell;
+        timer += Time.deltaTime;
+        if (SpeedSpell)
+        {
+            if (timer >= SpeedSpellTimer)
+            {
+                SpeedSpell = false;
+                timer = 0f;
+            }
+            else
+            {
+                MyCollisions();
+            }
+        }
 
+        else
+        {
+            if (timer >= SpeedSpellPause)
+            {
+                SpeedSpell = true;
+                timer = 0f;
+            }
+        }
     }
 
     void MyCollisions()
     {
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale *10, Quaternion.identity, m_LayerMask);
+        
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, 10f);
         int i = 0;
         while (i < hitColliders.Length)
         {
@@ -49,17 +86,28 @@ public class Guru : Ennemy
             
             i++;
         }
-        
-    }
 
+
+    }
+    /*
+   IEnumerator SpeedTimer(int time, bool boolean)
+    {
+        int counter = time;
+        while (counter > 0)
+        {
+            print(counter);
+            yield return new WaitForSeconds(1);
+            counter--;
+        }
+        SpeedSpell = boolean;
+        print(SpeedSpell);
+    }
     
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        
-        if (m_Started)
-            
-            Gizmos.DrawWireCube(gameObject.transform.position, transform.localScale * 10);
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(gameObject.transform.position, 5);
     }
-
+    */
 }

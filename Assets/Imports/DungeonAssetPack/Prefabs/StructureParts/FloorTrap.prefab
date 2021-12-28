@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 8900067095901043433}
   - component: {fileID: 1204918076694059210}
   - component: {fileID: 8808153096214807474}
+  - component: {fileID: 3924642812390099079}
   m_Layer: 0
   m_Name: FloorTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5623099617335010138
 Transform:
@@ -96,3 +97,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8954262695569369555, guid: 761f086b8ea3d3b498c848051eb930a8, type: 3}
+--- !u!114 &3924642812390099079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7228492456125343871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9035bfc8bbe082f4b8897fc2af5e0b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
