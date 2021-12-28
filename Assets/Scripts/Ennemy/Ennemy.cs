@@ -69,9 +69,6 @@ public class Ennemy : MonoBehaviour
 
     }
 
-    
-
-
     public void GetBuffSpeed(float buffSpeed, float buffSpeedTime)
     {
         if (canBeBuffSpeed)

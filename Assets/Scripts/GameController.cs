@@ -122,7 +122,7 @@ public class GameController : MonoBehaviour
 
     //the function that will calculate the wave according to the Fibonacci sequence :
     // Un+2 = Un+1 + Un
-    //where Un+2 : U2, Un+1 : U1, Un : U0
+    // where Un+2 : U2, Un+1 : U1, Un : U0
     private void CalculateWave(int localU1, int localU0)
     {
         enemyNumber = localU1 + localU0; //we calculate the number of ennemies
