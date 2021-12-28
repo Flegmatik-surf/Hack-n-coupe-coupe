@@ -19,20 +19,31 @@ public class Guru : Ennemy
     private float timer = 0f;
     [SerializeField] private bool SpeedSpell = false;
 
+    //magicspell ball
+    [SerializeField] GameObject magicSpell;
+    private MagicSpellFactory factory;
 
-
-   
 
 
     public override void Attack()
     {
-
+        print("attack");
+        //animation d'attaque
+        if (Time.time > timeStamp + cooldown)
+        {
+            var inst = factory.GetNewInstance();
+            inst.transform.position = transform.forward + transform.position;
+            //Vector3 vector = new Vector3(transform.forward.z, 0, transform.forward.x).normalized;
+            //inst.transform.localEulerAngles = 90 * vector;
+            timeStamp = Time.time;
+        }
+        
     }
 
 
     void Awake()
     {
-
+        factory = magicSpell.GetComponent<MagicSpellFactory>();
         m_Started = true;
         timer = 0f; 
         //spellCircle = GetComponent(typeof(MeshFilter)) as MeshFilter;
@@ -43,7 +54,6 @@ public class Guru : Ennemy
 
     void FixedUpdate()
     {
-        print(SpeedSpell);
         spellCircle.enabled = SpeedSpell;
         timer += Time.deltaTime;
         if (SpeedSpell)
