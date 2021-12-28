@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MagicSpell : MonoBehaviour
+{
+    private GameObject player;
+    private LifeManager playerLife;
+    Vector3 target;
+
+    private float speed = 0.05f;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerLife = player.GetComponent<LifeManager>();
+
+        //transform.forward = player.transform.position-transform.position;
+        //rbArrow.velocity = speed * (player.transform.position - transform.position).normalized;
+        target = player.transform.position - transform.position;
+
+    }
+
+    private void LateUpdate()
+    {
+        transform.localEulerAngles = new Vector3(0, 0, 0);
+        transform.Translate(speed * transform.forward);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+
+        if (collision.gameObject.tag == "Player")
+        {
+            playerLife.TakeDamage(10);
+        }
+        Destroy(this.gameObject);
+    }
+
+
+}

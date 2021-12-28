@@ -51,7 +51,7 @@ MonoBehaviour:
   maxHP: 5
   currentHP: 5
   rangeIn: 100
-  sphereAttack: 0
+  sphereAttack: 100
   cooldown: 1
   healthBarUI: {fileID: 967950782761813598}
   slider: {fileID: 6422816015327989623}
@@ -60,6 +60,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   SpeedSpell: 0
+  magicSpell: {fileID: 1470995669892819128, guid: 6a46b21756ada5544ab4a5a71fcaab1b, type: 3}
 --- !u!65 &6251483687328788045
 BoxCollider:
   m_ObjectHideFlags: 0
