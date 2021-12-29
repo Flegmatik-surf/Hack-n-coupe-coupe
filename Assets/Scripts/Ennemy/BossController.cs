@@ -14,7 +14,7 @@ Fonctions :
 - BossTestHealth() :    appelée à chaque fois que le boss prend des dégâts, teste dans quelle action le boss est, met à jour phaseIndicator
 - Attack() :    appelée par Ennemy.cs, lance les actions 1 et 2 du comportement selon phaseIndicator
 - FindTombstones() :     finds the number of active tombstones on the map
-- CooldownTimer(float cooldown)   : (coroutine) used to calculate adequate timers of cooldowns
+- CooldownTimer(float cooldown, int action)   : (coroutine) used to calculate adequate timers of cooldowns
 - SpawnMobs(int mobsNumber) :    spawn MobNumber de squelettes autour de lui
 - ReanimateMobs(int mobsNumber) :    réanime MobNumber de monstres de la map
 - ReanimateAll() :      appelle ReanimateMobs avec en paramètre d'entrée le nombre de Tombstone présentes dans la map (check via FindGameObjectsWithTag("Tombstone"))
@@ -24,6 +24,9 @@ Fonctions :
 */
 public class BossController : Ennemy
 {
+    //-----------------------------------------------------------------------------------------
+    //The various variables :
+
     //the variable indicating the phase
     public int phaseIndicator=1; 
 
@@ -48,6 +51,10 @@ public class BossController : Ennemy
 
     //a list that will contain, at a given time, the number of active Tombstones :
     private GameObject[] activeTombstones;
+
+    //----------------------------------------------------------------------------------------
+    //The various functions :
+
 
     private void Awake() 
     {
@@ -77,7 +84,6 @@ public class BossController : Ennemy
     //Called by Ennemy.cs script every update :
     public override void Attack()
     {
-        print("Boss : attacking // timerOne =" + actionOnePossible + " // timerTwo ="+actionTwoPossible);
         //The first phase of the boss 
         if(phaseIndicator==1)
         { 
@@ -110,12 +116,18 @@ public class BossController : Ennemy
         {
             if(actionTwoPossible==true) //if action 2 possible, execute
             {
-                //Spawn 5 squelettes, medium cooldown
+                //réanime tous les ennemis présents dans l’arène. Il gagne 2 PV par ennemi réanimé. Cooldown de 10 secondes.
+                FindTombstones();
+                ReanimateAll(); //we reanimate everyone
+                Heal(activeTombstones.Length*2); //the boss is healed for 2PV per tombstones
+                StartCoroutine(CooldownTimer(bigCooldown, 2));
                 actionTwoPossible=false;
             } 
             if(actionOnePossible==true) //elif action 1 possible, execute
             {
-                //réanime tous les ennemis présents dans l’arène. Il gagne 2 PV par ennemi réanimé. Cooldown de 10 secondes.
+                //Spawn 5 squelettes, medium cooldown
+                SpawnMobs(5);
+                StartCoroutine(CooldownTimer(mediumCooldown, 1));
                 actionOnePossible=false;
             } else {
                 //do something ?
@@ -128,12 +140,12 @@ public class BossController : Ennemy
         {
             if(actionTwoPossible==true) //if action 2 possible, execute
             {
-                //Spawn 10 squelettes et réanime 10 ennemis aléatoires. Cooldown de 5 secondes. Si pas assez de monstres à réanimer, il spawn les squelettes puis lance une boule d’énergie
+                //Fait apparaître 3 pics d’ombres aléatoirement sur la map (pas sur case de fosse/mur). Au bout de 3 secondes, s'il n’est pas tué, le pic se transforme en squelette et donne 10 PV au boss. Le pic a 20 PV. Cooldown de 10 secondes
                 actionTwoPossible=false;
             } 
             if(actionOnePossible==true) //elif action 1 possible, execute
             {
-                //Fait apparaître 3 pics d’ombres aléatoirement sur la map (pas sur case de fosse/mur). Au bout de 3 secondes, s'il n’est pas tué, le pic se transforme en squelette et donne 10 PV au boss. Le pic a 20 PV. Cooldown de 10 secondes
+                //Spawn 10 squelettes et réanime 10 ennemis aléatoires. Cooldown de 5 secondes. Si pas assez de monstres à réanimer, il spawn les squelettes puis lance une boule d’énergie
                 actionOnePossible=false;
             } else {
                 //do something ?

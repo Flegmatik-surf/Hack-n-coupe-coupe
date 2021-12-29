@@ -20251,6 +20251,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3642010149820195685, guid: 681270c403bce2943a98bda3fcf999f2, type: 3}
+      propertyPath: firingSpeed
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642010149820195685, guid: 681270c403bce2943a98bda3fcf999f2, type: 3}
       propertyPath: sphereAttack
       value: 6
       objectReference: {fileID: 0}
