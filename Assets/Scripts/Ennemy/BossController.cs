@@ -13,10 +13,12 @@ smallCooldown : float : vaut 3f
 Fonctions :
 - BossTestHealth() :    appelée à chaque fois que le boss prend des dégâts, teste dans quelle action le boss est, met à jour phaseIndicator
 - Attack() :    appelée par Ennemy.cs, lance les actions 1 et 2 du comportement selon phaseIndicator
+- FindTombstones() :     finds the number of active tombstones on the map
+- CooldownTimer(float cooldown)   : (coroutine) used to calculate adequate timers of cooldowns
 - SpawnMobs(int mobsNumber) :    spawn MobNumber de squelettes autour de lui
 - ReanimateMobs(int mobsNumber) :    réanime MobNumber de monstres de la map
 - ReanimateAll() :      appelle ReanimateMobs avec en paramètre d'entrée le nombre de Tombstone présentes dans la map (check via FindGameObjectsWithTag("Tombstone"))
-- BlastAttack() :    lance une boule d'énergie 
+- BlastAttack(int action) :    lance une boule d'énergie (para entrée : le num associée à l'action)
 - ShadowSpikesAttack(int spikesNumber) : spawn SpikesNumber piques d'ombres autour de la map
 - Heal(int HealthNumber) : heals the boss for HealthNumber HP - either called by the shadow spikes or ReanimateAll(), cannot heal beyond MaxHp
 */
@@ -29,6 +31,29 @@ public class BossController : Ennemy
     [SerializeField] private float bigCooldown=10f;
     [SerializeField] private float mediumCooldown=5f;
     [SerializeField] private float smallCooldown=3f;
+
+    //the gameObject of the ball of energy :
+    [SerializeField] private GameObject energyBall;
+    [SerializeField] private float firingSpeed; //the speed at which the balls move
+
+    //the GameObject of the skeleton spawned by the boss :
+    [SerializeField] private GameObject skeleton;
+
+    //the attack position of the boss :
+    [SerializeField] private GameObject attackPosition;
+
+    //Two boolean variables, used by the boss to determine which attack is possible :
+    private bool actionOnePossible;
+    private bool actionTwoPossible;
+
+    //a list that will contain, at a given time, the number of active Tombstones :
+    private GameObject[] activeTombstones;
+
+    private void Awake() 
+    {
+        actionOnePossible=true;
+        actionTwoPossible=true; 
+    }
 
     //This function is called everytime the boss takes damage :
     //it is called AFTER CURRENTHP AND SLIDER HAVE BEEN CHANGED
@@ -49,34 +74,141 @@ public class BossController : Ennemy
     }
 
     //This function calls the different attacks of the boss :
-    //Called by Ennemy.cs script :
+    //Called by Ennemy.cs script every update :
     public override void Attack()
     {
+        print("Boss : attacking // timerOne =" + actionOnePossible + " // timerTwo ="+actionTwoPossible);
+        //The first phase of the boss 
+        if(phaseIndicator==1)
+        { 
+            if(actionTwoPossible==true) //if action 2 possible, execute
+            {
+                //réanime 5 ennemis aléatoires. Si aucun/pas assez d’ennemis morts, il spawn 5 squelettes. Cooldown de 10 secondes.
+                FindTombstones(); //we start by finding all active tombstones on the map
+                if(activeTombstones.Length>=5) //if there's 5 or more tombstones, we reanimate 5 mobs
+                {ReanimateMobs(5);}
+                else  //we spawn 5 mobs since there's not enough tombstones
+                {SpawnMobs(5);}
+                actionTwoPossible=false;
+                StartCoroutine(CooldownTimer(bigCooldown, 2)); //we launch the cooldown on the ability
+            } 
+            if(actionOnePossible==true) //elif action 1 possible, execute
+            {
+                print("Boss : action 1");
+                //Lance une boule d’énergie violette vers le joueur qui inflige 10 dégâts. Cooldown de 3 secondes.
+                actionOnePossible=false;
+                StartCoroutine(BlastAttack(1));
+            }
+            else {
+                //do something ?
+            }
 
+        }
+
+        //The second phase of the boss 
+        if(phaseIndicator==2)
+        {
+            if(actionTwoPossible==true) //if action 2 possible, execute
+            {
+                //Spawn 5 squelettes, medium cooldown
+                actionTwoPossible=false;
+            } 
+            if(actionOnePossible==true) //elif action 1 possible, execute
+            {
+                //réanime tous les ennemis présents dans l’arène. Il gagne 2 PV par ennemi réanimé. Cooldown de 10 secondes.
+                actionOnePossible=false;
+            } else {
+                //do something ?
+            }
+
+        }
+
+        //The third phase of the boss 
+        if(phaseIndicator==3)
+        {
+            if(actionTwoPossible==true) //if action 2 possible, execute
+            {
+                //Spawn 10 squelettes et réanime 10 ennemis aléatoires. Cooldown de 5 secondes. Si pas assez de monstres à réanimer, il spawn les squelettes puis lance une boule d’énergie
+                actionTwoPossible=false;
+            } 
+            if(actionOnePossible==true) //elif action 1 possible, execute
+            {
+                //Fait apparaître 3 pics d’ombres aléatoirement sur la map (pas sur case de fosse/mur). Au bout de 3 secondes, s'il n’est pas tué, le pic se transforme en squelette et donne 10 PV au boss. Le pic a 20 PV. Cooldown de 10 secondes
+                actionOnePossible=false;
+            } else {
+                //do something ?
+            }
+
+        }
+
+    }
+
+    //This function, used at various points by the boss, checks the number of dead ennemies :
+    private void FindTombstones()
+    {
+        activeTombstones=GameObject.FindGameObjectsWithTag("Tombstone");
+    }
+
+    //This function, used by the boss, handles the various cooldowns :
+    private IEnumerator CooldownTimer(float cooldown, int actionBool)
+    {
+        yield return new WaitForSeconds(cooldown);
+        if(actionBool==1)
+        {actionOnePossible=true;}
+        else{actionTwoPossible=true;} 
     }
 
     //This function spawns a given amount of mobs around the boss :
     private void SpawnMobs(int mobsNumber)
     {
+        for(int i=0;i<mobsNumber;i++)
+        {
+            GameObject new_skeleton= Instantiate(skeleton);
+            skeleton.transform.position=gameObject.transform.position;
+        }
 
     }
 
     //This function reanimates a given number of mobs :
     private void ReanimateMobs(int mobsNumber)
     {
+        int reanimatedMobsNumber=0; //we count the number of mobs reanimated by the function so far
+        foreach(GameObject tombstone in activeTombstones) //we reanimate mobs
+        {
+            if(reanimatedMobsNumber<mobsNumber) //unlike the reanimateAll, we need to limit the number of reanimated mobs :
+            {
+                GameObject new_skeleton= Instantiate(skeleton);
+                skeleton.transform.position=tombstone.transform.position;
+                Destroy(tombstone);
+                reanimatedMobsNumber+=1;
+            }
+        }
 
     }
 
     //This function reanimates all the mobs present when it's called :
     private void ReanimateAll()
     {
+        FindTombstones(); //we start by finding all active tombstones on the map
+        foreach(GameObject tombstone in activeTombstones) //we reanimate mobs on every available tombstones
+        {
+            GameObject new_skeleton= Instantiate(skeleton);
+            skeleton.transform.position=tombstone.transform.position;
+            Destroy(tombstone);
+        }
 
     }
 
     //This function launches a ball of energy :
-    private void BlastAttack()
+    private IEnumerator BlastAttack(int actionBool)
     {
-
+        GameObject new_attack = Instantiate(energyBall);
+        new_attack.transform.position=attackPosition.transform.position;
+        new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
+        yield return new WaitForSeconds(smallCooldown);
+        if(actionBool==1)
+        {actionOnePossible=true;}
+        else{actionTwoPossible=true;} 
     }
 
     //This function spawns a given amount of spikes :
@@ -89,7 +221,7 @@ public class BossController : Ennemy
     //It is called either by the shadow spikes or by actions within BossController
     public void Heal(int HealthNumber)
     {
-        if(currentHP+HealthNumber>maxHP)
+        if(currentHP+HealthNumber>maxHP) //the healing cannot exceed the set maxHP
         {
             currentHP=maxHP;
         }

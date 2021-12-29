@@ -73,7 +73,7 @@ public class DeplacementPlayer : MonoBehaviour
         movement = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
         Vector3 moveDestination = transform.position + movement;
         agent.destination = moveDestination;
-     }
+    }
     
 
     public void ChangeState()

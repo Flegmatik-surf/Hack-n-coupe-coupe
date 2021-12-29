@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2049932455763263036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3204849169081982196}
+  m_Layer: 0
+  m_Name: attackPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3204849169081982196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049932455763263036}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1.126}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8475172994029679433}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7429197002272897635
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7429197002272897635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8475172994029679433}
@@ -127,6 +157,7 @@ Transform:
   m_Children:
   - {fileID: 735736440655583070}
   - {fileID: 3630099650527698489}
+  - {fileID: 3204849169081982196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,7 +173,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &3642010149820195685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,12 +189,20 @@ MonoBehaviour:
   maxHP: 200
   currentHP: 200
   rangeIn: 100
-  sphereAttack: 100
+  sphereAttack: 6
   cooldown: 1
   tombstone: {fileID: 4119445960899744468, guid: ab83d3d6cc389a548bc296561f0a96fd, type: 3}
   healthBarUI: {fileID: 6163060668518189411}
   slider: {fileID: 129232471311089738}
   is_immobilized: 0
+  phaseIndicator: 1
+  bigCooldown: 10
+  mediumCooldown: 5
+  smallCooldown: 3
+  energyBall: {fileID: 5315697560322831031, guid: 69610bb6021cdbf4ebce0828bb6bbcd3, type: 3}
+  firingSpeed: 5
+  skeleton: {fileID: 8473673475128552362, guid: 3444e1cafd3dd204c8229db81b5c25f0, type: 3}
+  attackPosition: {fileID: 2049932455763263036}
 --- !u!195 &4312034939231535169
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -183,7 +222,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &3945467625918834770
@@ -263,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 333734218704828011, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.36
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 333734218704828011, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -279,11 +318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6971396124888834986, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6971396124888834986, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7153557755209933105, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_Name
@@ -291,7 +330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153557755209933105, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}

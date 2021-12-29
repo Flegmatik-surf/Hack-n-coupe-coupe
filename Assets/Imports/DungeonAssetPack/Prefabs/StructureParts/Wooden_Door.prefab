@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3677902671267824770}
   m_Layer: 0
   m_Name: Wooden_Door
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
