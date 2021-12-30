@@ -20,13 +20,18 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private GameObject defeatPopUp;
     [SerializeField] private GameObject inGameInfo;
 
-    private float gameTimer = 0f;
+    private float gameTimer;
+
+
+
 
     private void Awake()
     {
+        gameTimer = 0f;
         victoryPopUp.SetActive(false);
         defeatPopUp.SetActive(false);
         inGameInfo.SetActive(true);
+        GameController.newWaveSignal += OnNewWave;
         GameController.victorySignal += OnVictory;
         LifeManager.defeatSignal += OnDefeat;
         Fosse.dieOnFosse += OnDefeat;
@@ -36,6 +41,13 @@ public class InGameUIManager : MonoBehaviour
     {
         gameTimer += Time.deltaTime;
         inGameTimerText.text = $"Time : {TimerToString(gameTimer): 0s}"; 
+    }
+
+
+
+    private void OnNewWave(string waveIndicator)
+    {
+        inGameWaveIndicatorText.text = $"Wave : {waveIndicator: 0}";
     }
 
     private void OnVictory()
@@ -65,6 +77,10 @@ public class InGameUIManager : MonoBehaviour
         //TODO : randomizer to implement
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
+
+
+
+
 
     private string TimerToString(float timer)
     {

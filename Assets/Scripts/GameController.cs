@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour
 
     //events that will be used by the UI
     public static event Action victorySignal;
+    public static event Action<string> newWaveSignal;
 
     //The awake() function serves here to initialize some variables
     private void Awake() 
@@ -140,6 +141,7 @@ public class GameController : MonoBehaviour
     {
         print("Wave : " + waveIndicator);
         waveIndicationUI.text="Wave : " + waveIndicator;
+        newWaveSignal?.Invoke(waveIndicator.ToString());
         if(waveIndicator==10) //if it's the boss' wave :
         {
             int randomSpawnerIndicator = UnityEngine.Random.Range(0,enemySpawners.Length);
@@ -177,7 +179,7 @@ public class GameController : MonoBehaviour
         victorySignal?.Invoke();
         print("Game over !");
         //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
-        Application.Quit();
+        //Application.Quit();
     }
 
 }
