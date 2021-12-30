@@ -35,6 +35,7 @@ public class InGameUIManager : MonoBehaviour
     private void Update()
     {
         gameTimer += Time.deltaTime;
+        inGameTimerText.text = $"Time : {TimerToString(gameTimer): 0s}"; 
     }
 
     private void OnVictory()
