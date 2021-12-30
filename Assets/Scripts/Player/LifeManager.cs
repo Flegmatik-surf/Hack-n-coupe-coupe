@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class LifeManager : MonoBehaviour {
     //variables relatives au UI du joueur :
     private GameObject playerUI;
     private Slider HPslider;
+
+    //event pour l'UI
+    public static event Action defeatSignal;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +41,8 @@ public class LifeManager : MonoBehaviour {
         HPslider.value=currentHP/maxHP; //to adjust the lifebar, we just change it's value between 1 (max=current HP) and 0 (ennemy ded)
         if(currentHP<=0)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+            defeatSignal?.Invoke();
+            //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
         }
     }
 

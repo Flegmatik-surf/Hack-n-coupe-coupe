@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,6 +59,9 @@ public class GameController : MonoBehaviour
     //variables that will be used for the calculateWave :
     private int U1;
     private int U0;
+
+    //events that will be used by the UI
+    public static event Action victorySignal;
 
     //The awake() function serves here to initialize some variables
     private void Awake() 
@@ -138,15 +142,15 @@ public class GameController : MonoBehaviour
         waveIndicationUI.text="Wave : " + waveIndicator;
         if(waveIndicator==10) //if it's the boss' wave :
         {
-            int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);
+            int randomSpawnerIndicator = UnityEngine.Random.Range(0,enemySpawners.Length);
             GameObject new_ennemy = Instantiate(Boss);
             new_ennemy.transform.position=enemySpawners[randomSpawnerIndicator].gameObject.transform.position;
         }
         //regardless of the boss or not, we still spawn ennemies :
         for(int i = 0;i<enemyNumber+1;i++)
         {
-            int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);
-            int randomEnnemyIndicator = Random.Range(0,enemies.Count);
+            int randomSpawnerIndicator = UnityEngine.Random.Range(0,enemySpawners.Length);
+            int randomEnnemyIndicator = UnityEngine.Random.Range(0,enemies.Count);
             GameObject new_ennemy = Instantiate(enemies[randomEnnemyIndicator]);
             new_ennemy.transform.position=enemySpawners[randomSpawnerIndicator].gameObject.transform.position;
             yield return new WaitForSeconds(1f);
@@ -170,6 +174,7 @@ public class GameController : MonoBehaviour
     //the function called when the game ends :
     private void EndGame()
     {
+        victorySignal?.Invoke();
         print("Game over !");
         //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         Application.Quit();
