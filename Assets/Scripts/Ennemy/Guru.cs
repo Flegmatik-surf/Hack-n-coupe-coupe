@@ -27,17 +27,21 @@ public class Guru : Ennemy
 
     public override void Attack()
     {
-        print("attack");
-        //animation d'attaque
-        if (Time.time > timeStamp + cooldown)
+        if (Insphere())
         {
-            var inst = factory.GetNewInstance();
-            inst.transform.position = transform.forward + transform.position;
-            //Vector3 vector = new Vector3(transform.forward.z, 0, transform.forward.x).normalized;
-            //inst.transform.localEulerAngles = 90 * vector;
-            timeStamp = Time.time;
+            navMeshAgent.enabled = false;
+            //animation d'attaque
+            if (Time.time > timeStamp + cooldown)
+            {
+                var inst = factory.GetNewInstance();
+                inst.transform.position = transform.forward + transform.position;
+                //Vector3 vector = new Vector3(transform.forward.z, 0, transform.forward.x).normalized;
+                //inst.transform.localEulerAngles = 90 * vector;
+                timeStamp = Time.time;
+            }
+           
         }
-        
+        navMeshAgent.enabled = true;
     }
 
 
