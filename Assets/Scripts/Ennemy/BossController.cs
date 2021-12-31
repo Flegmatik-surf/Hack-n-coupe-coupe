@@ -100,10 +100,10 @@ public class BossController : Ennemy
             } 
             if(actionOnePossible==true) //elif action 1 possible, execute
             {
-                print("Boss : action 1");
                 //Lance une boule d’énergie violette vers le joueur qui inflige 10 dégâts. Cooldown de 3 secondes.
                 actionOnePossible=false;
-                StartCoroutine(BlastAttack(1));
+                BlastAttack();
+                StartCoroutine(CooldownTimer(smallCooldown,1));
             }
             else {
                 //do something ?
@@ -141,11 +141,22 @@ public class BossController : Ennemy
             if(actionTwoPossible==true) //if action 2 possible, execute
             {
                 //Fait apparaître 3 pics d’ombres aléatoirement sur la map (pas sur case de fosse/mur). Au bout de 3 secondes, s'il n’est pas tué, le pic se transforme en squelette et donne 10 PV au boss. Le pic a 20 PV. Cooldown de 10 secondes
+                ShadowSpikesAttack(3);
                 actionTwoPossible=false;
             } 
             if(actionOnePossible==true) //elif action 1 possible, execute
             {
                 //Spawn 10 squelettes et réanime 10 ennemis aléatoires. Cooldown de 5 secondes. Si pas assez de monstres à réanimer, il spawn les squelettes puis lance une boule d’énergie
+                SpawnMobs(10);
+                FindTombstones();
+                if(activeTombstones.Length<10)
+                {
+                    BlastAttack();
+                } else 
+                {
+                    ReanimateMobs(5);
+                }
+                StartCoroutine(CooldownTimer(mediumCooldown,1));
                 actionOnePossible=false;
             } else {
                 //do something ?
@@ -212,21 +223,18 @@ public class BossController : Ennemy
     }
 
     //This function launches a ball of energy :
-    private IEnumerator BlastAttack(int actionBool)
+    private void BlastAttack()
     {
         GameObject new_attack = Instantiate(energyBall);
         new_attack.transform.position=attackPosition.transform.position;
         new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
-        yield return new WaitForSeconds(smallCooldown);
-        if(actionBool==1)
-        {actionOnePossible=true;}
-        else{actionTwoPossible=true;} 
     }
 
     //This function spawns a given amount of spikes :
     private void ShadowSpikesAttack(int spikesNumber)
     {
-
+        //We start by finding 3 random locations suitable
+        
     }
 
     //This function heals the boss for a given amount :
