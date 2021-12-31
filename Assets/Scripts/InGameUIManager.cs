@@ -15,12 +15,15 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text defeatTimerText;
     [SerializeField] private TMP_Text defeatWaveIndicatorText;
 
+    [SerializeField] private Slider playerHealthSlider;
+
     //les diff?rents ?l?ments graphiques ? activer/d?sactiver
     [SerializeField] private GameObject victoryPopUp;
     [SerializeField] private GameObject defeatPopUp;
     [SerializeField] private GameObject inGameInfo;
 
     private float gameTimer;
+    private string currentWave;
 
 
 
@@ -28,10 +31,12 @@ public class InGameUIManager : MonoBehaviour
     private void Awake()
     {
         gameTimer = 0f;
+        playerHealthSlider.value = 1f;
         victoryPopUp.SetActive(false);
         defeatPopUp.SetActive(false);
         inGameInfo.SetActive(true);
         GameController.newWaveSignal += OnNewWave;
+        LifeManager.playerHPChanged += OnPlayerHPChanged;
         GameController.victorySignal += OnVictory;
         LifeManager.defeatSignal += OnDefeat;
         Fosse.dieOnFosse += OnDefeat;
@@ -47,7 +52,13 @@ public class InGameUIManager : MonoBehaviour
 
     private void OnNewWave(string waveIndicator)
     {
+        currentWave = waveIndicator;
         inGameWaveIndicatorText.text = $"Wave : {waveIndicator: 0}";
+    }
+
+    private void OnPlayerHPChanged(float HealthRate)
+    {
+        playerHealthSlider.value = HealthRate;
     }
 
     private void OnVictory()
@@ -64,7 +75,7 @@ public class InGameUIManager : MonoBehaviour
         defeatPopUp.SetActive(true);
         inGameInfo.SetActive(false);
         defeatTimerText.text = $"Time spent : {TimerToString(gameTimer): 0s}";
-        //defeatWaveIndicatorText.SetText(inGameWaveIndicatorText.GetParsedText());
+        defeatWaveIndicatorText.text = $"You died on wave : {currentWave: 0}";
     }
 
     public void GoToMainMenu()

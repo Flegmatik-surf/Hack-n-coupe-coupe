@@ -24,9 +24,6 @@ public class GameController : MonoBehaviour
     //this will contain the active player
     private GameObject player;
 
-    //this will contain the player's UI :
-    private GameObject playerUI;
-    private Text waveIndicationUI;
 
     //The three variables containing the three types of player :
     [SerializeField] private GameObject Warrior;
@@ -103,8 +100,6 @@ public class GameController : MonoBehaviour
         U1=1;
         U0=0;
         CalculateWave(U1,U0);
-        playerUI = GameObject.FindGameObjectWithTag("MainCamera");
-        waveIndicationUI=playerUI.transform.Find("PlayerUI").Find("WaveIndicator").GetComponent<Text>();
         print("enemies"+enemies.Count);
     }
 
@@ -140,7 +135,6 @@ public class GameController : MonoBehaviour
     private IEnumerator CreateWave(int enemyNumber)
     {
         print("Wave : " + waveIndicator);
-        waveIndicationUI.text="Wave : " + waveIndicator;
         newWaveSignal?.Invoke(waveIndicator.ToString());
         if(waveIndicator==10) //if it's the boss' wave :
         {
