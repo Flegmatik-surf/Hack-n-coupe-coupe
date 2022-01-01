@@ -18,13 +18,14 @@ public class MagicSpell : MonoBehaviour
         //transform.forward = player.transform.position-transform.position;
         //rbArrow.velocity = speed * (player.transform.position - transform.position).normalized;
         target = player.transform.position - transform.position;
+        target.y = 0;
 
     }
 
     private void LateUpdate()
     {
         transform.localEulerAngles = new Vector3(0, 0, 0);
-        transform.Translate(speed * transform.forward);
+        transform.Translate(speed * target.normalized);
     }
 
     private void OnCollisionEnter(Collision collision)

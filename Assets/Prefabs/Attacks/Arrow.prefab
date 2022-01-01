@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4048541171551776626}
   - component: {fileID: 4048541171551776627}
   - component: {fileID: 4048541171551776624}
-  - component: {fileID: 4048541171551776628}
   - component: {fileID: 4048541171551776631}
-  - component: {fileID: -3888735052119351462}
+  - component: {fileID: 3583763097846194087}
+  - component: {fileID: 2768250669293133178}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: EnnemyAttack
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4048541171551776622}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,18 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4048541171551776628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4048541171551776622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc0eaf2ebedc21c46a546a0f2c3710e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4048541171551776631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,10 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f793b9c17cace448d53060cc869001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4048541171551776628}
+  prefab: {fileID: 2768250669293133178}
   timeout: 2
---- !u!136 &-3888735052119351462
-CapsuleCollider:
+--- !u!65 &3583763097846194087
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,7 +108,18 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.618832
-  m_Height: 1.9598331
-  m_Direction: 1
-  m_Center: {x: 0.009140968, y: 0.015952826, z: -0.00000011920929}
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 1.193829, z: 1.0000005}
+  m_Center: {x: 0.000000059604645, y: 0.4030858, z: -0.00000011920929}
+--- !u!114 &2768250669293133178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4048541171551776622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0eaf2ebedc21c46a546a0f2c3710e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
