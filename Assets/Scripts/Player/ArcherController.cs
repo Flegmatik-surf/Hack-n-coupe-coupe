@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,11 +19,16 @@ public class ArcherController : PlayerActionsController
     [SerializeField] private float firingSpeed;
     [SerializeField] private GameObject trap;
 
-// The Action One
-//--------------------------------------------------------------------------------------------
+    public static event Action<float> bowmanActionOneCalled;
+    public static event Action<float> bowmanActionTwoCalled;
+    public static event Action<float> bowmanActionThreeCalled;
+
+    // The Action One
+    //--------------------------------------------------------------------------------------------
     //Calls the coroutine that handles the action One
     public override void ActionOne()
     {
+        bowmanActionOneCalled?.Invoke(cooldownActionOne);
         coroutine=ActionOneCoroutine(cooldownActionOne);
         StartCoroutine(coroutine);
     }
@@ -46,6 +52,7 @@ public class ArcherController : PlayerActionsController
     //Calls the coroutine that handles the action Two
     public override void ActionTwo()
     {
+        bowmanActionTwoCalled?.Invoke(cooldownActionTwo);
         coroutine=ActionTwoCoroutine(cooldownActionTwo);
         StartCoroutine(coroutine);
     }
@@ -65,6 +72,7 @@ public class ArcherController : PlayerActionsController
     //Calls the coroutine that handles the action Three
     public override void ActionThree()
     {
+        bowmanActionThreeCalled?.Invoke(cooldownActionThree);
         coroutine=ActionThreeCoroutine(cooldownActionThree);
         StartCoroutine(coroutine);
     }

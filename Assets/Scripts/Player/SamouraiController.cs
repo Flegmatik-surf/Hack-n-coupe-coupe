@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,11 +23,16 @@ public class SamouraiController : SamouraiActionsController
     [SerializeField] private GameObject chargedStrike;
     private float damageDealt;
 
-// The Action One
-//--------------------------------------------------------------------------------------------
+    public static event Action<float> samouraiActionOneCalled;
+    public static event Action<float> samouraiActionTwoCalled;
+    public static event Action<float> samouraiActionThreeCalled;
+
+    // The Action One
+    //--------------------------------------------------------------------------------------------
     //Calls the coroutine that handles the action One
     public override void ActionOne()
     {
+        samouraiActionOneCalled?.Invoke(cooldownActionOne);
         coroutine=ActionOneCoroutine(cooldownActionOne);
         StartCoroutine(coroutine);
     }
@@ -49,6 +55,7 @@ public class SamouraiController : SamouraiActionsController
     //Calls the coroutine that handles the action Two
     public override void ActionTwo()
     {
+        samouraiActionTwoCalled?.Invoke(cooldownActionTwo);
         coroutine=ActionTwoCoroutine(cooldownActionTwo);
         StartCoroutine(coroutine);
     }
@@ -74,6 +81,7 @@ public class SamouraiController : SamouraiActionsController
     public override void ActionThree(int chargeIndicator)
     {
         coroutine=ActionThreeCoroutine(cooldownActionThree, chargeIndicator);
+        samouraiActionThreeCalled?.Invoke(cooldownActionThree);
         StartCoroutine(coroutine);
     }
 

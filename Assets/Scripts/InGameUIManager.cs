@@ -15,12 +15,19 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text defeatTimerText;
     [SerializeField] private TMP_Text defeatWaveIndicatorText;
 
+    //R?f?rences des ?l?ments graphiques ? modifier dynamiquement
     [SerializeField] private Slider playerHealthSlider;
+    [SerializeField] private Slider bossHealthSlider;
+    [SerializeField] private Image actionIcon1;
+    [SerializeField] private Image actionIcon2;
+    [SerializeField] private Image actionIcon3;
+
 
     //les diff?rents ?l?ments graphiques ? activer/d?sactiver
     [SerializeField] private GameObject victoryPopUp;
     [SerializeField] private GameObject defeatPopUp;
     [SerializeField] private GameObject inGameInfo;
+    [SerializeField] private GameObject bossHealthBar;
 
     private float gameTimer;
     private string currentWave;
@@ -35,11 +42,13 @@ public class InGameUIManager : MonoBehaviour
         victoryPopUp.SetActive(false);
         defeatPopUp.SetActive(false);
         inGameInfo.SetActive(true);
+        //TODO : impl?menter (apr?s qu'henri ait fini) les events pour bossHP
         GameController.newWaveSignal += OnNewWave;
         LifeManager.playerHPChanged += OnPlayerHPChanged;
         GameController.victorySignal += OnVictory;
         LifeManager.defeatSignal += OnDefeat;
         Fosse.dieOnFosse += OnDefeat;
+        Presets();
     }
 
     private void Update()
@@ -49,6 +58,9 @@ public class InGameUIManager : MonoBehaviour
     }
 
 
+
+
+    //---------------- OnEvents functions -------------------
 
     private void OnNewWave(string waveIndicator)
     {
@@ -78,6 +90,21 @@ public class InGameUIManager : MonoBehaviour
         defeatWaveIndicatorText.text = $"You died on wave : {currentWave: 0}";
     }
 
+    private void OnActionOneCalled(float cooldown)
+    {
+        StartCoroutine(ReloadIcon(actionIcon1, cooldown));
+    }
+
+    private void OnActionTwoCalled(float cooldown)
+    {
+        StartCoroutine(ReloadIcon(actionIcon2, cooldown));
+    }
+
+    private void OnActionThreeCalled(float cooldown)
+    {
+        StartCoroutine(ReloadIcon(actionIcon3, cooldown));
+    }
+
     public void GoToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
@@ -92,6 +119,33 @@ public class InGameUIManager : MonoBehaviour
 
 
 
+
+//---------------- Auxilary functions -------------------
+
+    private void Presets()
+    {
+        String selectedPlayer = PlayerPrefs.GetString("selectedPlayer");
+
+        if (selectedPlayer == "Samourai")
+        {
+            SamouraiController.samouraiActionOneCalled += OnActionOneCalled;
+            SamouraiController.samouraiActionTwoCalled += OnActionTwoCalled;
+            SamouraiController.samouraiActionThreeCalled += OnActionThreeCalled;
+        }
+        if (selectedPlayer == "Warrior")
+        {
+            WarriorController.warriorActionOneCalled += OnActionOneCalled;
+            WarriorController.warriorActionTwoCalled += OnActionTwoCalled;
+            WarriorController.warriorActionThreeCalled += OnActionThreeCalled;
+         
+        }
+        if (selectedPlayer == "Archer")
+        {
+            ArcherController.bowmanActionOneCalled += OnActionOneCalled;
+            ArcherController.bowmanActionTwoCalled += OnActionTwoCalled;
+            ArcherController.bowmanActionThreeCalled += OnActionThreeCalled;
+        }
+    }
 
     private string TimerToString(float timer)
     {
@@ -112,5 +166,19 @@ public class InGameUIManager : MonoBehaviour
         result += seconds + "s";
         return result;
 
+    }
+
+    private IEnumerator ReloadIcon(Image icon, float cooldown)
+    {
+        icon.fillAmount = 0;
+        float fps = 60;
+        float deltaAmount = (1 / cooldown) * 1/fps ;
+
+        while (icon.fillAmount < 1)
+        {
+            icon.fillAmount += deltaAmount;
+            yield return new WaitForSeconds(1/fps);
+        }
+        yield return null;
     }
 }
