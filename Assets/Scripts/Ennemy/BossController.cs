@@ -42,6 +42,9 @@ public class BossController : Ennemy
     //the GameObject of the skeleton spawned by the boss :
     [SerializeField] private GameObject skeleton;
 
+    //the GameObject of the shadowspike spawned by the boss :
+    [SerializeField] private GameObject spike;
+
     //the attack position of the boss :
     [SerializeField] private GameObject attackPosition;
 
@@ -54,12 +57,10 @@ public class BossController : Ennemy
 
     //----------------------------------------------------------------------------------------
     //The various functions :
-
-
     private void Awake() 
     {
         actionOnePossible=true;
-        actionTwoPossible=true; 
+        actionTwoPossible=true;
     }
 
     //This function is called everytime the boss takes damage :
@@ -77,7 +78,6 @@ public class BossController : Ennemy
             phaseIndicator=3;
             maxHP=50;
         }
-
     }
 
     //This function calls the different attacks of the boss :
@@ -201,8 +201,9 @@ public class BossController : Ennemy
             if(reanimatedMobsNumber<mobsNumber) //unlike the reanimateAll, we need to limit the number of reanimated mobs :
             {
                 GameObject new_skeleton= Instantiate(skeleton);
-                skeleton.transform.position=tombstone.transform.position;
+                new_skeleton.transform.position=tombstone.transform.position;
                 Destroy(tombstone);
+                new_skeleton.GetComponent<Soldier>().can_be_revived=false;
                 reanimatedMobsNumber+=1;
             }
         }
@@ -216,7 +217,8 @@ public class BossController : Ennemy
         foreach(GameObject tombstone in activeTombstones) //we reanimate mobs on every available tombstones
         {
             GameObject new_skeleton= Instantiate(skeleton);
-            skeleton.transform.position=tombstone.transform.position;
+            new_skeleton.transform.position=tombstone.transform.position;
+            new_skeleton.GetComponent<Soldier>().can_be_revived=false;
             Destroy(tombstone);
         }
 
@@ -234,7 +236,8 @@ public class BossController : Ennemy
     private void ShadowSpikesAttack(int spikesNumber)
     {
         //We start by finding 3 random locations suitable
-        
+        GameObject new_spike = Instantiate(spike);
+        new_spike.transform.position=transform.position;
     }
 
     //This function heals the boss for a given amount :

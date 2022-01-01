@@ -30,7 +30,6 @@ public class Arrow : MonoBehaviour
         
         //transform.Rotate(Mathf.PI/2,0,0);
         //transform.rotation = new Quaternion(90,0,90,0);
-
     }
 
     private void LateUpdate()
@@ -45,14 +44,14 @@ public class Arrow : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        
-
         if (collision.gameObject.tag == "Player")
         {
             playerLife.TakeDamage(10);
         }
-       
-        Destroy(this.gameObject);
+        if(collision.gameObject.tag=="Wall")
+        {
+            Destroy(gameObject);
+        }
     }
 
 
