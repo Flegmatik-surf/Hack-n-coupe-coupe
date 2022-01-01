@@ -1580,6 +1580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4964c98f5895f4ffc8eefb51fa9820eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 4a1dd36ae8dea4f439f2a707dbd0d050, type: 2}
   inGameTimerText: {fileID: 6363439276908915117}
   inGameWaveIndicatorText: {fileID: 3273124776773035401}
   victoryTimerText: {fileID: 2877287716418129682}
@@ -1592,7 +1593,7 @@ MonoBehaviour:
   actionIcon3: {fileID: 4669739473052840961}
   victoryPopUp: {fileID: 2877287714893753906}
   defeatPopUp: {fileID: 2877287715031761353}
-  inGameInfo: {fileID: 0}
+  inGameInfo: {fileID: 7283805316418646560}
   bossHealthBar: {fileID: 8909246130409151348}
 --- !u!1 &2877287715735471315
 GameObject:

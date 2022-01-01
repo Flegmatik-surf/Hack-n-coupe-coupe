@@ -7,6 +7,9 @@ using TMPro;
 
 public class InGameUIManager : MonoBehaviour
 {
+    //donn?es contenant les sprites propres ? chaque perso
+    [SerializeField] private GlobalCharacterData data;
+
     //les r?f?rences des textes ? modifier dynamiquement 
     [SerializeField] private TMP_Text inGameTimerText;
     [SerializeField] private TMP_Text inGameWaveIndicatorText;
@@ -131,12 +134,18 @@ public class InGameUIManager : MonoBehaviour
             SamouraiController.samouraiActionOneCalled += OnActionOneCalled;
             SamouraiController.samouraiActionTwoCalled += OnActionTwoCalled;
             SamouraiController.samouraiActionThreeCalled += OnActionThreeCalled;
+            actionIcon1.sprite = data.samourai.actionOneIcon;
+            actionIcon2.sprite = data.samourai.actionTwoIcon;
+            actionIcon3.sprite = data.samourai.actionThreeIcon;
         }
         if (selectedPlayer == "Warrior")
         {
             WarriorController.warriorActionOneCalled += OnActionOneCalled;
             WarriorController.warriorActionTwoCalled += OnActionTwoCalled;
             WarriorController.warriorActionThreeCalled += OnActionThreeCalled;
+            actionIcon1.sprite = data.warrior.actionOneIcon;
+            actionIcon2.sprite = data.warrior.actionTwoIcon;
+            actionIcon3.sprite = data.warrior.actionThreeIcon;
          
         }
         if (selectedPlayer == "Archer")
@@ -144,6 +153,9 @@ public class InGameUIManager : MonoBehaviour
             ArcherController.bowmanActionOneCalled += OnActionOneCalled;
             ArcherController.bowmanActionTwoCalled += OnActionTwoCalled;
             ArcherController.bowmanActionThreeCalled += OnActionThreeCalled;
+            actionIcon1.sprite = data.bowman.actionOneIcon;
+            actionIcon2.sprite = data.bowman.actionTwoIcon;
+            actionIcon3.sprite = data.bowman.actionThreeIcon;
         }
     }
 
