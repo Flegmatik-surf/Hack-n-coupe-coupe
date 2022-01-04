@@ -11,8 +11,6 @@ public class Ennemy : MonoBehaviour
     protected LifeManager playerLife;
     protected NavMeshAgent navMeshAgent;
 
-    [SerializeField] protected float maxHP;
-    [SerializeField] protected float currentHP;
     [SerializeField] protected float rangeIn; //D'o� il voit le player
     [SerializeField] protected float sphereAttack; //D'o� il peut l'attaquer
     [SerializeField] protected float cooldown = 1f;
@@ -29,13 +27,17 @@ public class Ennemy : MonoBehaviour
     protected bool canBeBuffSpeed = true;
     protected float baseSpeed;
 
+    //variable checkant si l'ennemi est immobilisé
+    public bool is_immobilized;
+
+    [SerializeField] public float maxHP;
+    [SerializeField] public float currentHP;
+
     //variables relatives à la healthbar :
     [SerializeField] private GameObject healthBarUI;
     [SerializeField] private Slider slider;
 
-    //variable checkant si l'ennemi est immobilisé
-    public bool is_immobilized;
-
+    [SerializeField] public bool can_be_revived;
 
     protected float timeStamp = 0f;
 
@@ -73,6 +75,25 @@ public class Ennemy : MonoBehaviour
             canBeBuffSpeed = true;
         }
 
+    }
+
+    //This function deals with the ennemy being damaged
+    //it handles both the calculus and the lifebar itself
+    public void TakeDamage(float damage)
+    {
+        healthBarUI.SetActive(true);
+        currentHP -= damage;
+        slider.value=currentHP/maxHP; //to adjust the lifebar, we just change it's value between 1 (max=current HP) and 0 (ennemy ded)
+        BossTestHealth(); //a special function used EXCLUSIVELY by the boss
+        if(currentHP<=0) //when the enemy dies
+        {
+            if(can_be_revived==true)
+            {
+                GameObject new_tombstone = Instantiate(tombstone);
+                new_tombstone.transform.position=transform.position;
+            }
+            Destroy(gameObject);
+        }
     }
 
     public void GetBuffSpeed(float buffSpeed, float buffSpeedTime)
@@ -117,22 +138,4 @@ public class Ennemy : MonoBehaviour
     }
 
     public virtual void BossTestHealth(){} //a special function used EXCLUSIVELY by the boss
-
-    //This function deals with the ennemy being damaged
-    //it handles both the calculus and the lifebar itself
-    public void TakeDamage(float damage)
-    {
-        healthBarUI.SetActive(true);
-        currentHP -= damage;
-        slider.value=currentHP/maxHP; //to adjust the lifebar, we just change it's value between 1 (max=current HP) and 0 (ennemy ded)
-        BossTestHealth(); //a special function used EXCLUSIVELY by the boss
-        if(currentHP<=0) //when the enemy dies
-        {
-            
-            GameObject new_tombstone = Instantiate(tombstone);
-            new_tombstone.transform.position=transform.position;
-            Destroy(gameObject);
-        }
-    }
-
 }

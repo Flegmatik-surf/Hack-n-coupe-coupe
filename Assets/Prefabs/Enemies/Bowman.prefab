@@ -50,15 +50,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661d4d3f85a43d840999a2abe4d3ab53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 5
-  currentHP: 5
   rangeIn: 100
   sphereAttack: 7
   cooldown: 2
   tombstone: {fileID: 4119445960899744468, guid: ab83d3d6cc389a548bc296561f0a96fd, type: 3}
+  is_immobilized: 0
+  maxHP: 5
+  currentHP: 5
   healthBarUI: {fileID: 2900402823827021245}
   slider: {fileID: 8938794485265667220}
-  is_immobilized: 0
+  can_be_revived: 1
   arrow: {fileID: 772990647041773676, guid: d19e7d288803e984586e5efcffa39334, type: 3}
 --- !u!65 &3570035584547032016
 BoxCollider:
@@ -298,6 +299,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1330856146117535308}
     m_Modifications:
+    - target: {fileID: -6189996234507192716, guid: 6113d0ea44252774db53fa756483807d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e1cd1a76ecd557440a55dfaeead52541, type: 2}
+    - target: {fileID: -2614677818739849822, guid: 6113d0ea44252774db53fa756483807d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e1cd1a76ecd557440a55dfaeead52541, type: 2}
     - target: {fileID: 100102, guid: 6113d0ea44252774db53fa756483807d, type: 3}
       propertyPath: m_Name
       value: Archer
@@ -346,6 +355,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2982630307632017288, guid: 6113d0ea44252774db53fa756483807d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e1cd1a76ecd557440a55dfaeead52541, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6113d0ea44252774db53fa756483807d, type: 3}
 --- !u!4 &1826088611520240313 stripped

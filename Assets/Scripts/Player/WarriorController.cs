@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,10 @@ public class WarriorController : PlayerActionsController
     [SerializeField] private GameObject tornadoAttack;
     public GameObject attackPosition;
 
+    public static event Action<float> warriorActionOneCalled;
+    public static event Action<float> warriorActionTwoCalled;
+    public static event Action<float> warriorActionThreeCalled;
+
     protected AudioSource audioSource;
     [SerializeField] public AudioClip soundAttack1;
     [SerializeField] public AudioClip soundAttack2;
@@ -31,6 +36,7 @@ public class WarriorController : PlayerActionsController
     //Calls the coroutine that handles the action One
     public override void ActionOne()
     {
+        warriorActionOneCalled?.Invoke(cooldownActionOne);
         coroutine=ActionOneCoroutine(cooldownActionOne);
         StartCoroutine(coroutine);
     }
@@ -53,6 +59,7 @@ public class WarriorController : PlayerActionsController
     //Calls the coroutine that handles the action Two
     public override void ActionTwo()
     {
+        warriorActionTwoCalled?.Invoke(cooldownActionTwo);
         coroutine=ActionTwoCoroutine(cooldownActionTwo);
         StartCoroutine(coroutine);
     }
@@ -72,6 +79,7 @@ public class WarriorController : PlayerActionsController
     //Calls the coroutine that handles the action Three
     public override void ActionThree()
     {
+        warriorActionThreeCalled?.Invoke(cooldownActionThree);
         coroutine=ActionThreeCoroutine(cooldownActionThree);
         StartCoroutine(coroutine);
     }

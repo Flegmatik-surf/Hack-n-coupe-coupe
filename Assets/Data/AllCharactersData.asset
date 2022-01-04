@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56156a23d95b4011ad61ad83e9416b0, type: 3}
+  m_Name: AllCharactersData
+  m_EditorClassIdentifier: 
+  warrior: {fileID: 11400000, guid: 32d13109566e142a4a9fec81b3fa2b2e, type: 2}
+  bowman: {fileID: 11400000, guid: 54b5a1fbcaa6b4afdafa3cb27bdb4dcb, type: 2}
+  samourai: {fileID: 11400000, guid: f101ccb0dc19b4e24b85d4aa81c98174, type: 2}

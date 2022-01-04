@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,9 +24,6 @@ public class GameController : MonoBehaviour
     //this will contain the active player
     private GameObject player;
 
-    //this will contain the player's UI :
-    private GameObject playerUI;
-    private Text waveIndicationUI;
 
     //The three variables containing the three types of player :
     [SerializeField] private GameObject Warrior;
@@ -58,6 +56,10 @@ public class GameController : MonoBehaviour
     //variables that will be used for the calculateWave :
     private int U1;
     private int U0;
+
+    //events that will be used by the UI
+    public static event Action victorySignal;
+    public static event Action<string> newWaveSignal;
 
     //The awake() function serves here to initialize some variables
     private void Awake() 
@@ -98,8 +100,6 @@ public class GameController : MonoBehaviour
         U1=1;
         U0=0;
         CalculateWave(U1,U0);
-        playerUI = GameObject.FindGameObjectWithTag("MainCamera");
-        waveIndicationUI=playerUI.transform.Find("PlayerUI").Find("WaveIndicator").GetComponent<Text>();
         print("enemies"+enemies.Count);
     }
 
@@ -135,18 +135,18 @@ public class GameController : MonoBehaviour
     private IEnumerator CreateWave(int enemyNumber)
     {
         print("Wave : " + waveIndicator);
-        waveIndicationUI.text="Wave : " + waveIndicator;
+        newWaveSignal?.Invoke(waveIndicator.ToString());
         if(waveIndicator==10) //if it's the boss' wave :
         {
-            int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);
+            int randomSpawnerIndicator = UnityEngine.Random.Range(0,enemySpawners.Length);
             GameObject new_ennemy = Instantiate(Boss);
             new_ennemy.transform.position=enemySpawners[randomSpawnerIndicator].gameObject.transform.position;
         }
         //regardless of the boss or not, we still spawn ennemies :
         for(int i = 0;i<enemyNumber+1;i++)
         {
-            int randomSpawnerIndicator = Random.Range(0,enemySpawners.Length);
-            int randomEnnemyIndicator = Random.Range(0,enemies.Count);
+            int randomSpawnerIndicator = UnityEngine.Random.Range(0,enemySpawners.Length);
+            int randomEnnemyIndicator = UnityEngine.Random.Range(0,enemies.Count);
             GameObject new_ennemy = Instantiate(enemies[randomEnnemyIndicator]);
             new_ennemy.transform.position=enemySpawners[randomSpawnerIndicator].gameObject.transform.position;
             yield return new WaitForSeconds(1f);
@@ -170,9 +170,10 @@ public class GameController : MonoBehaviour
     //the function called when the game ends :
     private void EndGame()
     {
+        victorySignal?.Invoke();
         print("Game over !");
         //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
-        Application.Quit();
+        //Application.Quit();
     }
 
 }

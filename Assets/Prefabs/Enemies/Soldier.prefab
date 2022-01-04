@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8473673475128552362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.507048, y: 0.07807255, z: -17.010635}
+  m_LocalPosition: {x: 27.143045, y: 0.57807255, z: 14.209958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8473673474921518533}
@@ -130,15 +130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ceca3055a96ecb48abd8140520c9ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
-  currentHP: 10
   rangeIn: 100
   sphereAttack: 3
   cooldown: 1
   tombstone: {fileID: 4119445960899744468, guid: ab83d3d6cc389a548bc296561f0a96fd, type: 3}
+  is_immobilized: 0
+  maxHP: 10
+  currentHP: 10
   healthBarUI: {fileID: 5480723682036934736}
   slider: {fileID: 1748458919986274681}
-  is_immobilized: 0
+  can_be_revived: 1
   skeleton: {fileID: 8898337206577627252}
 --- !u!65 &1205222818969589578
 BoxCollider:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,6 @@ public class PlayerActionsController : MonoBehaviour
     protected Slider actionTwoSlider;
     protected Slider actionThreeSlider;
 
-    
-    
 
     private void Start()
     {

@@ -186,22 +186,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5345981951aa041b3817b70611a781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 200
-  currentHP: 200
   rangeIn: 100
   sphereAttack: 6
   cooldown: 1
   tombstone: {fileID: 4119445960899744468, guid: ab83d3d6cc389a548bc296561f0a96fd, type: 3}
+  is_immobilized: 0
+  maxHP: 200
+  currentHP: 200
   healthBarUI: {fileID: 6163060668518189411}
   slider: {fileID: 129232471311089738}
-  is_immobilized: 0
   phaseIndicator: 1
   bigCooldown: 10
   mediumCooldown: 5
   smallCooldown: 3
   energyBall: {fileID: 5315697560322831031, guid: 69610bb6021cdbf4ebce0828bb6bbcd3, type: 3}
   firingSpeed: 5
-  skeleton: {fileID: 8473673475128552362, guid: 3444e1cafd3dd204c8229db81b5c25f0, type: 3}
+  skeleton: {fileID: 1327776772219504626, guid: f178117786589264b82a706cf1d4d369, type: 3}
+  spike: {fileID: 4141767679825502193, guid: 15e27fb9ab6f50c48b8bacc63209b6a3, type: 3}
   attackPosition: {fileID: 2049932455763263036}
 --- !u!195 &4312034939231535169
 NavMeshAgent:
@@ -318,11 +319,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6971396124888834986, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6971396124888834986, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7153557755209933105, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_Name
@@ -330,7 +331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153557755209933105, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
