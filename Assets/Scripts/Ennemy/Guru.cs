@@ -29,10 +29,13 @@ public class Guru : Ennemy
     {
         if (Insphere())
         {
+            
+
             navMeshAgent.enabled = false;
             //animation d'attaque
             if (Time.time > timeStamp + cooldown)
             {
+                audioSource.PlayOneShot(audioSource.clip);
                 var inst = factory.GetNewInstance();
                 inst.transform.position = transform.forward + transform.position;
                 //Vector3 vector = new Vector3(transform.forward.z, 0, transform.forward.x).normalized;

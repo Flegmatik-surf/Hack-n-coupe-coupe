@@ -18,6 +18,9 @@ public class PlayerActionsController : MonoBehaviour
     protected Slider actionTwoSlider;
     protected Slider actionThreeSlider;
 
+    
+    
+
     private void Start()
     {
         actionOnePossible=true;
@@ -35,19 +38,21 @@ public class PlayerActionsController : MonoBehaviour
         if(Input.GetKey(KeyCode.Mouse0) && actionOnePossible==true)
         {
             ActionOne();
-            actionOnePossible=false;
+            
+            actionOnePossible =false;
             actionOneSlider.value=0;
         }
         if(Input.GetKey(KeyCode.Mouse1) && actionTwoPossible==true)
         {
             ActionTwo();
-            actionTwoPossible=false;
+            
+            actionTwoPossible =false;
             actionTwoSlider.value=0;
         }
         if(Input.GetKey(KeyCode.Space) && actionThreePossible==true)
         {
             ActionThree();
-            actionThreePossible=false;
+            actionThreePossible =false;
             actionThreeSlider.value=0;
         }
     }

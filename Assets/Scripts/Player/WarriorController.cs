@@ -15,10 +15,19 @@ public class WarriorController : PlayerActionsController
     private IEnumerator coroutine;
     [SerializeField] private GameObject tornadoAttack;
     public GameObject attackPosition;
-    
 
-// The Action One
-//--------------------------------------------------------------------------------------------
+    protected AudioSource audioSource;
+    [SerializeField] public AudioClip soundAttack1;
+    [SerializeField] public AudioClip soundAttack2;
+    [SerializeField] public AudioClip soundAttack3;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    // The Action One
+    //--------------------------------------------------------------------------------------------
     //Calls the coroutine that handles the action One
     public override void ActionOne()
     {
@@ -29,6 +38,7 @@ public class WarriorController : PlayerActionsController
     //This method is used to instantiate the basic attack
     private IEnumerator ActionOneCoroutine(float cooldown)
     {
+        audioSource.PlayOneShot(soundAttack1);
         GameObject new_attack = Instantiate(swordStrike);
         new_attack.tag="PlayerAttack";
         new_attack.transform.position=attackPosition.transform.position;
@@ -49,7 +59,8 @@ public class WarriorController : PlayerActionsController
 
     //This method is used to instantiate the ....
     private IEnumerator ActionTwoCoroutine(float cooldown)
-    {   
+    {
+        audioSource.PlayOneShot(soundAttack2);
         yield return new WaitForSeconds(cooldown);
         actionTwoPossible=true;
         actionTwoSlider.value=1;
@@ -68,6 +79,7 @@ public class WarriorController : PlayerActionsController
     //This method is used to instantiate the tornado-like attack
     private IEnumerator ActionThreeCoroutine(float cooldown)
     {
+        audioSource.PlayOneShot(soundAttack3);
         tornadoAttack.SetActive(true);
         gameObject.GetComponent<NavMeshAgent>().speed=gameObject.GetComponent<NavMeshAgent>().speed*1.5f;
         StartCoroutine(tornadoAttack.GetComponent<TornadoStrikeController>().LaunchAttack(1));

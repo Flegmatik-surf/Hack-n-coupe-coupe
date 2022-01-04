@@ -17,6 +17,10 @@ public class Ennemy : MonoBehaviour
     [SerializeField] protected float sphereAttack; //D'o� il peut l'attaquer
     [SerializeField] protected float cooldown = 1f;
 
+    
+    protected AudioSource audioSource;
+    
+
     //the tombstone used for revive :
     [SerializeField] protected GameObject tombstone;
 
@@ -52,6 +56,8 @@ public class Ennemy : MonoBehaviour
         playerTransform = player.transform;
         baseSpeed = navMeshAgent.speed;
         playerLife=player.GetComponent<LifeManager>();
+        audioSource = GetComponent<AudioSource>();
+        
     }
 
     private void Update()
@@ -122,6 +128,7 @@ public class Ennemy : MonoBehaviour
         BossTestHealth(); //a special function used EXCLUSIVELY by the boss
         if(currentHP<=0) //when the enemy dies
         {
+            
             GameObject new_tombstone = Instantiate(tombstone);
             new_tombstone.transform.position=transform.position;
             Destroy(gameObject);

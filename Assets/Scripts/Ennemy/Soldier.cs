@@ -22,11 +22,14 @@ public class Soldier : Ennemy
     {
         if (Insphere())
         {
+            
             //animation d'attaque
-            StartCoroutine(AttackAnimation());
+            
             navMeshAgent.enabled = false;
             if (Time.time > timeStamp + cooldown)
             {
+                StartCoroutine(AttackAnimation()); //a revoir
+                audioSource.PlayOneShot(audioSource.clip);
                 playerLife.TakeDamage(5);
                 timeStamp = Time.time;
             }
