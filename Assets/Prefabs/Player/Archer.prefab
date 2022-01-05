@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8894916689919153524}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3815259900504870933
 PrefabInstance:
@@ -51,7 +51,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: 8745dcecb0eafec409964dd1f0b7bb67, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: 8745dcecb0eafec409964dd1f0b7bb67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -348,8 +348,21 @@ MonoBehaviour:
   cooldownActionThree: 10
   attackPosition: {fileID: 7123311233809990155}
   arrow: {fileID: 4029632823462489803, guid: 902c91e69e86000408915880af537f1a, type: 3}
-  firingSpeed: 2000
+  firingSpeed: 5000
   trap: {fileID: 1986100714150415114, guid: e26b2fe04c56b0845b076f2362b37a01, type: 3}
   soundAttack1: {fileID: 8300000, guid: 54c8db080c7e04d449ac9392f0d60501, type: 3}
   soundAttack2: {fileID: 8300000, guid: c824de4c04a0c6b4da5b089e4cbba2aa, type: 3}
   soundAttack3: {fileID: 8300000, guid: 85fa416a5affa9d46a31f1af0ff070df, type: 3}
+--- !u!65 &4263240072851623036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894916689934501627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.4899225, z: 1}
+  m_Center: {x: 0, y: 1.2670352, z: 0}

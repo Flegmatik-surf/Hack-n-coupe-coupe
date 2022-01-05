@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8678541441467374662}
   - component: {fileID: 2490209726306150345}
   - component: {fileID: 1995068314784176986}
+  - component: {fileID: 2621745227037278790}
   m_Layer: 0
   m_Name: ChargedSwordStrike
   m_TagString: PlayerAttack
@@ -26,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8678541441467374663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 0, y: 0.0000000081979, z: 0.64}
+  m_LocalScale: {x: 155.02, y: 155.02, z: 155.02}
   m_Children:
   - {fileID: 1767661313035483144}
   m_Father: {fileID: 0}
@@ -58,9 +59,25 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7352993048211382826, guid: 4ec29024a6c4aca45aeaebe2e1183a8a, type: 3}
+--- !u!54 &2621745227037278790
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8678541441467374663}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2237523635391913955
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,13 +45,23 @@ public class InGameUIManager : MonoBehaviour
         victoryPopUp.SetActive(false);
         defeatPopUp.SetActive(false);
         inGameInfo.SetActive(true);
-        //TODO : impl?menter (apr?s qu'henri ait fini) les events pour bossHP
+        bossHealthBar.SetActive(false);
+      
         GameController.newWaveSignal += OnNewWave;
         LifeManager.playerHPChanged += OnPlayerHPChanged;
         GameController.victorySignal += OnVictory;
         LifeManager.defeatSignal += OnDefeat;
         Fosse.dieOnFosse += OnDefeat;
+        BossController.bossSpawn += OnBossSpawn;
+        BossController.bossLifeChanged += OnBossHPChanged;
         Presets();
+    }
+
+    private void OnBossSpawn()
+    {
+        Debug.Log("sapwned boss ?");
+        bossHealthSlider.value = 1f;
+        bossHealthBar.SetActive(true);
     }
 
     private void Update()
@@ -71,9 +81,14 @@ public class InGameUIManager : MonoBehaviour
         inGameWaveIndicatorText.text = $"Wave : {waveIndicator: 0}";
     }
 
-    private void OnPlayerHPChanged(float HealthRate)
+    private void OnPlayerHPChanged(float healthRate)
     {
-        playerHealthSlider.value = HealthRate;
+        playerHealthSlider.value = healthRate;
+    }
+
+    private void OnBossHPChanged(float healthBossRate)
+    {
+        bossHealthSlider.value = healthBossRate;
     }
 
     private void OnVictory()
@@ -163,7 +178,6 @@ public class InGameUIManager : MonoBehaviour
     {
         string result = "";
         int hours = Math.DivRem((int)timer, 3600, out int remainder);
-        Debug.Log(hours + "h " + remainder + "s");
         if (hours > 0)
         {
             result += hours + "h ";

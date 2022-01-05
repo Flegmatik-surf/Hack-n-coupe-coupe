@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,8 +53,13 @@ public class BossController : Ennemy
     private bool actionOnePossible;
     private bool actionTwoPossible;
 
+    //event pour mettre à jour l'UI du Boss.
+    public static event Action bossSpawn;
+    public static event Action<float> bossLifeChanged;
+
     //a list that will contain, at a given time, the number of active Tombstones :
     private GameObject[] activeTombstones;
+    private float initialMaxHP;
 
     //----------------------------------------------------------------------------------------
     //The various functions :
@@ -61,10 +67,18 @@ public class BossController : Ennemy
     {
         actionOnePossible=true;
         actionTwoPossible=true;
+        initialMaxHP = maxHP;
     }
 
+    private new void Start()
+    {
+        base.Start();
+        bossSpawn?.Invoke();
+    }
+
+
     //This function is called everytime the boss takes damage :
-    //it is called AFTER CURRENTHP AND SLIDER HAVE BEEN CHANGED
+    //it is called AFTER CURRENTHP AND SLIDER (LOCAL) HAVE BEEN CHANGED
     //DO NOT CHANGE THEM HERE
     public override void BossTestHealth()
     {
@@ -78,6 +92,7 @@ public class BossController : Ennemy
             phaseIndicator=3;
             maxHP=50;
         }
+        bossLifeChanged?.Invoke(currentHP / initialMaxHP); //invoke : update the Boss UI Health Bar
     }
 
     //This function calls the different attacks of the boss :
@@ -229,7 +244,7 @@ public class BossController : Ennemy
     {
         GameObject new_attack = Instantiate(energyBall);
         new_attack.transform.position=attackPosition.transform.position;
-        new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
+        new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed*10); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
     }
 
     //This function spawns a given amount of spikes :
@@ -237,7 +252,7 @@ public class BossController : Ennemy
     {
         //We start by finding 3 random locations suitable
         GameObject new_spike = Instantiate(spike);
-        new_spike.transform.position=transform.position;
+        new_spike.transform.position=transform.position+new Vector3(1,1,0); //PLACEHOLDER
     }
 
     //This function heals the boss for a given amount :
@@ -252,5 +267,6 @@ public class BossController : Ennemy
         {
             currentHP=currentHP+HealthNumber;
         }
+        bossLifeChanged?.Invoke(currentHP / initialMaxHP);
     }
 }
