@@ -50,7 +50,7 @@ public class Ennemy : MonoBehaviour
 
 
 
-    private void Start()
+    public void Start()
     {
         is_immobilized=false;
         navMeshAgent = GetComponent<NavMeshAgent>();
