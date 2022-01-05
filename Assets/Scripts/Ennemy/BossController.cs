@@ -252,7 +252,7 @@ public class BossController : Ennemy
     {
         //We start by finding 3 random locations suitable
         GameObject new_spike = Instantiate(spike);
-        new_spike.transform.position=transform.position;
+        new_spike.transform.position=transform.position+new Vector3(1,1,0); //PLACEHOLDER
     }
 
     //This function heals the boss for a given amount :
