@@ -10,13 +10,15 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private float distance, height;
 
-    private void Start()
+    private void Awake()
     {
+        print("Awake");
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
     }
     void Update()
     {
+        print(transform.position);
         FollowPlayer();
     }
 
