@@ -13,16 +13,24 @@ public class DeplacementPlayer : MonoBehaviour
     NavMeshAgent agent;
     Vector3 movement;
 
+    Camera camera;
+    [SerializeField] float distanceCamera;
+    [SerializeField] float heightCamera;
+
+
     private void Start()
     {
         rb = gameObject.GetComponentInChildren<Rigidbody>();
         is_immobilized=false;
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = true;
+        camera = GameObject.FindObjectOfType<Camera>();
+        print(camera);
     }
 
     void Update()
     {
+        FollowPlayer();
         LookAt();
         if(is_immobilized==false)
         {
@@ -80,4 +88,11 @@ public class DeplacementPlayer : MonoBehaviour
     {
         is_immobilized=!is_immobilized;
     }
+
+    void FollowPlayer()
+    {
+        camera.transform.position = new Vector3(transform.position.x, transform.position.y + heightCamera, transform.position.z - distanceCamera);
+        camera.transform.LookAt(transform);
+    }
+
 }
