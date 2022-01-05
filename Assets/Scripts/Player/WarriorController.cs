@@ -16,15 +16,15 @@ public class WarriorController : PlayerActionsController
     private IEnumerator coroutine;
     [SerializeField] private GameObject tornadoAttack;
     public GameObject attackPosition;
-
-    public static event Action<float> warriorActionOneCalled;
-    public static event Action<float> warriorActionTwoCalled;
-    public static event Action<float> warriorActionThreeCalled;
-
     protected AudioSource audioSource;
     [SerializeField] public AudioClip soundAttack1;
     [SerializeField] public AudioClip soundAttack2;
     [SerializeField] public AudioClip soundAttack3;
+
+    
+    public static event Action<float> warriorActionOneCalled;
+    public static event Action<float> warriorActionTwoCalled;
+    public static event Action<float> warriorActionThreeCalled;
 
     private void Awake()
     {
