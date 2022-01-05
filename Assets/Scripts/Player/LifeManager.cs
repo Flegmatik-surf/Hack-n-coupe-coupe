@@ -9,6 +9,7 @@ public class LifeManager : MonoBehaviour {
 
     public float maxHP;
     public float currentHP;
+    public bool invulnerable;
     GameObject spawn;
 
     //event pour l'UI
@@ -18,6 +19,7 @@ public class LifeManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
+        invulnerable=false;
         spawn = GameObject.FindGameObjectWithTag("Respawn");
     }
 
@@ -32,13 +34,15 @@ public class LifeManager : MonoBehaviour {
 
     public void TakeDamage(float damage)
     {
-        currentHP -= damage;
-        //to adjust the lifebar, we just change it's value between 1 (max=current HP) and 0 (ennemy ded)
-        playerHPChanged?.Invoke(currentHP / maxHP);
-        if(currentHP<=0)
-        {
-            defeatSignal?.Invoke();
-            //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+        if(invulnerable==false){
+            currentHP -= damage;
+            //to adjust the lifebar, we just change it's value between 1 (max=current HP) and 0 (ennemy ded)
+            playerHPChanged?.Invoke(currentHP / maxHP);
+            if(currentHP<=0)
+            {
+                defeatSignal?.Invoke();
+                //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+            }
         }
     }
 

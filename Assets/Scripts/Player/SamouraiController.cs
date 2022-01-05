@@ -28,8 +28,11 @@ public class SamouraiController : SamouraiActionsController
     [SerializeField] public AudioClip soundAttack2;
     [SerializeField] public AudioClip soundAttack3;
 
+    public bool invul;
+
     private void Awake()
     {
+        invul=GetComponent<LifeManager>().invulnerable;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -79,9 +82,11 @@ public class SamouraiController : SamouraiActionsController
         audioSource.PlayOneShot(soundAttack2);
         moveClickScript.ChangeState();
         dashAttack.SetActive(true);
+        GetComponent<LifeManager>().invulnerable=true;
         samouraiRigidbody.velocity=transform.forward*dashSpeed;
         yield return new WaitForSeconds(0.3f);
         dashAttack.SetActive(false);
+        GetComponent<LifeManager>().invulnerable=false;
         moveClickScript.ChangeState();
         yield return new WaitForSeconds(cooldown);
         actionTwoPossible=true;
