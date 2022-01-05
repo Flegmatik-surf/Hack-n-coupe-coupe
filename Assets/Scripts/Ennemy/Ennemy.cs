@@ -15,6 +15,10 @@ public class Ennemy : MonoBehaviour
     [SerializeField] protected float sphereAttack; //D'o� il peut l'attaquer
     [SerializeField] protected float cooldown = 1f;
 
+    
+    protected AudioSource audioSource;
+    
+
     //the tombstone used for revive :
     [SerializeField] protected GameObject tombstone;
 
@@ -54,6 +58,8 @@ public class Ennemy : MonoBehaviour
         playerTransform = player.transform;
         baseSpeed = navMeshAgent.speed;
         playerLife=player.GetComponent<LifeManager>();
+        audioSource = GetComponent<AudioSource>();
+        
     }
 
     private void Update()

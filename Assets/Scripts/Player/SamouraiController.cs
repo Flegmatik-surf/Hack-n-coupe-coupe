@@ -23,6 +23,18 @@ public class SamouraiController : SamouraiActionsController
     [SerializeField] private GameObject chargedStrike;
     private float damageDealt;
 
+    protected AudioSource audioSource;
+    [SerializeField] public AudioClip soundAttack1;
+    [SerializeField] public AudioClip soundAttack2;
+    [SerializeField] public AudioClip soundAttack3;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    // The Action One
+    //--------------------------------------------------------------------------------------------
     public static event Action<float> samouraiActionOneCalled;
     public static event Action<float> samouraiActionTwoCalled;
     public static event Action<float> samouraiActionThreeCalled;
@@ -40,6 +52,7 @@ public class SamouraiController : SamouraiActionsController
     //This method is used to instantiate the shuriken attack
     private IEnumerator ActionOneCoroutine(float cooldown)
     {
+        audioSource.PlayOneShot(soundAttack1);
         GameObject new_attack = Instantiate(shuriken);
         new_attack.tag="PlayerAttack";
         new_attack.transform.position=attackPosition.transform.position;
@@ -63,6 +76,7 @@ public class SamouraiController : SamouraiActionsController
     //This method is used to instantiate the Dash
     private IEnumerator ActionTwoCoroutine(float cooldown)
     {
+        audioSource.PlayOneShot(soundAttack2);
         moveClickScript.ChangeState();
         dashAttack.SetActive(true);
         samouraiRigidbody.velocity=transform.forward*dashSpeed;
@@ -88,8 +102,9 @@ public class SamouraiController : SamouraiActionsController
     //This method is used to instantiate the ....
     private IEnumerator ActionThreeCoroutine(float cooldown, int chargeIndicator)
     {
+        audioSource.PlayOneShot(soundAttack3);
         //we start by taking the right cooldown and damage per the charge indicator :
-        if(chargeIndicator==1){cooldown=4;damageDealt=4;}
+        if (chargeIndicator==1){cooldown=4;damageDealt=4;}
         if(chargeIndicator==2){cooldown=5;damageDealt=7;}
         if(chargeIndicator==3){cooldown=7;damageDealt=10;}
         //We then add the new_attack as always :

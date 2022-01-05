@@ -8,7 +8,7 @@ public class Arrow : MonoBehaviour
     private LifeManager playerLife;
     Vector3 target;
 
-    private float speed=0.1f;
+    private float speed=1f;
     
     void Start()
     {

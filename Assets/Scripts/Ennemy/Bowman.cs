@@ -24,6 +24,7 @@ public class Bowman : Ennemy
             navMeshAgent.enabled = false;
             if (Time.time > timeStamp + cooldown)
             {
+                audioSource.PlayOneShot(audioSource.clip);
                 var inst = factory.GetNewInstance();
                 //inst.transform.Rotate(0,0, - (180 / Mathf.PI)*Mathf.Acos(target.z));
                 //inst.transform.Rotate(0, 65,90);
