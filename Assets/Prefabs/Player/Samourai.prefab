@@ -171,9 +171,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 419170813586463917, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4682858
+      objectReference: {fileID: 0}
+    - target: {fileID: 419170813586463917, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
+      propertyPath: m_Center.y
+      value: 0.7341429
+      objectReference: {fileID: 0}
     - target: {fileID: 419170813586463919, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 419170814277921801, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
       propertyPath: m_RootOrder
@@ -399,6 +407,7 @@ MonoBehaviour:
   soundAttack1: {fileID: 8300000, guid: ecf475c0218a7c14e9c905cff4d064d7, type: 3}
   soundAttack2: {fileID: 8300000, guid: 603606b79c1a0ee4dae7fcafaa1a462d, type: 3}
   soundAttack3: {fileID: 8300000, guid: 10538e5405626cf43a442055745a623f, type: 3}
+  invul: 0
 --- !u!114 &4988841429182832740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +423,19 @@ MonoBehaviour:
   actionOnePossible: 1
   actionTwoPossible: 1
   actionThreePossible: 1
+--- !u!65 &8478646108651247192
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26402095007055008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.440836, z: 1}
+  m_Center: {x: 0, y: 1.2111738, z: 0}
 --- !u!1001 &2562762575887437280
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -244,7 +244,7 @@ public class BossController : Ennemy
     {
         GameObject new_attack = Instantiate(energyBall);
         new_attack.transform.position=attackPosition.transform.position;
-        new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
+        new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed*10); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
     }
 
     //This function spawns a given amount of spikes :

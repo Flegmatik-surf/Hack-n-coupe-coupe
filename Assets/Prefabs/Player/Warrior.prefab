@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1312811819539607491}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1722972956900492234
 PrefabInstance:
@@ -271,6 +271,19 @@ MonoBehaviour:
   actionOnePossible: 1
   actionTwoPossible: 1
   actionThreePossible: 1
+--- !u!65 &1899521744675047301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312811819596381260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.403886, z: 1}
+  m_Center: {x: 0, y: 1.18195, z: 0}
 --- !u!1001 &6178635456976942171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,7 +293,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1346076831916081188, guid: 32d81d42ce97bfd4fb858806ccfa7bfb, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1346076831916081188, guid: 32d81d42ce97bfd4fb858806ccfa7bfb, type: 3}
       propertyPath: m_LocalScale.x
@@ -370,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: c04a63d584e38cb49a59057edbeb4e2c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: c04a63d584e38cb49a59057edbeb4e2c, type: 3}
       propertyPath: m_LocalPosition.x
