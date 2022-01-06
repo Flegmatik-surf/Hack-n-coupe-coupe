@@ -91,7 +91,7 @@ public class WarriorController : PlayerActionsController
             transform.position = MathParabola.Parabola(start,finish, duration, animation / duration);
             yield return null;
         }
-        
+        audioSource.PlayOneShot(soundAttack2);
         yield return new WaitForSecondsRealtime(0.5f);
         agent.enabled = true;
         yield return new WaitForSeconds(cooldown);
