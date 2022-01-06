@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1205222818969589578}
   - component: {fileID: 4003228142172138668}
   - component: {fileID: 1849128739813829404}
+  - component: {fileID: 774566232707167705}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Ennemy
@@ -272,6 +273,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &774566232707167705
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473673475128552362}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3407531421381069153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -363,6 +380,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3966050426792683544, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6971396124888834986, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -370,6 +391,10 @@ PrefabInstance:
     - target: {fileID: 6971396124888834986, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6971396124888834986, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7153557755209933105, guid: e246b14d0c69d404a93b51abafacdebe, type: 3}
       propertyPath: m_Name

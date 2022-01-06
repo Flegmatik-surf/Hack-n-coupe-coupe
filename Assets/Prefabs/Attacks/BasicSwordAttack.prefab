@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8528466367844170882}
-  - component: {fileID: 5515706860193319364}
-  - component: {fileID: 5186108266470373681}
+  - component: {fileID: 1210346264598586510}
   m_Layer: 0
   m_Name: BasicSwordAttack
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5515706860193319364
+--- !u!114 &1210346264598586510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,21 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8528466367844170883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1adc778835e8624ea7a30d1bb534eb8, type: 3}
+  m_Script: {fileID: 11500000, guid: f361861eb1a2c1f47bc714d6c2859f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.3
   damage: 5
---- !u!135 &5186108266470373681
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528466367844170883}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

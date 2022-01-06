@@ -20,6 +20,12 @@ public class WarriorController : PlayerActionsController
     [SerializeField] public AudioClip soundAttack1;
     [SerializeField] public AudioClip soundAttack2;
     [SerializeField] public AudioClip soundAttack3;
+
+    private float speed;
+
+    //the animator :
+    [SerializeField] private Animator animator;
+    
     NavMeshAgent agent;
     float duration=2f;
     
@@ -31,6 +37,7 @@ public class WarriorController : PlayerActionsController
     {
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
+        speed = gameObject.GetComponent<NavMeshAgent>().speed;
     }
 
     // The Action One
@@ -46,10 +53,12 @@ public class WarriorController : PlayerActionsController
     //This method is used to instantiate the basic attack
     private IEnumerator ActionOneCoroutine(float cooldown)
     {
+        StartCoroutine(AttackAnimation());
         audioSource.PlayOneShot(soundAttack1);
         GameObject new_attack = Instantiate(swordStrike);
         new_attack.tag="PlayerAttack";
         new_attack.transform.position=attackPosition.transform.position;
+        StartCoroutine(new_attack.gameObject.GetComponent<WarriorAttackController>().LaunchAttack());
         yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;
         actionOneSlider.value=1;
@@ -105,16 +114,23 @@ public class WarriorController : PlayerActionsController
     //This method is used to instantiate the tornado-like attack
     private IEnumerator ActionThreeCoroutine(float cooldown)
     {
+        StartCoroutine(AttackAnimation());
         audioSource.PlayOneShot(soundAttack3);
         tornadoAttack.SetActive(true);
-        gameObject.GetComponent<NavMeshAgent>().speed=gameObject.GetComponent<NavMeshAgent>().speed*1.5f;
+        gameObject.GetComponent<NavMeshAgent>().speed=speed*1.5f;
         StartCoroutine(tornadoAttack.GetComponent<TornadoStrikeController>().LaunchAttack(1));
         yield return new WaitForSeconds(3f);
         tornadoAttack.SetActive(false);
-        gameObject.GetComponent<NavMeshAgent>().speed=gameObject.GetComponent<NavMeshAgent>().speed/1.5f;
+        gameObject.GetComponent<NavMeshAgent>().speed=speed/1.5f;
         yield return new WaitForSeconds(cooldown);
         actionThreePossible=true;
         actionThreeSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
+
+    private IEnumerator AttackAnimation(){
+        animator.SetBool("attacking",true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("attacking",false);
+    }
 }

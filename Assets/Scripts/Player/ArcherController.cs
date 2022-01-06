@@ -27,6 +27,9 @@ public class ArcherController : PlayerActionsController
     public static event Action<float> bowmanActionTwoCalled;
     public static event Action<float> bowmanActionThreeCalled;
 
+    //the animator :
+    [SerializeField] private Animator animator;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -44,6 +47,7 @@ public class ArcherController : PlayerActionsController
     //This method is used to instantiate the arrow shot
     private IEnumerator ActionOneCoroutine(float cooldown)
     {
+        StartCoroutine(AttackAnimation());
         audioSource.PlayOneShot(soundAttack1);
         GameObject new_attack = Instantiate(arrow);
         new_attack.tag="PlayerAttack";
@@ -69,6 +73,7 @@ public class ArcherController : PlayerActionsController
     //This method is used to instantiate the trap
     private IEnumerator ActionTwoCoroutine(float cooldown)
     {
+        StartCoroutine(AttackAnimation());
         audioSource.PlayOneShot(soundAttack2);
         GameObject new_attack=Instantiate(trap);
         new_attack.transform.position=transform.position;
@@ -102,4 +107,9 @@ public class ArcherController : PlayerActionsController
         actionThreePossible=true;
     }
 //--------------------------------------------------------------------------------------------
+    private IEnumerator AttackAnimation(){
+        animator.SetBool("attacking",true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("attacking",false);
+    }
 }

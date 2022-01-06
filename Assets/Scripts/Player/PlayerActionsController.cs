@@ -37,7 +37,6 @@ public class PlayerActionsController : MonoBehaviour
         if(Input.GetKey(KeyCode.Mouse0) && actionOnePossible==true)
         {
             ActionOne();
-            
             actionOnePossible =false;
             actionOneSlider.value=0;
         }
