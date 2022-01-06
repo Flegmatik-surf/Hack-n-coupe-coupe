@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4006432731515157267}
   - component: {fileID: 6914628373665169261}
   - component: {fileID: 7150652051445904147}
+  - component: {fileID: 6229252368200530804}
   m_Layer: 0
   m_Name: Bowman
   m_TagString: Ennemy
@@ -60,6 +61,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 2900402823827021245}
   slider: {fileID: 8938794485265667220}
   can_be_revived: 1
+  animator: {fileID: 6914628373665169261}
   arrow: {fileID: 772990647041773676, guid: d19e7d288803e984586e5efcffa39334, type: 3}
 --- !u!65 &3570035584547032016
 BoxCollider:
@@ -105,8 +107,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330856146117535307}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8745dcecb0eafec409964dd1f0b7bb67, type: 3}
-  m_Controller: {fileID: 9100000, guid: c1bc96af916b10f45bbef7be704ba236, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 6113d0ea44252774db53fa756483807d, type: 3}
+  m_Controller: {fileID: 9100000, guid: 56519eb81d5abb444b542f83397188fb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -211,6 +213,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &6229252368200530804
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330856146117535307}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1330856146618814559
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +377,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e1cd1a76ecd557440a55dfaeead52541, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 6113d0ea44252774db53fa756483807d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6113d0ea44252774db53fa756483807d, type: 3}
 --- !u!4 &1826088611520240313 stripped
 Transform:

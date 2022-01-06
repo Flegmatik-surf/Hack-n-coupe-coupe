@@ -31,9 +31,10 @@ public class WarriorAttackController : MonoBehaviour
     }
 
     private IEnumerator PushBackEnnemies(Collider c){
+        Debug.Log(c);
         c.GetComponent<NavMeshAgent>().enabled=false;
         c.GetComponent<Rigidbody>().AddForce(transform.forward*2000);
-        yield return new WaitForSeconds(1f);
+        yield return null;
         c.GetComponent<NavMeshAgent>().enabled=true;
     }
 }

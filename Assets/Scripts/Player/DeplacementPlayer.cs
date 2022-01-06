@@ -59,7 +59,6 @@ public class DeplacementPlayer : MonoBehaviour
     private void Move()
     {
         animator.SetFloat("speed",agent.velocity.magnitude/agent.speed);
-        Debug.Log(velocity);
         movement = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
         Vector3 moveDestination = transform.position + movement;
         agent.destination = moveDestination;

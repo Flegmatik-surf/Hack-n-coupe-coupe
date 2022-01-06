@@ -29,10 +29,9 @@ public class Guru : Ennemy
     {
         if (Insphere())
         {
-            
-
             navMeshAgent.enabled = false;
             //animation d'attaque
+            StartCoroutine(AttackAnimation());
             if (Time.time > timeStamp + cooldown)
             {
                 audioSource.PlayOneShot(audioSource.clip);
