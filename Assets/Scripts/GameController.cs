@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
     private void Start() 
     {
         //we start by selecting the player :
-        if(selectedPlayer=="Samourai")
+        if (selectedPlayer=="Samourai")
         {
             player = Instantiate(Samourai);
         }
@@ -95,9 +95,9 @@ public class GameController : MonoBehaviour
         string keyNbGames = selectedPlayer + " : games";
         PlayerPrefs.SetInt(keyNbGames, (PlayerPrefs.GetInt(keyNbGames) + 1) );
         player.transform.position=spawn.transform.position;
-        
+
         //we start the first wave :
-        enemyNumber=0;
+        enemyNumber =0;
         waveIndicator=1;
         U1=1;
         U0=0;

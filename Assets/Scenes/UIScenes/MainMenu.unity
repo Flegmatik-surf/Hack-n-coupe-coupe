@@ -8024,7 +8024,7 @@ MonoBehaviour:
   titleScreenContainer: {fileID: 1492051724}
   settingsScreenContainer: {fileID: 1005313815}
   selectCharacterScreenContainer: {fileID: 233282998}
-  sceneIndexs: 01000000
+  sceneIndexs: 010000000200000003000000
 --- !u!82 &1473956020
 AudioSource:
   m_ObjectHideFlags: 0
