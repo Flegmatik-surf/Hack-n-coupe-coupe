@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -8,13 +10,35 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject settingsScreenContainer;
     [SerializeField] private GameObject selectCharacterScreenContainer;
 
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
+
+
     [SerializeField] private int[] sceneIndexs = { 1 };
     AudioSource audioSource;
+    Resolution[] resolutions;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         print(audioSource);
+
+        int startResolution = 0;
+        resolutions = Screen.resolutions;
+        List<string> options = new List<string>();
+        for(int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.height)
+            {
+                startResolution = i;
+            }
+        }
+        resolutionDropdown.ClearOptions();
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = startResolution;
+        resolutionDropdown.RefreshShownValue();
     }
 
     public void GoToSettingsScreen()
@@ -39,6 +63,18 @@ public class MainMenuManager : MonoBehaviour
         titleScreenContainer.SetActive(false);
         settingsScreenContainer.SetActive(false);
         selectCharacterScreenContainer.SetActive(true);
+    }
+
+    public void SetGraphicsQuality(int qualityIndex)
+    {
+        Debug.Log("quality : " + qualityIndex);
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
+
+    public void SetResolution(int resolutionInt)
+    {
+        Resolution resolution = resolutions[resolutionInt];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen); 
     }
 
     public void PlayWithCharacter(string character)
