@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WarriorAttackController : MonoBehaviour
 {
@@ -23,8 +24,16 @@ public class WarriorAttackController : MonoBehaviour
         {
             if(c.gameObject.tag=="Ennemy")
             {
+                StartCoroutine(PushBackEnnemies(c));
                 c.gameObject.GetComponent<Ennemy>().TakeDamage(damage);
             }
         }
+    }
+
+    private IEnumerator PushBackEnnemies(Collider c){
+        c.GetComponent<NavMeshAgent>().enabled=false;
+        c.GetComponent<Rigidbody>().AddForce(transform.forward*2000);
+        yield return new WaitForSeconds(1f);
+        c.GetComponent<NavMeshAgent>().enabled=true;
     }
 }

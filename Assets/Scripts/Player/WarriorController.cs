@@ -21,6 +21,8 @@ public class WarriorController : PlayerActionsController
     [SerializeField] public AudioClip soundAttack2;
     [SerializeField] public AudioClip soundAttack3;
 
+    private float speed;
+
     
     public static event Action<float> warriorActionOneCalled;
     public static event Action<float> warriorActionTwoCalled;
@@ -29,6 +31,7 @@ public class WarriorController : PlayerActionsController
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        speed = gameObject.GetComponent<NavMeshAgent>().speed;
     }
 
     // The Action One
@@ -48,6 +51,7 @@ public class WarriorController : PlayerActionsController
         GameObject new_attack = Instantiate(swordStrike);
         new_attack.tag="PlayerAttack";
         new_attack.transform.position=attackPosition.transform.position;
+        StartCoroutine(new_attack.gameObject.GetComponent<WarriorAttackController>().LaunchAttack());
         yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;
         actionOneSlider.value=1;
@@ -89,11 +93,11 @@ public class WarriorController : PlayerActionsController
     {
         audioSource.PlayOneShot(soundAttack3);
         tornadoAttack.SetActive(true);
-        gameObject.GetComponent<NavMeshAgent>().speed=gameObject.GetComponent<NavMeshAgent>().speed*1.5f;
+        gameObject.GetComponent<NavMeshAgent>().speed=speed*1.5f;
         StartCoroutine(tornadoAttack.GetComponent<TornadoStrikeController>().LaunchAttack(1));
         yield return new WaitForSeconds(3f);
         tornadoAttack.SetActive(false);
-        gameObject.GetComponent<NavMeshAgent>().speed=gameObject.GetComponent<NavMeshAgent>().speed/1.5f;
+        gameObject.GetComponent<NavMeshAgent>().speed=speed/1.5f;
         yield return new WaitForSeconds(cooldown);
         actionThreePossible=true;
         actionThreeSlider.value=1;
