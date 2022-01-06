@@ -91,18 +91,17 @@ public class WarriorController : PlayerActionsController
             transform.position = MathParabola.Parabola(start,finish, duration, animation / duration);
             yield return null;
         }
+        audioSource.PlayOneShot(soundAttack2);
+        yield return new WaitForSecondsRealtime(0.5f);
+        agent.enabled = true;
         //when the player touches ground, it pushes ennemies :
         Collider[] colliders = Physics.OverlapSphere(transform.position,5f);
         foreach(Collider c in colliders)
         {
             c.GetComponent<NavMeshAgent>().enabled=false;
             c.GetComponent<Rigidbody>().AddForce(transform.forward*2000);
-            yield return null;
             c.GetComponent<NavMeshAgent>().enabled=true;
         }
-        audioSource.PlayOneShot(soundAttack2);
-        yield return new WaitForSecondsRealtime(0.5f);
-        agent.enabled = true;
         yield return new WaitForSeconds(cooldown);
 
         actionTwoPossible =true;

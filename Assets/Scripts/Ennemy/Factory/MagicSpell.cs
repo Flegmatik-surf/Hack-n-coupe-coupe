@@ -28,15 +28,22 @@ public class MagicSpell : MonoBehaviour
         transform.Translate(speed * target.normalized);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision body)
     {
-
-
-        if (collision.gameObject.tag == "Player")
+        if(gameObject.tag=="PlayerAttack" && body.gameObject.tag=="Ennemy")
         {
-            playerLife.TakeDamage(10);
+            body.gameObject.GetComponent<Ennemy>().TakeDamage(10);
+            Destroy(gameObject);
         }
-        Destroy(this.gameObject);
+        if(gameObject.tag=="EnnemyAttack" && body.gameObject.tag=="Player")
+        {
+            body.gameObject.GetComponent<LifeManager>().TakeDamage(10);
+            Destroy(gameObject);
+        }
+        if(body.gameObject.tag=="Wall")
+        {
+            Destroy(gameObject);
+        }
     }
 
 
