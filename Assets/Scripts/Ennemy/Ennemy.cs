@@ -37,18 +37,12 @@ public class Ennemy : MonoBehaviour
     [SerializeField] private GameObject healthBarUI;
     [SerializeField] private Slider slider;
 
-    [SerializeField] public bool can_be_revived;
+    [SerializeField] public bool can_be_revived; //indicates wether an ennemy can be revived or not
 
     protected float timeStamp = 0f;
 
-
-    //true si player dans la sphere de visuel
-
-
-    //true si player dans la sphere d'attaque
-    //private bool Insphere { get { return Vector3.Distance(transform.position, player.position) < sphereAttack; } }
-
-
+    //the animator :
+    [SerializeField] private Animator animator;
 
     public void Start()
     {
@@ -112,7 +106,7 @@ public class Ennemy : MonoBehaviour
     {
         if (Inrange() && is_immobilized==false)
         {
-            Animation();
+            WalkAnimation();
             Vector3 targetPosition = new Vector3(playerTransform.position.x,
                                         this.transform.position.y,
                                         playerTransform.position.z);
@@ -123,7 +117,17 @@ public class Ennemy : MonoBehaviour
         }
     }
 
-    public virtual void Animation(){}
+    //the function handling the  walk animation :
+    private void WalkAnimation(){
+        animator.SetFloat("speed",navMeshAgent.velocity.magnitude/navMeshAgent.speed);
+    }
+
+    //the function handling the attack animation :
+    public IEnumerator AttackAnimation(){
+        animator.SetBool("attacking",true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("attacking",false);
+    }
 
     public virtual void Attack(){}
 

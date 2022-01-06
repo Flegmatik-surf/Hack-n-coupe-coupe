@@ -8,6 +8,7 @@ public class Bowman : Ennemy
     private ArrowFactory factory;
     private Vector3 offset;
     Vector3 target;
+    
     private void Awake()
     {
         factory = arrow.GetComponent<ArrowFactory>();
@@ -20,6 +21,7 @@ public class Bowman : Ennemy
     {
         if (Insphere())
         {
+            StartCoroutine(AttackAnimation());
             //animation d'attaque
             navMeshAgent.enabled = false;
             if (Time.time > timeStamp + cooldown)
@@ -34,12 +36,8 @@ public class Bowman : Ennemy
                 timeStamp = Time.time;
             }
             navMeshAgent.enabled = true;
-
         }
-
     }
-
-   
 
 
 }
