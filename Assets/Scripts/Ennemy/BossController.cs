@@ -242,6 +242,7 @@ public class BossController : Ennemy
     //This function launches a ball of energy :
     private void BlastAttack()
     {
+        StartCoroutine(AttackAnimation());
         GameObject new_attack = Instantiate(energyBall);
         new_attack.transform.position=attackPosition.transform.position;
         new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed*10); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
