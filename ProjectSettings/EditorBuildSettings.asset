@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Arene1/Arene1.unity
     guid: 151de4840a9fdef49bd73e4d4b5887a1
   - enabled: 1
-    path: Assets/Scenes/DeathScene.unity
-    guid: a3423d834af819c47b73dc6230b1cbf9
+    path: Assets/Scenes/map1/Map1.unity
+    guid: 325a08f87e3124c40aa0b7bdc52354b9
+  - enabled: 1
+    path: Assets/Scenes/map2/Map2.unity
+    guid: 139342224d4c47b4294fcfaa82b695fa
+  - enabled: 1
+    path: Assets/Scenes/map3/Map3.unity
+    guid: 9c0b27acda7e3b34fa11e953d875e940
   m_configObjects: {}
