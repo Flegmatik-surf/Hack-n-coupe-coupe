@@ -125,6 +125,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 419170814277921801, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
   m_PrefabInstance: {fileID: 1722972956900492234}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1899521744675047301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312811819596381260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.403886, z: 1}
+  m_Center: {x: 0, y: 1.18195, z: 0}
 --- !u!82 &3809048495992072478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -257,7 +270,7 @@ MonoBehaviour:
   actionThreePossible: 1
   swordStrike: {fileID: 8528466367844170883, guid: 5421f87be39c0404c807d39eef9854ce, type: 3}
   cooldownActionOne: 1
-  cooldownActionTwo: 0
+  cooldownActionTwo: 5
   cooldownActionThree: 5
   tornadoAttack: {fileID: 5120827562704221310}
   attackPosition: {fileID: 1410812044}
@@ -279,19 +292,6 @@ MonoBehaviour:
   actionOnePossible: 1
   actionTwoPossible: 1
   actionThreePossible: 1
---- !u!65 &1899521744675047301
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312811819596381260}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.403886, z: 1}
-  m_Center: {x: 0, y: 1.18195, z: 0}
 --- !u!1001 &6178635456976942171
 PrefabInstance:
   m_ObjectHideFlags: 0

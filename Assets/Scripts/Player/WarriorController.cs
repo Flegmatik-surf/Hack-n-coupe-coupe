@@ -20,7 +20,8 @@ public class WarriorController : PlayerActionsController
     [SerializeField] public AudioClip soundAttack1;
     [SerializeField] public AudioClip soundAttack2;
     [SerializeField] public AudioClip soundAttack3;
-
+    NavMeshAgent agent;
+    float duration=2f;
     
     public static event Action<float> warriorActionOneCalled;
     public static event Action<float> warriorActionTwoCalled;
@@ -29,6 +30,7 @@ public class WarriorController : PlayerActionsController
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // The Action One
@@ -68,8 +70,24 @@ public class WarriorController : PlayerActionsController
     private IEnumerator ActionTwoCoroutine(float cooldown)
     {
         audioSource.PlayOneShot(soundAttack2);
+        
+        agent.enabled = false;
+        Vector3 start = transform.position;
+        Vector3 finish = start + transform.forward*6f;
+        finish.y = 0;
+        float animation = 0f;
+        while (animation < duration)
+        {
+            animation += Time.deltaTime;
+            transform.position = MathParabola.Parabola(start,finish, duration, animation / duration);
+            yield return null;
+        }
+        
+        yield return new WaitForSecondsRealtime(0.5f);
+        agent.enabled = true;
         yield return new WaitForSeconds(cooldown);
-        actionTwoPossible=true;
+
+        actionTwoPossible =true;
         actionTwoSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
