@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject titleScreenContainer;
     [SerializeField] private GameObject settingsScreenContainer;
     [SerializeField] private GameObject selectCharacterScreenContainer;
+
     [SerializeField] private int startScene;
     AudioSource audioSource;
 
@@ -53,4 +54,5 @@ public class MainMenuManager : MonoBehaviour
         Debug.Log("On quitte le jeu !");
         Application.Quit();
     }
+
 }

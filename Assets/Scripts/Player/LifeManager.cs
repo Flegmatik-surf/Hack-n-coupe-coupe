@@ -10,6 +10,7 @@ public class LifeManager : MonoBehaviour {
     public float maxHP;
     public float currentHP;
     public bool invulnerable;
+    private int currentWave;
     GameObject spawn;
 
     //event pour l'UI
@@ -21,6 +22,7 @@ public class LifeManager : MonoBehaviour {
     {
         invulnerable=false;
         spawn = GameObject.FindGameObjectWithTag("Respawn");
+        GameController.newWaveSignal += OnNewWave;
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class LifeManager : MonoBehaviour {
             if(currentHP<=0)
             {
                 defeatSignal?.Invoke();
-                //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+                MaxWaveUpdateStats(currentWave);
             }
         }
     }
@@ -60,5 +62,24 @@ public class LifeManager : MonoBehaviour {
         currentHP=maxHP;
         playerHPChanged?.Invoke(currentHP / maxHP);
 
+    }
+
+
+   //------------------- Auxiliary function in order to update maxWave stat of the current player ---------
+    private void OnNewWave(string waveIndicator)
+    {
+        currentWave = int.Parse(waveIndicator);
+    }
+
+    //auxilary function in order to update the max Wave Stats of the selected player
+    private void MaxWaveUpdateStats(int lastWaveOfTheGame)
+    {
+        string keyMaxWave = PlayerPrefs.GetString("selectedPlayer")  + " : maxWave";
+        int registeredMaxWave = PlayerPrefs.GetInt(keyMaxWave);
+
+        if (registeredMaxWave < lastWaveOfTheGame)
+        {
+            PlayerPrefs.SetInt(keyMaxWave, lastWaveOfTheGame);
+        }
     }
 }

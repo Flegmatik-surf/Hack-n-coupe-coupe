@@ -92,6 +92,8 @@ public class GameController : MonoBehaviour
         {
             player = Instantiate(Archer);
         }
+        string keyNbGames = selectedPlayer + " : games";
+        PlayerPrefs.SetInt(keyNbGames, (PlayerPrefs.GetInt(keyNbGames) + 1) );
         player.transform.position=spawn.transform.position;
         
         //we start the first wave :
@@ -172,6 +174,12 @@ public class GameController : MonoBehaviour
     {
         victorySignal?.Invoke();
         print("Game over !");
+
+        string keyMaxWave = PlayerPrefs.GetString("selectedPlayer") + " : maxWave";
+        PlayerPrefs.SetInt(keyMaxWave, waveIndicator);
+
+        string keyWin = selectedPlayer + " : win";
+        PlayerPrefs.SetInt(keyWin, 1); //display a medal in select menu
         //UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         //Application.Quit();
     }
