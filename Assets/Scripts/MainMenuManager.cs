@@ -8,7 +8,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject settingsScreenContainer;
     [SerializeField] private GameObject selectCharacterScreenContainer;
 
-    [SerializeField] private int startScene;
+    [SerializeField] private int[] sceneIndexs = { 1 };
     AudioSource audioSource;
 
     private void Awake()
@@ -45,7 +45,7 @@ public class MainMenuManager : MonoBehaviour
     {
         audioSource.Play();
         PlayerPrefs.SetString("selectedPlayer", character);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(startScene);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(RandomScene());
     }
 
     public void QuitGame()
@@ -53,6 +53,14 @@ public class MainMenuManager : MonoBehaviour
         audioSource.Play();
         Debug.Log("On quitte le jeu !");
         Application.Quit();
+    }
+
+
+    //--------------- auxilary functions ------------------
+    private int RandomScene()
+    {
+        int n = sceneIndexs.Length;
+        return sceneIndexs[Random.Range(0, n)];
     }
 
 }
