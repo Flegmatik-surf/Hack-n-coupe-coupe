@@ -274,7 +274,7 @@ MonoBehaviour:
   actionThreePossible: 1
   swordStrike: {fileID: 8528466367844170883, guid: 5421f87be39c0404c807d39eef9854ce, type: 3}
   cooldownActionOne: 1
-  cooldownActionTwo: 0
+  cooldownActionTwo: 5
   cooldownActionThree: 5
   tornadoAttack: {fileID: 5120827562704221310}
   attackPosition: {fileID: 1410812044}

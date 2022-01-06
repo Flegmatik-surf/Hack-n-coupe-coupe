@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 //This script controls the player actions
 //It is inherited/interacts with the WarriorController and the ArcherController
@@ -18,8 +19,7 @@ public class PlayerActionsController : MonoBehaviour
     protected Slider actionOneSlider;
     protected Slider actionTwoSlider;
     protected Slider actionThreeSlider;
-
-
+    protected float animation;
     private void Start()
     {
         actionOnePossible=true;
@@ -53,6 +53,8 @@ public class PlayerActionsController : MonoBehaviour
             actionThreePossible =false;
             actionThreeSlider.value=0;
         }
+
+        
     }
 
     public virtual void ActionOne(){}
