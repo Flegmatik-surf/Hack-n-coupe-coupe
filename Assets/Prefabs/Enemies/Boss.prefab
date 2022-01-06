@@ -198,7 +198,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 6163060668518189411}
   slider: {fileID: 129232471311089738}
   can_be_revived: 0
-  animator: {fileID: 0}
+  animator: {fileID: 3389392208977057534}
   phaseIndicator: 1
   bigCooldown: 10
   mediumCooldown: 5
