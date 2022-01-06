@@ -103,7 +103,7 @@ public class WarriorController : PlayerActionsController
             c.GetComponent<NavMeshAgent>().enabled=true;
         }
         yield return new WaitForSeconds(cooldown);
-
+        
         actionTwoPossible =true;
         actionTwoSlider.value=1;
     }
