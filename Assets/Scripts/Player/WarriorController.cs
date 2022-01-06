@@ -23,6 +23,8 @@ public class WarriorController : PlayerActionsController
 
     private float speed;
 
+    //the animator :
+    [SerializeField] private Animator animator;
     
     public static event Action<float> warriorActionOneCalled;
     public static event Action<float> warriorActionTwoCalled;
@@ -47,6 +49,7 @@ public class WarriorController : PlayerActionsController
     //This method is used to instantiate the basic attack
     private IEnumerator ActionOneCoroutine(float cooldown)
     {
+        StartCoroutine(AttackAnimation());
         audioSource.PlayOneShot(soundAttack1);
         GameObject new_attack = Instantiate(swordStrike);
         new_attack.tag="PlayerAttack";
@@ -91,6 +94,7 @@ public class WarriorController : PlayerActionsController
     //This method is used to instantiate the tornado-like attack
     private IEnumerator ActionThreeCoroutine(float cooldown)
     {
+        StartCoroutine(AttackAnimation());
         audioSource.PlayOneShot(soundAttack3);
         tornadoAttack.SetActive(true);
         gameObject.GetComponent<NavMeshAgent>().speed=speed*1.5f;
@@ -103,4 +107,10 @@ public class WarriorController : PlayerActionsController
         actionThreeSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
+
+    private IEnumerator AttackAnimation(){
+        animator.SetBool("attacking",true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("attacking",false);
+    }
 }

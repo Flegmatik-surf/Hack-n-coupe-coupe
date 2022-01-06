@@ -13,6 +13,7 @@ public class SamouraiController : SamouraiActionsController
     [SerializeField] private float cooldownActionThree;
     private IEnumerator coroutine;
 
+    //Variables containing relevant gameobjects and scripts used by the samourai :
     [SerializeField] private GameObject shuriken;
     public GameObject attackPosition;
     [SerializeField] private float firingSpeed;
@@ -23,10 +24,14 @@ public class SamouraiController : SamouraiActionsController
     [SerializeField] private GameObject chargedStrike;
     private float damageDealt;
 
+    //Variables relative to audio source :
     protected AudioSource audioSource;
     [SerializeField] public AudioClip soundAttack1;
     [SerializeField] public AudioClip soundAttack2;
     [SerializeField] public AudioClip soundAttack3;
+
+    //the animator :
+    [SerializeField] private Animator animator;
 
     public bool invul;
 
@@ -59,6 +64,7 @@ public class SamouraiController : SamouraiActionsController
         GameObject new_attack = Instantiate(shuriken);
         new_attack.tag="PlayerAttack";
         new_attack.transform.position=attackPosition.transform.position;
+        StartCoroutine(AttackAnimation());
         new_attack.GetComponent<Rigidbody>().AddForce(transform.forward*firingSpeed); //Unlike the warrior's basic attack, we give the shuriken a forward momentum
         yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;
@@ -107,6 +113,7 @@ public class SamouraiController : SamouraiActionsController
     //This method is used to instantiate the ....
     private IEnumerator ActionThreeCoroutine(float cooldown, int chargeIndicator)
     {
+        StartCoroutine(AttackAnimation());
         audioSource.PlayOneShot(soundAttack3);
         //we start by taking the right cooldown and damage per the charge indicator :
         if (chargeIndicator==1){cooldown=4;damageDealt=4;}
@@ -122,4 +129,11 @@ public class SamouraiController : SamouraiActionsController
         actionThreeSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
+
+    private IEnumerator AttackAnimation(){
+        animator.SetBool("attacking",true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("attacking",false);
+    }
+
 }

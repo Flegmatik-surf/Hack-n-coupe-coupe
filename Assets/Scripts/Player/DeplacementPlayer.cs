@@ -13,6 +13,12 @@ public class DeplacementPlayer : MonoBehaviour
     NavMeshAgent agent;
     Vector3 movement;
 
+    //the animator :
+    [SerializeField] private Animator animator;
+
+    //this variable will contain the actual speed of the nav agent :
+    private float velocity;
+
     Camera camera;
     [SerializeField] float distanceCamera;
     [SerializeField] float heightCamera;
@@ -42,48 +48,23 @@ public class DeplacementPlayer : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out hit))
         {
             position = hit.point;
-
         }
-        
         Quaternion Rotation = Quaternion.LookRotation(new Vector3(position.x, transform.position.y, position.z) - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, Rotation, 0.3f);
-        
-        
-        
-        
-    }
-
-    private void Move2()
-    {
-        
-        if (Input.GetKey("q"))
-        {
-            rb.velocity = new Vector3(-1 * speed * Time.deltaTime, 0,0);
-        }
-        if (Input.GetKey("d"))
-        {
-            rb.velocity = new Vector3(1 * speed * Time.deltaTime, 0, 0);
-        }if (Input.GetKey("z"))
-        {
-            rb.velocity = new Vector3(0, 0, 1 * speed * Time.deltaTime);
-        }if (Input.GetKey("s"))
-        {
-            rb.velocity = new Vector3(0, 0, -1 * speed * Time.deltaTime);
-        }
     }
 
     private void Move()
     {
+        animator.SetFloat("speed",agent.velocity.magnitude/agent.speed);
+        Debug.Log(velocity);
         movement = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
         Vector3 moveDestination = transform.position + movement;
         agent.destination = moveDestination;
     }
     
-
     public void ChangeState()
     {
         is_immobilized=!is_immobilized;

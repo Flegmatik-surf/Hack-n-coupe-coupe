@@ -179,6 +179,10 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 419170814295900039, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1394708111225095075}
+    - target: {fileID: 419170814295900039, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
       propertyPath: heightCamera
       value: 10
       objectReference: {fileID: 0}
@@ -198,6 +202,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 419170814277921801, guid: a9403d59d6c257b439d317b3181d9c4d, type: 3}
   m_PrefabInstance: {fileID: 9124334868429027709}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &4263240072851623036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894916689934501627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.4899225, z: 1}
+  m_Center: {x: 0, y: 1.2670352, z: 0}
 --- !u!82 &-5479874942560644078
 AudioSource:
   m_ObjectHideFlags: 0
@@ -353,16 +370,4 @@ MonoBehaviour:
   soundAttack1: {fileID: 8300000, guid: 54c8db080c7e04d449ac9392f0d60501, type: 3}
   soundAttack2: {fileID: 8300000, guid: c824de4c04a0c6b4da5b089e4cbba2aa, type: 3}
   soundAttack3: {fileID: 8300000, guid: 85fa416a5affa9d46a31f1af0ff070df, type: 3}
---- !u!65 &4263240072851623036
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8894916689934501627}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.4899225, z: 1}
-  m_Center: {x: 0, y: 1.2670352, z: 0}
+  animator: {fileID: 1394708111225095075}
