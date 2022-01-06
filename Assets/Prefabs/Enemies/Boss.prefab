@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 3642010149820195685}
   - component: {fileID: 4312034939231535169}
   - component: {fileID: 8570124235619010184}
+  - component: {fileID: 3389392208977057534}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Ennemy
@@ -197,13 +198,14 @@ MonoBehaviour:
   healthBarUI: {fileID: 6163060668518189411}
   slider: {fileID: 129232471311089738}
   can_be_revived: 0
+  animator: {fileID: 0}
   phaseIndicator: 1
   bigCooldown: 10
   mediumCooldown: 5
   smallCooldown: 3
   energyBall: {fileID: 5315697560322831031, guid: 69610bb6021cdbf4ebce0828bb6bbcd3, type: 3}
   firingSpeed: 5
-  skeleton: {fileID: 1327776772219504626, guid: f178117786589264b82a706cf1d4d369, type: 3}
+  skeleton: {fileID: 8473673475128552362, guid: d7a0a33aac75dc44291a3b8ea9ebc9a3, type: 3}
   spike: {fileID: 4141767679825502193, guid: 15e27fb9ab6f50c48b8bacc63209b6a3, type: 3}
   attackPosition: {fileID: 2049932455763263036}
 --- !u!195 &4312034939231535169
@@ -244,6 +246,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &3389392208977057534
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760338952334426739}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15997f8b980c2ed4289f288846d11bed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3945467625918834770
 PrefabInstance:
   m_ObjectHideFlags: 0

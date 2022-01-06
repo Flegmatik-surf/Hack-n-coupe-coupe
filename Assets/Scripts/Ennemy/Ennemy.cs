@@ -42,7 +42,7 @@ public class Ennemy : MonoBehaviour
     protected float timeStamp = 0f;
 
     //the animator :
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
 
     public void Start()
     {

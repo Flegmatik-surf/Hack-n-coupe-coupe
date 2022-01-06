@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Soldier : Ennemy
 {
-    [SerializeField] private GameObject skeleton;
-    private Animator animator;
-
-    private void Awake() 
-    {
-        animator=skeleton.gameObject.GetComponent<Animator>();
-        
-    }
-
+    
     public override void Attack()
     {
         if (Insphere())
