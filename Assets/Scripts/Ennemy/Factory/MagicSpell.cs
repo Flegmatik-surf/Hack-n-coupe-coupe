@@ -8,7 +8,7 @@ public class MagicSpell : MonoBehaviour
     private LifeManager playerLife;
     Vector3 target;
 
-    private float speed = 0.05f;
+    private float speed = 0.1f;
 
     void Start()
     {

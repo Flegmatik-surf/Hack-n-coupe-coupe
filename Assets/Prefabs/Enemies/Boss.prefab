@@ -191,7 +191,7 @@ MonoBehaviour:
   mediumCooldown: 5
   smallCooldown: 3
   energyBall: {fileID: 5315697560322831031, guid: 69610bb6021cdbf4ebce0828bb6bbcd3, type: 3}
-  firingSpeed: 5
+  firingSpeed: 100
   skeleton: {fileID: 8473673475128552362, guid: d7a0a33aac75dc44291a3b8ea9ebc9a3, type: 3}
   spike: {fileID: 4141767679825502193, guid: 15e27fb9ab6f50c48b8bacc63209b6a3, type: 3}
   attackPosition: {fileID: 2049932455763263036}

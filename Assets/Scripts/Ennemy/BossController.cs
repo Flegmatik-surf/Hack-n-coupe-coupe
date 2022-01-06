@@ -104,12 +104,12 @@ public class BossController : Ennemy
         { 
             if(actionTwoPossible==true) //if action 2 possible, execute
             {
-                //réanime 5 ennemis aléatoires. Si aucun/pas assez d’ennemis morts, il spawn 5 squelettes. Cooldown de 10 secondes.
+                //réanime 3 ennemis aléatoires. Si aucun/pas assez d’ennemis morts, il spawn 3 squelettes. Cooldown de 10 secondes.
                 FindTombstones(); //we start by finding all active tombstones on the map
-                if(activeTombstones.Length>=5) //if there's 5 or more tombstones, we reanimate 5 mobs
-                {ReanimateMobs(5);}
-                else  //we spawn 5 mobs since there's not enough tombstones
-                {SpawnMobs(5);}
+                if(activeTombstones.Length>=3) //if there's 3 or more tombstones, we reanimate 3 mobs
+                {ReanimateMobs(3);}
+                else  //we spawn 3 mobs since there's not enough tombstones
+                {SpawnMobs(3);}
                 actionTwoPossible=false;
                 StartCoroutine(CooldownTimer(bigCooldown, 2)); //we launch the cooldown on the ability
             } 
@@ -131,17 +131,17 @@ public class BossController : Ennemy
         {
             if(actionTwoPossible==true) //if action 2 possible, execute
             {
-                //réanime tous les ennemis présents dans l’arène. Il gagne 2 PV par ennemi réanimé. Cooldown de 10 secondes.
+                //réanime tous les ennemis présents dans l’arène. Il gagne 1 PV par ennemi réanimé. Cooldown de 20 secondes.
                 FindTombstones();
                 ReanimateAll(); //we reanimate everyone
-                Heal(activeTombstones.Length*2); //the boss is healed for 2PV per tombstones
-                StartCoroutine(CooldownTimer(bigCooldown, 2));
+                Heal(activeTombstones.Length*1); //the boss is healed for 1PV per tombstones
+                StartCoroutine(CooldownTimer(bigCooldown*2, 2));
                 actionTwoPossible=false;
             } 
             if(actionOnePossible==true) //elif action 1 possible, execute
             {
                 //Spawn 5 squelettes, medium cooldown
-                SpawnMobs(5);
+                SpawnMobs(2);
                 StartCoroutine(CooldownTimer(mediumCooldown, 1));
                 actionOnePossible=false;
             } else {
