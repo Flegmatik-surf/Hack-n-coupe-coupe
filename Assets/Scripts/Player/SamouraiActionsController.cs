@@ -15,12 +15,6 @@ public class SamouraiActionsController : MonoBehaviour
     private bool is_charging;
     private int chargeIndicator; //Will contain the charge indicator ()
 
-    //Variables related to the player's UI :
-    private GameObject playerUI;
-    protected Slider actionOneSlider;
-    protected Slider actionTwoSlider;
-    protected Slider actionThreeSlider;
-
     private void Start()
     {
         actionOnePossible=true;
@@ -28,10 +22,6 @@ public class SamouraiActionsController : MonoBehaviour
         actionThreePossible=true;
         is_charging=false;
         timer=0f;
-        playerUI = GameObject.FindGameObjectWithTag("MainCamera");
-        actionOneSlider=playerUI.transform.Find("PlayerUI").Find("ActionOneSlider").GetComponent<Slider>();
-        actionTwoSlider=playerUI.transform.Find("PlayerUI").Find("ActionTwoSlider").GetComponent<Slider>();
-        actionThreeSlider=playerUI.transform.Find("PlayerUI").Find("ActionThreeSlider").GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -42,13 +32,11 @@ public class SamouraiActionsController : MonoBehaviour
         {
             ActionOne();
             actionOnePossible=false;
-            actionOneSlider.value=0;
         }
         if(Input.GetKey(KeyCode.Mouse1) && actionTwoPossible==true)
         {
             ActionTwo();
             actionTwoPossible=false;
-            actionTwoSlider.value=0;
         }
         //Unlike the two other characters, the charged attack needs to be charged hence a different way of handling the code :
         //this first if is called ONCE when the spacebar is pressed
@@ -78,7 +66,6 @@ public class SamouraiActionsController : MonoBehaviour
             }
             ActionThree(chargeIndicator);
             actionThreePossible=false;
-            actionThreeSlider.value=0;
         }
     }
 

@@ -61,7 +61,6 @@ public class WarriorController : PlayerActionsController
         StartCoroutine(new_attack.gameObject.GetComponent<WarriorAttackController>().LaunchAttack());
         yield return new WaitForSeconds(cooldown);
         actionOnePossible=true;
-        actionOneSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 
@@ -105,7 +104,6 @@ public class WarriorController : PlayerActionsController
         yield return new WaitForSeconds(cooldown);
         
         actionTwoPossible =true;
-        actionTwoSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 
@@ -132,7 +130,6 @@ public class WarriorController : PlayerActionsController
         gameObject.GetComponent<NavMeshAgent>().speed=speed/1.5f;
         yield return new WaitForSeconds(cooldown);
         actionThreePossible=true;
-        actionThreeSlider.value=1;
     }
 //--------------------------------------------------------------------------------------------
 
