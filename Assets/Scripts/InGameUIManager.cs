@@ -34,6 +34,7 @@ public class InGameUIManager : MonoBehaviour
 
     private float gameTimer;
     private string currentWave;
+    [SerializeField] private int[] sceneIndexs = { 1 };
 
 
 
@@ -130,8 +131,7 @@ public class InGameUIManager : MonoBehaviour
 
     public void RetryGame()
     {
-        //TODO : randomizer to implement
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(RandomScene());
     }
 
 
@@ -206,5 +206,11 @@ public class InGameUIManager : MonoBehaviour
             yield return new WaitForSeconds(1/fps);
         }
         yield return null;
+    }
+
+    private int RandomScene()
+    {
+        int n = sceneIndexs.Length;
+        return sceneIndexs[UnityEngine.Random.Range(0, n)];
     }
 }

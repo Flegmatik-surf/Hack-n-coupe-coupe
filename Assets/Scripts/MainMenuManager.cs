@@ -49,6 +49,7 @@ public class MainMenuManager : MonoBehaviour
         ApplyDefaults();
     }
 
+
     public void GoToSettingsScreen()
     {
         audioSource.Play();
