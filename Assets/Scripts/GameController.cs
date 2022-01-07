@@ -113,7 +113,8 @@ public class GameController : MonoBehaviour
         {
             if(waveIndicator==10)
             {
-                EndGame(); //if we reached the final wave and beaten it, we call the EndGame() function
+                //nothing happens, as it's th boss that calls the end
+                //EndGame(); //if we reached the final wave and beaten it, we call the EndGame() function
             } else 
             {
                 ResetPlayer();
@@ -170,7 +171,7 @@ public class GameController : MonoBehaviour
     }
 
     //the function called when the game ends :
-    private void EndGame()
+    public void EndGame()
     {
         victorySignal?.Invoke();
         print("Game over !");

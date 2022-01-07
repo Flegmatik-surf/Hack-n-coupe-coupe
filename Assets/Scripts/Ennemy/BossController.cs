@@ -92,6 +92,10 @@ public class BossController : Ennemy
             phaseIndicator=3;
             maxHP=50;
         }
+        if(currentHP<=0)
+        {
+            GameObject.FindGameObjectWithTag("GameManager").gameObject.GetComponent<GameController>().EndGame();
+        }
         bossLifeChanged?.Invoke(currentHP / initialMaxHP); //invoke : update the Boss UI Health Bar
     }
 
