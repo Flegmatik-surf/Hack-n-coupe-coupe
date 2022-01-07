@@ -1595,6 +1595,7 @@ MonoBehaviour:
   defeatPopUp: {fileID: 2877287715031761353}
   inGameInfo: {fileID: 7283805316418646560}
   bossHealthBar: {fileID: 8909246130409151348}
+  sceneIndexs: 010000000200000003000000
 --- !u!1 &2877287715735471315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,7 +2086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU LOSE
+  m_text: YOU LOST
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e829ef8b7f6b9487fac2706952f50fd5, type: 2}
   m_sharedMaterial: {fileID: -76559982470264226, guid: e829ef8b7f6b9487fac2706952f50fd5, type: 2}
