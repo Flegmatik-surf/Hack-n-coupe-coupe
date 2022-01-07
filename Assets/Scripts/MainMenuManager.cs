@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject selectCharacterScreenContainer;
 
     [SerializeField] private TMP_Dropdown resolutionDropdown;
-
+    [SerializeField] private AudioMixer musicAudioMixer;
+    [SerializeField] private AudioMixer sfxAudioMixer;
+    private float globalVolumeFactor = 0.8f;
+    [SerializeField] private float deltaVolume = 70f; //penalty volume applied when global volume = 0
 
     [SerializeField] private int[] sceneIndexs = { 1 };
     AudioSource audioSource;
@@ -65,6 +69,9 @@ public class MainMenuManager : MonoBehaviour
         selectCharacterScreenContainer.SetActive(true);
     }
 
+
+
+
     public void SetGraphicsQuality(int qualityIndex)
     {
         Debug.Log("quality : " + qualityIndex);
@@ -76,6 +83,33 @@ public class MainMenuManager : MonoBehaviour
         Resolution resolution = resolutions[resolutionInt];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen); 
     }
+
+    public void SetMusicVolume(float musicVolume)
+    {
+        musicAudioMixer.SetFloat("mainVolume", musicVolume - deltaVolume * (1 - globalVolumeFactor) );
+    }
+
+    public void SetSFXVolume(float sfxVolume)
+    {
+        sfxAudioMixer.SetFloat("sfxVolume", sfxVolume - deltaVolume * (1 - globalVolumeFactor));
+    }
+
+    public void SetGeneralVolume(float newGlobalVolumeFactor)
+    {
+        float oldGlobalVolumeFactor = globalVolumeFactor;
+        globalVolumeFactor = newGlobalVolumeFactor;
+
+        //update directly the new global menu :
+        float oldSFXVolume;
+        float oldMusicVolume;
+        sfxAudioMixer.GetFloat("sfxVolume", out oldSFXVolume);
+        sfxAudioMixer.SetFloat("sfxVolume", oldSFXVolume + deltaVolume * (globalVolumeFactor - oldGlobalVolumeFactor));
+        musicAudioMixer.GetFloat("mainVolume", out oldMusicVolume);
+        musicAudioMixer.SetFloat("mainVolume", oldMusicVolume + deltaVolume * (globalVolumeFactor - oldGlobalVolumeFactor));
+
+    }
+
+
 
     public void PlayWithCharacter(string character)
     {
