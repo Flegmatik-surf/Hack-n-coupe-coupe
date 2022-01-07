@@ -12,10 +12,15 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject selectCharacterScreenContainer;
 
     [SerializeField] private TMP_Dropdown resolutionDropdown;
+    [SerializeField] private TMP_Dropdown qualityDropdown;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Slider globalVolumeSlider;
     [SerializeField] private AudioMixer musicAudioMixer;
     [SerializeField] private AudioMixer sfxAudioMixer;
-    private float globalVolumeFactor = 0.8f;
-    [SerializeField] private float deltaVolume = 70f; //penalty volume applied when global volume = 0
+    private float globalVolume = 0.8f;
+    private int defaultResolution;
+
 
     [SerializeField] private int[] sceneIndexs = { 1 };
     AudioSource audioSource;
@@ -26,7 +31,6 @@ public class MainMenuManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         print(audioSource);
 
-        int startResolution = 0;
         resolutions = Screen.resolutions;
         List<string> options = new List<string>();
         for(int i = 0; i < resolutions.Length; i++)
@@ -36,13 +40,13 @@ public class MainMenuManager : MonoBehaviour
 
             if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.height)
             {
-                startResolution = i;
+                defaultResolution = i;
             }
         }
         resolutionDropdown.ClearOptions();
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = startResolution;
-        resolutionDropdown.RefreshShownValue();
+
+        ApplyDefaults();
     }
 
     public void GoToSettingsScreen()
@@ -86,27 +90,28 @@ public class MainMenuManager : MonoBehaviour
 
     public void SetMusicVolume(float musicVolume)
     {
-        musicAudioMixer.SetFloat("mainVolume", musicVolume - deltaVolume * (1 - globalVolumeFactor) );
+        musicAudioMixer.SetFloat("mainVolume", musicVolume);
     }
 
     public void SetSFXVolume(float sfxVolume)
     {
-        sfxAudioMixer.SetFloat("sfxVolume", sfxVolume - deltaVolume * (1 - globalVolumeFactor));
+        sfxAudioMixer.SetFloat("sfxVolume", sfxVolume);
     }
 
-    public void SetGeneralVolume(float newGlobalVolumeFactor)
+    public void SetGeneralVolume(float newGlobalVolume)
     {
-        float oldGlobalVolumeFactor = globalVolumeFactor;
-        globalVolumeFactor = newGlobalVolumeFactor;
+        globalVolume = newGlobalVolume;
 
-        //update directly the new global menu :
-        float oldSFXVolume;
-        float oldMusicVolume;
-        sfxAudioMixer.GetFloat("sfxVolume", out oldSFXVolume);
-        sfxAudioMixer.SetFloat("sfxVolume", oldSFXVolume + deltaVolume * (globalVolumeFactor - oldGlobalVolumeFactor));
-        musicAudioMixer.GetFloat("mainVolume", out oldMusicVolume);
-        musicAudioMixer.SetFloat("mainVolume", oldMusicVolume + deltaVolume * (globalVolumeFactor - oldGlobalVolumeFactor));
+        sfxSlider.value = globalVolume;
+        musicSlider.value = globalVolume;
+        sfxAudioMixer.SetFloat("sfxVolume", globalVolume);
+        musicAudioMixer.SetFloat("mainVolume", globalVolume);
 
+    }
+
+    public void SetToDefaults()
+    {
+        ApplyDefaults();
     }
 
 
@@ -131,6 +136,24 @@ public class MainMenuManager : MonoBehaviour
     {
         int n = sceneIndexs.Length;
         return sceneIndexs[Random.Range(0, n)];
+    }
+
+    private void ApplyDefaults()
+    {
+        globalVolume = 0f;
+        globalVolumeSlider.value = 0f;
+        musicAudioMixer.SetFloat("mainVolume", 0f);
+        musicSlider.value = 0f;
+        sfxAudioMixer.SetFloat("sfxVolume", 0f);
+        sfxSlider.value = 0f;
+
+        resolutionDropdown.value = defaultResolution;
+        resolutionDropdown.RefreshShownValue();
+        SetResolution(defaultResolution);
+        qualityDropdown.value = 1;
+        qualityDropdown.RefreshShownValue();
+        SetGraphicsQuality(1);
+
     }
 
 }

@@ -1380,8 +1380,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1075199157}
   m_HandleRect: {fileID: 2015629016}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -50
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0.8
   m_OnValueChanged:
@@ -7150,7 +7150,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1364131810}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1473956019}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: SetToDefaults
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1364131810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8061,9 +8073,12 @@ MonoBehaviour:
   settingsScreenContainer: {fileID: 1005313815}
   selectCharacterScreenContainer: {fileID: 233282998}
   resolutionDropdown: {fileID: 1639947676}
+  qualityDropdown: {fileID: 825210913}
+  musicSlider: {fileID: 625121768}
+  sfxSlider: {fileID: 1481053358}
+  globalVolumeSlider: {fileID: 170303861}
   musicAudioMixer: {fileID: 24100000, guid: 1ffd2dc7503d340ec9a732abc78158cc, type: 2}
   sfxAudioMixer: {fileID: 24100000, guid: e44fcaeb471494a8da457580dab8ff3e, type: 2}
-  deltaVolume: 70
   sceneIndexs: 010000000200000003000000
 --- !u!82 &1473956020
 AudioSource:
