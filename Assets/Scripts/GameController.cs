@@ -110,16 +110,14 @@ public class GameController : MonoBehaviour
     {
         aliveEnemies=GameObject.FindGameObjectsWithTag("Ennemy");
         if(aliveEnemies.Length==0)
-        {
+        { 
             if(waveIndicator==10)
             {
-                //nothing happens, as it's th boss that calls the end
-                //EndGame(); //if we reached the final wave and beaten it, we call the EndGame() function
-            } else 
-            {
-                ResetPlayer();
-                CalculateWave(U1,U0);
+                U1=0;
+                U0=0;
             }
+            ResetPlayer();
+            CalculateWave(U1,U0);
         }
     }
 
