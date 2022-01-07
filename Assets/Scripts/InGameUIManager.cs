@@ -213,4 +213,42 @@ public class InGameUIManager : MonoBehaviour
         int n = sceneIndexs.Length;
         return sceneIndexs[UnityEngine.Random.Range(0, n)];
     }
+
+
+
+    private void UnsubscribePlayerEvents()
+    {
+        String selectedPlayer = PlayerPrefs.GetString("selectedPlayer");
+
+        if (selectedPlayer == "Samourai")
+        {
+            SamouraiController.samouraiActionOneCalled -= OnActionOneCalled;
+            SamouraiController.samouraiActionTwoCalled -= OnActionTwoCalled;
+            SamouraiController.samouraiActionThreeCalled -= OnActionThreeCalled;
+        }
+        if (selectedPlayer == "Warrior")
+        {
+            WarriorController.warriorActionOneCalled -= OnActionOneCalled;
+            WarriorController.warriorActionTwoCalled -= OnActionTwoCalled;
+            WarriorController.warriorActionThreeCalled -= OnActionThreeCalled;
+        }
+        if (selectedPlayer == "Archer")
+        {
+            ArcherController.bowmanActionOneCalled -= OnActionOneCalled;
+            ArcherController.bowmanActionTwoCalled -= OnActionTwoCalled;
+            ArcherController.bowmanActionThreeCalled -= OnActionThreeCalled;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameController.newWaveSignal -= OnNewWave;
+        LifeManager.playerHPChanged -= OnPlayerHPChanged;
+        GameController.victorySignal -= OnVictory;
+        LifeManager.defeatSignal -= OnDefeat;
+        Fosse.dieOnFosse -= OnDefeat;
+        BossController.bossSpawn -= OnBossSpawn;
+        BossController.bossLifeChanged -= OnBossHPChanged;
+        UnsubscribePlayerEvents();
+    }
 }

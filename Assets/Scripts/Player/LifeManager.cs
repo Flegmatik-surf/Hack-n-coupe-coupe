@@ -82,4 +82,9 @@ public class LifeManager : MonoBehaviour {
             PlayerPrefs.SetInt(keyMaxWave, lastWaveOfTheGame);
         }
     }
+
+    private void OnDestroy()
+    {
+        GameController.newWaveSignal -= OnNewWave;
+    }
 }
